@@ -19,7 +19,7 @@ class CreateRecipientsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('aliases');    
+            $table->json('aliases');    
             $table->timestamps();
         });
     }

@@ -46,15 +46,19 @@ to check and store a list of individuals or organizations that receive internati
       - `$xml = new SimpleXMLElement($xmlString);`
       - `var_dump($xml->sdnEntry)`
 
-# Simple Table Structure
+# Simple Table Structure for Entries
 - id
 - first_name
 - last_name
 - aka_first
 - aka_last
 
-# Stretch Table Structure
-- ???
+# Table Structure Recipients
+- id
+- user_id (reference) 
+- first_name
+- last_name
+- aliases
 
 
 

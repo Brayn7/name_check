@@ -1,9 +1,18 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700');
 
 // Variables
+$mainFont: 'Open Sans', sans-serif;
 @import "_variables";
 
 // Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
+
+
+#login, #register {
+   position: absolute;
+   top: 0;
+   height: 100vh;
+   width: 100%;
+}

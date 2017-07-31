@@ -17,7 +17,11 @@
     "jquery": "^3.1.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "vue-router": "^2.7.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel": "^6.23.0",
+    "webpack": "^3.4.1"
+  }
 }

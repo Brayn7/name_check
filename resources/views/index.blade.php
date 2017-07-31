@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-   <login></login>
+   <main-vue>
+     
+   </main-vue>
 @endsection
