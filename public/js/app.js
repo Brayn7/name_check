@@ -45554,18 +45554,28 @@ Vue.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('http://name_check.dev/oauth/token', {
           grant_type: 'password',
-          client_id: '3',
-          client_secret: 'TbzsvlmMo68wf8PgCD5Xt3OY3ZjrM8ooDo4quUbg',
-          username: this.login.username,
-          password: this.login.password,
+          client_id: '1',
+          client_secret: '7kqK51HVpOCeRwBT1FZVPWUO1n3khwIfjvS9ebMt',
+          username: "bryarobert@gmail.com",
+          password: 'adminroot',
           scope: ''
         })
         // on success get the user that logged in
         .then(function (response) {
-          axios.get('http://name_check.dev/api/user', {}).then(function (response) {
+          console.log(response);
+          var header = {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + response.data.access_token
+            // get user data
+          };axios.get('http://name_check.dev/api/user', {
+            headers: header
+          }).then(function (response) {
             console.log(response);
           });
-        }).catch(function (error) {
+          // end get user data 
+        })
+        // on auth/token fail
+        .catch(function (error) {
           console.log(error);
         });
       }
@@ -45624,7 +45634,7 @@ module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"co
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <!-- <header-vue></header-vue> -->\n  <!-- <login></login> -->\n  <register></register>\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <!-- <header-vue></header-vue> -->\n  <login></login>\n  <!-- <register></register> -->\n</div>";
 
 /***/ }),
 /* 44 */
