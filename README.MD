@@ -53,12 +53,7 @@ to check and store a list of individuals or organizations that receive internati
 - aka_first
 - aka_last
 
-# Table Structure Recipients
-- id
-- user_id (reference) 
-- first_name
-- last_name
-- aliases
+
 
 
 

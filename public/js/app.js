@@ -3304,9 +3304,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_register_register_js__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dash_js__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_common_header_js__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_login_login_js__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_register_register_js__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_dashboard_dash_js__ = __webpack_require__(49);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -3323,7 +3324,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 __webpack_require__(32);
 
 // load components
-var HeaderVue = __webpack_require__(37);
+
 
 
 
@@ -3338,15 +3339,15 @@ var routes = [{
   redirect: '/signin'
 }, {
   path: '/signup',
-  component: __WEBPACK_IMPORTED_MODULE_3__components_register_register_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_4__components_register_register_js__["a" /* default */],
   name: 'signup'
 }, {
   path: '/signin',
-  component: __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_3__components_login_login_js__["a" /* default */],
   name: 'signin'
 }, {
   path: '/dashboard',
-  component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dash_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_5__components_dashboard_dash_js__["a" /* default */],
   name: 'dashboard',
   meta: { requiresAuth: true }
 }];
@@ -45525,13 +45526,19 @@ var Popover = function ($) {
 
 /***/ }),
 /* 37 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-Vue.component('header-vue', {
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue', {
 
    template: __webpack_require__(38)
 
 });
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Header);
 
 /***/ }),
 /* 38 */
@@ -45568,7 +45575,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         axios.post('http://name_check.dev/oauth/token', {
           grant_type: 'password',
           client_id: '1',
-          client_secret: '7kqK51HVpOCeRwBT1FZVPWUO1n3khwIfjvS9ebMt',
+          client_secret: '92J0WUA0KE4UWSqkeNcWbpnkbM1QBGcQpnVqs3EA',
           username: "bryarobert@gmail.com",
           password: 'adminroot',
           scope: ''
@@ -45638,9 +45645,9 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
    data: function data() {
       return {
          register: {
-            name: "Carla",
+            name: "Robbie",
             organization_name: "Cornerstone",
-            email: "Carla@cornerstone.com",
+            email: "bryarobert@gmail.com",
             password: "adminroot",
             password_confirmation: "adminroot"
          },
@@ -45709,7 +45716,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 50 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <p>hi from dash</p>\n</div>";
+module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    <route-link to=\"/recipients\">Recipient List</route-link>\n    <route-link to=\"/reports\">Report List</route-link>\n  </div>\n</div>";
 
 /***/ })
 /******/ ]);

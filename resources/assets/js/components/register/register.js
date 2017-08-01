@@ -7,9 +7,9 @@ let Register = Vue.component('register', {
    data: function(){
       return {
          register: {
-            name:"Carla",
+            name:"Robbie",
             organization_name: "Cornerstone",
-            email: "Carla@cornerstone.com",
+            email: "bryarobert@gmail.com",
             password: "adminroot",
             password_confirmation: "adminroot",
          },

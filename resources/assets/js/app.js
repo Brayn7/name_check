@@ -14,7 +14,7 @@ Vue.use(VueRouter);
 require('./bootstrap');
 
 // load components
-let HeaderVue = require('./components/common/header.js');
+import HeaderVue from './components/common/header.js';
 import Login from './components/login/login.js';
 
 import Register from './components/register/register.js';

@@ -26,6 +26,11 @@ Route::resource('entries', 'EntriesController');
 // endpoint that will contain recipient lists relavent to logged in user
 Route::resource('recipients', 'RecipientsController');
 
+Route::resource('reports', 'ReportsController');
+
+
+
+
 
 
 
