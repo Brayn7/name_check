@@ -180,6 +180,10 @@ return [
         // passport
         Laravel\Passport\PassportServiceProvider::class,
 
+        // exception handling
+
+        Optimus\Heimdal\Provider\LaravelServiceProvider::class,
+
     ],
 
     /*

@@ -3304,7 +3304,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
-// inport vue
+// https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
+
+// import vue
 window.Vue = __webpack_require__(12);
 
 // axios for ajax calls
@@ -3340,49 +3342,6 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
 new Vue({
   router: router
 }).$mount('#app');
-
-// initiate a main vue instance
-// const app = new Vue({
-//     el: '#app',
-//     components:{
-//       'main-vue': MainVue,
-//     },
-// });
-
-
-// register a new user script
-// axios.post('api/register', {
-//   name: "hid",
-//   email: 'tesddddddd@gmail.com',
-//   password: 'adminroot',
-//   password_confirmation: 'adminroot',
-// })
-// .then(function (response) {
-//   console.log(response);
-// })
-// .catch(function (error) {
-//     console.log(error);
-// });
-
-// login a user!      
-// axios.post('http://name_check.dev/oauth/token', {
-//   grant_type: 'password',
-//   client_id: '3',
-//   client_secret:'TbzsvlmMo68wf8PgCD5Xt3OY3ZjrM8ooDo4quUbg',
-//   username: 'bryarobert@gmail.com',
-//   password: 'adminroot',
-//   scope: ''
-// })
-// .then(function (response) {
-//   axios.get('http://name_check.dev/api/user', {
-
-//   }).then(function(response){
-//     console.log(response);
-//   });
-// })
-// .catch(function (error) {
-//     console.log(error);
-// });
 
 /***/ }),
 /* 12 */
@@ -45545,11 +45504,14 @@ Vue.component('login', {
   data: function data() {
     return {
       login: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       },
 
+      authUser: {},
+
       handleLoginFormSubmit: function handleLoginFormSubmit() {
+        var that = this;
         // get access token from backend
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('http://name_check.dev/oauth/token', {
@@ -45562,15 +45524,32 @@ Vue.component('login', {
         })
         // on success get the user that logged in
         .then(function (response) {
-          console.log(response);
+          console.log('token');
           var header = {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + response.data.access_token
-            // get user data
-          };axios.get('http://name_check.dev/api/user', {
+          };
+
+          // save tokens on authUser property
+          that.authUser.access_token = response.data.access_token;
+          that.authUser.refresh_token = response.data.refresh_token;
+
+          // save tokens in local storage 
+          window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
+
+          // get user data
+          axios.get('http://name_check.dev/api/user', {
             headers: header
           }).then(function (response) {
             console.log(response);
+
+            // grab user info and save in session storage ;)
+            that.authUser.id = response.data.id;
+            that.authUser.name = response.data.name;
+            that.authUser.organization_name = response.data.organization_name;
+            that.authUser.email = response.data.email;
+
+            window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
           });
           // end get user data 
         })
@@ -45587,7 +45566,7 @@ Vue.component('login', {
 /* 40 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <a class=\"te\" href=\"\"><u>register</u></a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <a class=\"te\" href=\"\">register</a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 41 */
@@ -45628,7 +45607,7 @@ Vue.component('register', {
 /* 42 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <a class=\"\" href=\"#\"><u>login</u></a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <a class=\"\" href=\"#\">login</a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 43 */
