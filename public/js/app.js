@@ -3304,6 +3304,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_register_register_js__ = __webpack_require__(41);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -3321,8 +3323,10 @@ __webpack_require__(32);
 
 // load components
 var HeaderVue = __webpack_require__(37);
-var Login = __webpack_require__(39);
-var Register = __webpack_require__(41);
+
+
+
+var Dashboard = __webpack_require__(49);
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
   template: __webpack_require__(43)
@@ -3330,12 +3334,22 @@ var MainVue = Vue.component('main-vue', {
 
 var routes = [{
   path: '/',
-  component: MainVue,
-  name: 'home'
+  redirect: '/signin'
+}, {
+  path: '/signup',
+  component: __WEBPACK_IMPORTED_MODULE_3__components_register_register_js__["a" /* default */],
+  name: 'register'
+}, {
+  path: '/signin',
+  component: __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__["a" /* default */],
+  name: 'login'
+}, {
+  path: '/dashboard',
+  component: Dashboard,
+  name: 'dashboard'
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
-  mode: 'history',
   routes: routes
 });
 
@@ -45495,12 +45509,17 @@ module.exports = "<div id=\"header\">\n  <nav class=\"navbar navbar-light navbar
 
 /***/ }),
 /* 39 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
-Vue.component('login', {
+var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 
   template: __webpack_require__(40),
+
   data: function data() {
     return {
       login: {
@@ -45562,17 +45581,24 @@ Vue.component('login', {
   }
 });
 
+/* harmony default export */ __webpack_exports__["a"] = (Login);
+
 /***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <a class=\"te\" href=\"\">register</a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "\n<div id='login' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-Vue.component('register', {
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register', {
 
    template: __webpack_require__(42),
 
@@ -45603,23 +45629,45 @@ Vue.component('register', {
 
 });
 
+/* harmony default export */ __webpack_exports__["a"] = (Register);
+
 /***/ }),
 /* 42 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <a class=\"\" href=\"#\">login</a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <!-- <header-vue></header-vue> -->\n  <login></login>\n  <!-- <register></register> -->\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <router-view></router-view>\n</div>";
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+Vue.component('dash', {
+
+   template: __webpack_require__(50)
+
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+module.exports = "";
 
 /***/ })
 /******/ ]);

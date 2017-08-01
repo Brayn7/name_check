@@ -1,7 +1,9 @@
+import Vue from 'vue';
 
-Vue.component('login', {
+let Login = Vue.component('login', {
 
    template: require('./Login.html'),
+
    data: function(){
       return {
       login:{
@@ -61,6 +63,8 @@ Vue.component('login', {
          }); 
       }
     }
- },
+  },
 });
+
+export default Login;
 

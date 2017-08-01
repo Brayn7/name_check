@@ -1,4 +1,6 @@
-Vue.component('register', {
+import Vue from 'vue';
+
+let Register = Vue.component('register', {
 
    template: require('./Register.html'),
 
@@ -30,3 +32,5 @@ Vue.component('register', {
    }
 
 });
+
+export default Register;

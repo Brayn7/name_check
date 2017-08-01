@@ -15,21 +15,38 @@ require('./bootstrap');
 
 // load components
 let HeaderVue = require('./components/common/header.js');
-let Login = require('./components/login/login.js');
-let Register = require('./components/register/register.js');
+import Login from './components/login/login.js';
+
+import Register from './components/register/register.js';
+let Dashboard = require('./components/dashboard/dash.js');
 // initiate a main component
 let MainVue = Vue.component('main-vue', {
    template: require('./Main.html'),
 });
 
-const routes = [{
-  path: '/',
-  component: MainVue,
-  name: 'home'
-}];
+const routes = [
+  {
+    path: '/',
+    redirect: '/signin'
+  },
+  {
+    path: '/signup',
+    component: Register,
+    name: 'register'
+  },
+  {
+    path: '/signin',
+    component: Login,
+    name: 'login'
+  },
+  {
+    path: '/dashboard',
+    component: Dashboard,
+    name: 'dashboard'
+  }
+];
 
 const router = new VueRouter({
-  mode: 'history',
   routes
 });
 
