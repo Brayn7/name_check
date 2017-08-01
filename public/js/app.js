@@ -45585,7 +45585,32 @@ module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-8
 
 Vue.component('register', {
 
-   template: __webpack_require__(42)
+   template: __webpack_require__(42),
+
+   data: function data() {
+      return {
+         register: {
+            name: "Carla",
+            organization_name: "Cornerstone",
+            email: "Carla@cornerstone.com",
+            password: "adminroot",
+            password_confirmation: "adminroot"
+         },
+         handleRegisterFormSubmit: function handleRegisterFormSubmit() {
+            axios.post('api/signup', {
+               name: this.register.name,
+               organization_name: this.register.organization_name,
+               email: this.register.email,
+               password: this.register.password,
+               password_confirmation: this.register.password_confirmation
+            }).then(function (response) {
+               console.log(response);
+            }).catch(function (error) {
+               console.log(error);
+            });
+         }
+      };
+   }
 
 });
 
@@ -45593,13 +45618,13 @@ Vue.component('register', {
 /* 42 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <a class=\"\" href=\"#\"><u>login</u></a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"form-control p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <a class=\"\" href=\"#\"><u>login</u></a>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <!-- <header-vue></header-vue> -->\n  <login></login>\n  <!-- <register></register> -->\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <!-- <header-vue></header-vue> -->\n  <!-- <login></login> -->\n  <register></register>\n</div>";
 
 /***/ }),
 /* 44 */
