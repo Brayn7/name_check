@@ -53,6 +53,7 @@ let Login = Vue.component('login', {
              that.authUser.email = response.data.email;
 
              window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
+             that.$router.push({name: 'dashboard'});
            });
           // end get user data 
 

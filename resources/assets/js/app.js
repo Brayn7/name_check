@@ -18,7 +18,7 @@ let HeaderVue = require('./components/common/header.js');
 import Login from './components/login/login.js';
 
 import Register from './components/register/register.js';
-let Dashboard = require('./components/dashboard/dash.js');
+import Dashboard from './components/dashboard/dash.js';
 // initiate a main component
 let MainVue = Vue.component('main-vue', {
    template: require('./Main.html'),
@@ -37,7 +37,7 @@ const routes = [
   {
     path: '/signin',
     component: Login,
-    name: 'login'
+    name: 'signin'
   },
   {
     path: '/dashboard',

@@ -3306,6 +3306,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_register_register_js__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dash_js__ = __webpack_require__(49);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -3326,7 +3327,7 @@ var HeaderVue = __webpack_require__(37);
 
 
 
-var Dashboard = __webpack_require__(49);
+
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
   template: __webpack_require__(43)
@@ -3342,10 +3343,10 @@ var routes = [{
 }, {
   path: '/signin',
   component: __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__["a" /* default */],
-  name: 'login'
+  name: 'signin'
 }, {
   path: '/dashboard',
-  component: Dashboard,
+  component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dash_js__["a" /* default */],
   name: 'dashboard'
 }];
 
@@ -45569,6 +45570,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
             that.authUser.email = response.data.email;
 
             window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
+            that.$router.push({ name: 'dashboard' });
           });
           // end get user data 
         })
@@ -45612,6 +45614,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
             password_confirmation: "adminroot"
          },
          handleRegisterFormSubmit: function handleRegisterFormSubmit() {
+            var that = this;
             axios.post('api/signup', {
                name: this.register.name,
                organization_name: this.register.organization_name,
@@ -45620,6 +45623,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
                password_confirmation: this.register.password_confirmation
             }).then(function (response) {
                console.log(response);
+               that.$router.push({ name: 'signin' });
             }).catch(function (error) {
                console.log(error);
             });
@@ -45655,19 +45659,26 @@ module.exports = "<div id=\"main-content\" class=\"container-fluid px-0\">\n  <r
 /* 47 */,
 /* 48 */,
 /* 49 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-Vue.component('dash', {
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
    template: __webpack_require__(50)
 
 });
 
+/* harmony default export */ __webpack_exports__["a"] = (Dashboard);
+
 /***/ }),
 /* 50 */
 /***/ (function(module, exports) {
 
-module.exports = "";
+module.exports = "<div>\n  <p>hi from dash</p>\n</div>";
 
 /***/ })
 /******/ ]);

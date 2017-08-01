@@ -14,6 +14,7 @@ let Register = Vue.component('register', {
             password_confirmation: "adminroot",
          },
          handleRegisterFormSubmit: function () {
+            const that = this;
             axios.post('api/signup', {
                name: this.register.name,
                organization_name: this.register.organization_name,
@@ -23,6 +24,7 @@ let Register = Vue.component('register', {
             })
             .then(function (response) {
               console.log(response);
+              that.$router.push({name: 'signin'})
             })
             .catch(function (error) {
                 console.log(error);
