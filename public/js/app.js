@@ -3339,7 +3339,7 @@ var routes = [{
 }, {
   path: '/signup',
   component: __WEBPACK_IMPORTED_MODULE_3__components_register_register_js__["a" /* default */],
-  name: 'register'
+  name: 'signup'
 }, {
   path: '/signin',
   component: __WEBPACK_IMPORTED_MODULE_2__components_login_login_js__["a" /* default */],
@@ -3347,16 +3347,47 @@ var routes = [{
 }, {
   path: '/dashboard',
   component: __WEBPACK_IMPORTED_MODULE_4__components_dashboard_dash_js__["a" /* default */],
-  name: 'dashboard'
+  name: 'dashboard',
+  meta: { requiresAuth: true }
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
   routes: routes
 });
 
+router.beforeEach(function (to, from, next) {
+  if (to.meta.requiresAuth) {
+    if (isAuthorized()) {
+      next();
+    } else {
+      next({ name: 'signin' });
+    }
+  }
+  next();
+});
+
 new Vue({
   router: router
 }).$mount('#app');
+
+// methods
+
+function isAuthorized() {
+  if (window.localStorage.getItem('authUser') !== null) {
+    var authUser = JSON.parse(window.localStorage.getItem('authUser'));
+    var header = {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + authUser.access_token
+    };
+    axios.get('http://name_check.dev/api/user', {
+      headers: header
+    }).then(function (response) {
+      if (response.status === 200) {
+        return true;
+      }
+    });
+  }
+}
 
 /***/ }),
 /* 12 */
