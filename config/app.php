@@ -183,9 +183,16 @@ return [
         // exception handling
         Optimus\Heimdal\Provider\LaravelServiceProvider::class,
 
-        // laravel full text searching
+
+        // algolia scout settings
+
+        Algolia\Settings\ServiceProvider::class, 
+           
+        // laravel full text searching with algolia
 
         Laravel\Scout\ScoutServiceProvider::class,
+
+
 
     ],
 
