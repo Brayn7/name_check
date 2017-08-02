@@ -1,29 +1,33 @@
 <div>
-<div id="recipients" class="row">
-  <div class="col">
-    <div id='form' class="col-8 m-auto">
-      <form v-on:submit.prevent="handleRecipientAddFormSubmit()" class="form p-5" action="">
-        <div class="form-group col mx-auto">
-          <input v-model="recipient.first_name" class="form-control p-3" type="text" placeholder="first name">
-        </div>
-        <div class="form-group col mx-auto">
-          <input v-model="recipient.last_name" class="form-control p-3" type="text" placeholder="last name">
-        </div>
-        <div class="form-group col mx-auto">
-          <input v-model="recipient.aliases"  class="form-control p-3" type="text" placeholder="comma seperated aliases">
-        </div>
-        <div class="form-group col mx-auto text-right mt-4 mb-0">
-          <button class="btn btn-outline-primary mr-3" type="submit" >add</button>
-        </div>
-      </form>
+  <div id="recipients" class="row">
+    <div class="col">
+      <div id='form' class="col-8 m-auto">
+        <form v-on:submit.prevent="handleRecipientAddFormSubmit()" class="form p-5" action="">
+          <div class="form-group col mx-auto">
+            <input v-model="recipient.first_name" class="form-control p-3" type="text" placeholder="first name">
+          </div>
+          <div class="form-group col mx-auto">
+            <input v-model="recipient.last_name" class="form-control p-3" type="text" placeholder="last name">
+          </div>
+          <div class="form-group col mx-auto">
+            <input v-model="recipient.aliases"  class="form-control p-3" type="text" placeholder="comma seperated aliases">
+          </div>
+          <div class="form-group col mx-auto text-right mt-4 mb-0">
+            <button class="btn btn-outline-primary mr-3" type="submit" >add</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-<div id="recipientList" class="row">
-  <div  class="col" >
-    <div class="recipient" v-for="recipient in recipientData">
-      {{recipient.first_name}}
+  <div id="recipientList" class="row">
+    <div  class="col-8 mx-auto" >
+      <div class="recipient m-3" v-for="rec in recipientData">
+        <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']" class="w-100">
+          <i v-bind:class="[!rec.flagged ? 'fa-check' : 'fa-times']" class="fa fa-2x align-text-bottom mr-3" aria-hidden="true"></i>
+          <h3 class="d-inline-block" >{{rec.first_name}} {{rec.last_name}}</h3>
+          
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </div>
