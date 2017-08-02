@@ -21,12 +21,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/signup', 'SignUpController@signup');
 
 // endpoint that will return the sdn list of names
-Route::resource('entries', 'EntriesController');
+Route::resource('/entries', 'EntriesController');
 
 // endpoint that will contain recipient lists relavent to logged in user
-Route::resource('recipients', 'RecipientsController');
+Route::get('/recipients', 'RecipientsController@index')->middleware('auth:api');
+Route::post('/recipients', 'RecipientsController@store');
 
-Route::resource('reports', 'ReportsController');
+
+
+Route::resource('/reports', 'ReportsController');
 
 
 

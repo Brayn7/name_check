@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Recipient;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class RecipientsController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class RecipientsController extends Controller
      */
     public function index()
     {
-        //
+       $test = Recipient::all();
+        return response()->json($test);
     }
 
     /**
@@ -35,7 +40,25 @@ class RecipientsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $client = new Client(); //GuzzleHttp\Client
+        $result = $client->get('http://name_check.dev/api/user', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer '.$request->_token,
+            ]
+        ]);
+        if ($result->getStatusCode() === 200){
+            $recipient = new Recipient;
+            $recipient->user_id = $request->id;
+            $recipient->first_name = $request->first_name;
+            $recipient->last_name =$request->last_name;
+            $recipient->aliases = $request->aliases;
+            $recipient->save();
+            return "success";
+        } else {
+            return "unauthenticated";
+        }
     }
 
     /**
