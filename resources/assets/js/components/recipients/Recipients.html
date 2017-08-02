@@ -20,12 +20,12 @@
     </div>
   </div>
   <div id="recipientList" class="row">
-    <div  class="col-8 mx-auto" >
-      <div class="recipient m-3" v-for="rec in recipientData">
-        <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']" class="w-100">
-          <i v-bind:class="[!rec.flagged ? 'fa-check' : 'fa-times']" class="fa fa-2x align-text-bottom mr-3" aria-hidden="true"></i>
-          <h3 class="d-inline-block" >{{rec.first_name}} {{rec.last_name}}</h3>
-          
+    <div  class="col-10 mx-auto" >
+      <div class="recipient my-3" v-for="rec in recipientData">
+        <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']">
+          <i v-bind:class="[!rec.flagged ? 'fa-check' : 'fa-times']" class="fa fa-2x align-text-bottom col-1" aria-hidden="true"></i>
+          <h3 class="d-inline-block col-10" >{{rec.first_name}} {{rec.last_name}}</h3>
+
         </div>
       </div>
     </div>

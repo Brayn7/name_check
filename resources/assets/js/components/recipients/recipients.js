@@ -14,7 +14,7 @@ let Recipients = Vue.component('recipients', {
          'Authorization': 'Bearer ' + user.access_token,
       };
 
-      axios.get('http://name_check.dev/api/recipients', {
+      axios.get('http://name_check.dev/api/recipients/' + user.id, {
          headers: header,
       })
       .then(function (response) {

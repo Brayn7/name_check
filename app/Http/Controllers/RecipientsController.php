@@ -16,10 +16,10 @@ class RecipientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-       $test = Recipient::all();
+    public function index(Request $request ,$id){
+        $test = Recipient::where('user_id', '=', $id)->get();
         return response()->json($test);
+
     }
 
     /**

@@ -181,8 +181,11 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
 
         // exception handling
-
         Optimus\Heimdal\Provider\LaravelServiceProvider::class,
+
+        // laravel full text searching
+
+        Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 
