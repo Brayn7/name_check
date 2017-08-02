@@ -24,15 +24,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Recipient::class, function (Faker\Generator $faker) {
+   $aliasesData = json_encode(array(
+            $faker->firstName,
+            $faker->firstName,
+            $faker->firstName,
+            $faker->firstName,
+            $faker->firstName,
+         ));
     return [
         'user_id' => 1,
-        'first_name' => $faker->firstName($gender = null|'male'|'female'),
+        'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'aliases' => json_encode(array(
-            $faker->firstName($gender = null|'male'|'female'),
-            $faker->firstName($gender = null|'male'|'female'),
-            $faker->firstName($gender = null|'male'|'female'),
-            $faker->firstName($gender = null|'male'|'female'),
-            $faker->firstName($gender = null|'male'|'female')
-         )),
+        'aliases' => $aliasesData
+        ];
 });

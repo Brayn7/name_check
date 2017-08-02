@@ -5,6 +5,7 @@ let Recipients = Vue.component('recipients', {
    template: require('./Recipients.html'),
    
    created(){
+      console.log(this.recipient);
       const that = this,
             user = JSON.parse(window.localStorage.getItem('authUser'));
             console.log(user.id);
@@ -18,6 +19,10 @@ let Recipients = Vue.component('recipients', {
       })
       .then(function (response) {
         console.log(response);
+        response.data.forEach( function(person) {
+           that.recipientData.push(person);
+        });
+        
       })
       .catch(function (error) {
           console.log(error);
@@ -26,6 +31,7 @@ let Recipients = Vue.component('recipients', {
 
    data: function(){
       return {
+         recipientData: [],
          recipient: {
             first_name: "bob",
             last_name: "smith",

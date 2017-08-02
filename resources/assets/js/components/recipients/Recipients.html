@@ -1,3 +1,4 @@
+<div>
 <div id="recipients" class="row">
   <div class="col">
     <div id='form' class="col-8 m-auto">
@@ -16,6 +17,13 @@
         </div>
       </form>
     </div>
-    
   </div>
+</div>
+<div id="recipientList" class="row">
+  <div  class="col" >
+    <div class="recipient" v-for="recipient in recipientData">
+      {{recipient.first_name}}
+    </div>
+  </div>
+</div>
 </div>

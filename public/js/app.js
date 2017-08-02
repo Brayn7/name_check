@@ -45707,6 +45707,7 @@ var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipien
    template: __webpack_require__(46),
 
    created: function created() {
+      console.log(this.recipient);
       var that = this,
           user = JSON.parse(window.localStorage.getItem('authUser'));
       console.log(user.id);
@@ -45719,6 +45720,9 @@ var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipien
          headers: header
       }).then(function (response) {
          console.log(response);
+         response.data.forEach(function (person) {
+            that.recipientData.push(person);
+         });
       }).catch(function (error) {
          console.log(error);
       });
@@ -45727,6 +45731,7 @@ var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipien
 
    data: function data() {
       return {
+         recipientData: [],
          recipient: {
             first_name: "bob",
             last_name: "smith",
@@ -45766,7 +45771,7 @@ var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipien
 /* 46 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"recipients\" class=\"row\">\n  <div class=\"col\">\n    <div id='form' class=\"col-8 m-auto\">\n      <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\" class=\"form p-5\" action=\"\">\n        <div class=\"form-group col mx-auto\">\n          <input v-model=\"recipient.first_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"first name\">\n        </div>\n        <div class=\"form-group col mx-auto\">\n          <input v-model=\"recipient.last_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"last name\">\n        </div>\n        <div class=\"form-group col mx-auto\">\n          <input v-model=\"recipient.aliases\"  class=\"form-control p-3\" type=\"text\" placeholder=\"comma seperated aliases\">\n        </div>\n        <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n          <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n        </div>\n      </form>\n    </div>\n    \n  </div>\n</div>";
+module.exports = "<div>\n<div id=\"recipients\" class=\"row\">\n  <div class=\"col\">\n    <div id='form' class=\"col-8 m-auto\">\n      <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\" class=\"form p-5\" action=\"\">\n        <div class=\"form-group col mx-auto\">\n          <input v-model=\"recipient.first_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"first name\">\n        </div>\n        <div class=\"form-group col mx-auto\">\n          <input v-model=\"recipient.last_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"last name\">\n        </div>\n        <div class=\"form-group col mx-auto\">\n          <input v-model=\"recipient.aliases\"  class=\"form-control p-3\" type=\"text\" placeholder=\"comma seperated aliases\">\n        </div>\n        <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n          <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n<div id=\"recipientList\" class=\"row\">\n  <div  class=\"col\" >\n    <div class=\"recipient\" v-for=\"recipient in recipientData\">\n      {{recipient.first_name}}\n    </div>\n  </div>\n</div>\n</div>";
 
 /***/ }),
 /* 47 */
