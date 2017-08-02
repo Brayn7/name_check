@@ -33,21 +33,21 @@ use App\Recipient;
 use App\Entry;
 
 Route::get('/check', function(){
-   $recipientsLastName = Recipient::all();
-   
-   $Matches = array();
-   
-   foreach($recipientsLastName as $recipient){
-       $lastNameMatches = Entry::where('last_name', '=', $recipient->last_name)->get();
-
-       if (count($lastNameMatches) > 0){
-            $firstNameMatches = $lastNameMatches->where('first_name', '=', $recipient->first_name);
-            if(count($firstNameMatches) > 0){
-               return $recipient;
-            }
-       }
+   $recipients = Recipient::all();
+   $matches = array();
+   foreach($recipients as $recipient){
+      $name = $recipient->first_name . " " . $recipient->last_name;
+      $check = App\Entry::search($name)->get();
+      if (count($check) > 0){
+         array_push($matches, $recipient);
+      }
    }
-   return "no matches";
+   foreach($matches as $match){
+      $recipient = new Recipient;
+      $recipient = $recipient::find($match->id);
+      $recipient->flagged = TRUE;
+      $recipient->save();
+   }
 });
 
 Route::resource('/reports', 'ReportsController');
