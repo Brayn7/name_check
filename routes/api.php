@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -47,7 +48,27 @@ Route::get('/check', function(){
       $recipient = $recipient::find($match->id);
       $recipient->flagged = TRUE;
       $recipient->save();
-   }
+   }  
+});
+
+use Illuminate\Support\Collection;
+use App\Mail\Warning;
+use App\User;
+Route::get('/email', function() {
+    $flaggedRecipients = Recipient::where('flagged', '=', TRUE)->get();
+    $collection = new Collection($flaggedRecipients);
+    $collection = $collection->groupBy('user_id')->toArray();
+    // $userIds = array_keys($collection)->sort('');
+    $emails = array();
+    
+    foreach($collection as $userid => $values){
+      $user = User::find($userid);
+
+      \Mail::to($user->email)->send(new Warning(json_encode($values)));
+    }
+
+
+    // \Mail::to('bryarobert@gmail.com')->send(new Warning(object));
 });
 
 Route::resource('/reports', 'ReportsController');

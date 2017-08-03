@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-// use \App\Entry;
-// use \App\Recipient;
+use App\Mail\Warning;
 use Illuminate\Console\Command;
 
 class EntriesRecipientsCompare extends Command
@@ -38,21 +37,34 @@ class EntriesRecipientsCompare extends Command
      * @return mixed
      */
     public function handle()
-    {
+    {   
+        // get all recipients
         $recipients = \App\Recipient::all();
+        // make a place to store matches
         $matches = array();
+        // loop thru each person take first and last name
+        // mash them together and send it off to algolia
         foreach($recipients as $recipient){
             $name = $recipient->first_name . " " . $recipient->last_name;
+            // get algolia matches
             $check = \App\Entry::search($name)->get();
+            // if there are any matches in the check
+            // then push $recipient to $matches
             if (count($check) > 0){
                 array_push($matches, $recipient);
             }
         }
+
+        // loop thru matches and mark as flagged
         foreach($matches as $match){
               $recipient = new \App\Recipient;
               $recipient = $recipient::find($match->id);
               $recipient->flagged = TRUE;
               $recipient->save();
             }
+
+        
+
+
         }
 }
