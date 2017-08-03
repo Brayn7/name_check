@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\EntriesRecipientsCompare::class
+        Commands\EntriesRecipientsCompare::class,
+        Commands\SendWarningEmail::class
     ];
 
     /**

@@ -7,6 +7,15 @@
 <body>
    <h1>Warning</h1>
    <p>We have found a match in your recipient list!</p>
-   {{ $values }}
+
+   <h2>Potential Matches</h2>
+   <?php 
+      $people = json_decode($values);
+      foreach ($people as $person) { ?>
+        
+      <p>{{$person->first_name}} {{$person->last_name}}</p>
+
+      <?php } ?>
+ 
 </body>
 </html>
