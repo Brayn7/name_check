@@ -1,7 +1,9 @@
-
 <div id='login' class="row">
+<router-link to="/">
+  <img class="small-spy-glass" src="../../../img/spyglass.svg" alt="">
+</router-link>
   <div id='form' class="col-8 m-auto">
-    <form v-on:submit.prevent="handleLoginFormSubmit()" class="form-control p-5" action="">
+    <form v-on:submit.prevent="handleLoginFormSubmit()" class="p-5" action="">
       <div class="form-group col mx-auto">
         <input v-model="login.username" class="form-control p-3" type="email" placeholder="email">
       </div>

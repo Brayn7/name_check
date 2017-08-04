@@ -1,4 +1,7 @@
 <div id='register' class="row">
+<router-link to="/">
+  <img class="small-spy-glass" src="../../../img/spyglass.svg" alt="">
+</router-link>
   <div id='form' class="col-8 m-auto">
     <form v-on:submit.prevent="handleRegisterFormSubmit()" class="form-control p-5" action="">
       <div class="form-group col mx-auto">
@@ -18,7 +21,7 @@
       </div>
       <div class="form-group col mx-auto text-right mt-4 mb-0">
         <button class="btn btn-outline-primary mr-3" type="submit" >register</button>
-        <router-link to='/'>login</router-link>
+        <router-link to='/signin'>login</router-link>
       </div>
       
     </form>

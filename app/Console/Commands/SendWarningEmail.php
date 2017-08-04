@@ -40,15 +40,18 @@ class SendWarningEmail extends Command
 
     public function handle()
     {
+        // get Recipients that have been flagged
         $flaggedRecipients = \App\Recipient::where('flagged', '=', TRUE)->get();
+        // turn into a collection
         $collection = new \Illuminate\Support\Collection($flaggedRecipients);
+        // group by user id
         $collection = $collection->groupBy('user_id')->toArray();
-        // $userIds = array_keys($collection)->sort('');
-        $emails = array();
-    
+        // loop thru collection
         foreach($collection as $userid => $values){
+            // grab user based on id
             $user = \App\User::find($userid);
-
+            // mail to the users email and send it off to the Mail Warning php
+            // pass the email the flagged persons
             \Mail::to($user->email)->send(new Warning(json_encode($values)));
         }
     }

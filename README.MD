@@ -37,6 +37,10 @@ to check and store a list of individuals or organizations that receive internati
 - donate hosting
 - one table with all the people data 
 
+# Services I am Using
+- Algoilia
+- Mail Trap
+
 
 # Getting Contents
    - info on sdn searching https://www.treasury.gov/resource-center/sanctions/SDN-List/Pages/fuzzy_logic.aspx

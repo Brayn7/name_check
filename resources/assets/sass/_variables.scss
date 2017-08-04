@@ -41,6 +41,8 @@
 // Close
 // Code
 
+
+
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
   $prev-num: null;
@@ -245,7 +247,7 @@ $grid-gutter-widths: (
 // Font, line-height, and color for body text, headings, and more.
 
 $font-family-sans-serif: $mainFont, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:      $secondaryFont, Georgia, "Times New Roman", Times, serif !default;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
 
@@ -318,9 +320,9 @@ $list-inline-padding: 5px !default;
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
 
-$border-radius:          .25rem !default;
-$border-radius-lg:       .3rem !default;
-$border-radius-sm:       .2rem !default;
+$border-radius:          0;//.25rem !default;
+$border-radius-lg:       0;//.3rem !default;
+$border-radius-sm:       0;//.2rem !default;
 
 $component-active-color: $white !default;
 $component-active-bg:    $brand-primary !default;

@@ -15,6 +15,7 @@ require('./bootstrap');
 
 // load components
 import HeaderVue from './components/common/header.js';
+import Home from './components/home/home.js'
 import Login from './components/login/login.js';
 import Register from './components/register/register.js';
 import Dashboard from './components/dashboard/dash.js';
@@ -28,7 +29,8 @@ let MainVue = Vue.component('main-vue', {
 const routes = [
   {
     path: '/',
-    redirect: '/signin'
+    component: Home,
+    name: 'home'
   },
   {
     path: '/signup',
@@ -61,6 +63,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  console.log(from);
   const authUser = JSON.parse(window.localStorage.getItem('authUser'));
   if (to.meta.requiresAuth){
     if (authUser && authUser.access_token){
