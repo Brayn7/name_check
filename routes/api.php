@@ -29,7 +29,6 @@ Route::get('/recipients/{id}', 'RecipientsController@index')->middleware('auth:a
 
 Route::post('/recipients', 'RecipientsController@store');
 
-Route::resource('/reports', 'ReportsController');
 
 
 

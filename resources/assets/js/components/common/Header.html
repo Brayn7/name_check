@@ -1,16 +1,10 @@
 <div id="header">
-  <nav class="navbar navbar-light navbar-toggleable-md">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Name Check</a>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+  <nav class="navbar">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Recipients</a>
-        <a class="nav-item nav-link" href="#">Reports</a>
-        <a class="nav-item nav-link" href="#">Logout</a>
+        <router-link class="small-spy-glass" to="/">
+          <img class="img-fluid" src="../../../img/spyglass.svg" alt="">
+        </router-link>
+        <button v-if="['dashboard'].indexOf($route.name) > -1" id="logout" class="btn btn-outline-primary border-0" v-on:click="handleLogout()">logout</button>
       </div>
-    </div>
   </nav>
 </div>
