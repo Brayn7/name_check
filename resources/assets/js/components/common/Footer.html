@@ -1,4 +1,4 @@
-<div id="footer" class="row">
+<div class="footer row" v-bind:class="$route.path == '/' ? 'home-footer' : 'other-footer'">
       <div class="col">
         <router-link to="about" class="text-primary">about</router-link>
         <router-link to="contact" class="text-primary">contact</router-link>

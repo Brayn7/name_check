@@ -184,7 +184,7 @@ $sizes: (
 // Settings for the `<body>` element.
 
 $body-bg:       $white !default;
-$body-color:    $gray-dark !default;
+$body-color:    $gray;//$gray-dark !default;
 $inverse-bg:    $gray-dark !default;
 $inverse-color: $gray-lighter !default;
 
@@ -213,7 +213,6 @@ $grid-breakpoints: (
 ) !default;
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
-
 
 // Grid containers
 //
@@ -271,7 +270,7 @@ $font-size-h6: 1rem !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
-$headings-font-weight:   500 !default;
+$headings-font-weight:   300;//500 !default;
 $headings-line-height:   1.1 !default;
 $headings-color:         inherit !default;
 

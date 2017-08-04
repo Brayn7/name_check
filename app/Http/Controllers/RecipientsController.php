@@ -54,7 +54,6 @@ class RecipientsController extends Controller
             $recipient->user_id = $request->id;
             $recipient->first_name = $request->first_name;
             $recipient->last_name =$request->last_name;
-            $recipient->aliases = $request->aliases;
             $recipient->save();
             return "success";
         } else {

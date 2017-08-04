@@ -3,6 +3,7 @@
 // import vue
 window.Vue = require('vue');
 
+
 // axios for ajax calls
 
 import Axios from 'axios';
