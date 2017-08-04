@@ -1,6 +1,6 @@
 
 <div id="main-content" class="container-fluid">
-  <header-vue v-if="['dashboard', 'signup', 'signin'].indexOf($route.name) > -1"></header-vue>
+  <header-vue v-if="['dashboard', 'signup', 'signin', 'about', 'contact'].indexOf($route.name) > -1"></header-vue>
   <transition name="fade" >
     <router-view></router-view>
   </transition>

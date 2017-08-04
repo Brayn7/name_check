@@ -21,6 +21,8 @@ import Login from './components/login/login.js';
 import Register from './components/register/register.js';
 import Dashboard from './components/dashboard/dash.js';
 import Recipients from './components/recipients/recipients.js';
+import About from './components/about/about.js'
+import Contact from './components/contact/contact.js'
 
 // initiate a main component
 let MainVue = Vue.component('main-vue', {
@@ -56,7 +58,18 @@ const routes = [
     meta: { 
       requiresAuth: true, 
       requiresRecipientList: true }
+  },
+    {
+    path: '/about',
+    component: About,
+    name: 'about',
+  },
+    {
+    path: '/contact',
+    component: Contact,
+    name: 'contact',
   }
+
 ];
 
 const router = new VueRouter({

@@ -13412,6 +13412,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_recipients_recipients_js__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(61);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -13428,6 +13430,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 __webpack_require__(33);
 
 // load components
+
+
 
 
 
@@ -13465,6 +13469,14 @@ var routes = [{
   meta: {
     requiresAuth: true,
     requiresRecipientList: true }
+}, {
+  path: '/about',
+  component: __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__["a" /* default */],
+  name: 'about'
+}, {
+  path: '/contact',
+  component: __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__["a" /* default */],
+  name: 'contact'
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
@@ -45540,6 +45552,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 
    data: function data() {
       return {
+         authUser: window.localStorage.getItem('authUser') ? true : false,
          handleLogout: function handleLogout() {
             // removes authUser (token and user info) from local storage
             window.localStorage.removeItem('authUser');
@@ -45556,7 +45569,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=\"header\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <button v-if=\"['dashboard'].indexOf($route.name) > -1\" id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n      </div>\n  </nav>\n</div>";
+module.exports = "<div id=\"header\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <button v-if=\"authUser\" id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
@@ -45578,7 +45591,7 @@ var Footer = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('footer-vue',
 /* 41 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"footer\" class=\"row\">\n      <div class=\"col\">\n        <a class=\"text-primary\">about</a>\n        <a class=\"text-primary\">contact</a>\n      </div>\n</div>";
+module.exports = "<div id=\"footer\" class=\"row\">\n      <div class=\"col\">\n        <router-link to=\"about\" class=\"text-primary\">about</router-link>\n        <router-link to=\"contact\" class=\"text-primary\">contact</router-link>\n      </div>\n</div>";
 
 /***/ }),
 /* 42 */
@@ -45843,13 +45856,64 @@ module.exports = "<div>\n  <div id=\"recipients\" class=\"row\">\n    <div class
 /* 52 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id=\"main-content\" class=\"container-fluid\">\n  <header-vue v-if=\"['dashboard', 'signup', 'signin'].indexOf($route.name) > -1\"></header-vue>\n  <transition name=\"fade\" >\n    <router-view></router-view>\n  </transition>\n  <footer-vue></footer-vue>\n</div>\n";
+module.exports = "\n<div id=\"main-content\" class=\"container-fluid\">\n  <header-vue v-if=\"['dashboard', 'signup', 'signin', 'about', 'contact'].indexOf($route.name) > -1\"></header-vue>\n  <transition name=\"fade\" >\n    <router-view></router-view>\n  </transition>\n  <footer-vue></footer-vue>\n</div>\n";
 
 /***/ }),
 /* 53 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var About = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('about', {
+
+   template: __webpack_require__(60)
+
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (About);
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var Contact = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('contact', {
+
+   template: __webpack_require__(62)
+
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Contact);
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
 
 /***/ })
 /******/ ]);

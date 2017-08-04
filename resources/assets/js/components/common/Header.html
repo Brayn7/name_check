@@ -4,7 +4,7 @@
         <router-link class="small-spy-glass" to="/">
           <img class="img-fluid" src="../../../img/spyglass.svg" alt="">
         </router-link>
-        <button v-if="['dashboard'].indexOf($route.name) > -1" id="logout" class="btn btn-outline-primary border-0" v-on:click="handleLogout()">logout</button>
+        <button v-if="authUser" id="logout" class="btn btn-outline-primary border-0" v-on:click="handleLogout()">logout</button>
       </div>
   </nav>
 </div>
