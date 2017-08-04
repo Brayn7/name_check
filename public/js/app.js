@@ -45536,8 +45536,18 @@ var Popover = function ($) {
 
 var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue', {
 
-   template: __webpack_require__(39)
+   template: __webpack_require__(39),
 
+   data: function data() {
+      return {
+         handleLogout: function handleLogout() {
+            // removes authUser (token and user info) from local storage
+            window.localStorage.removeItem('authUser');
+            // redirect to home page
+            this.$router.push({ name: '/' });
+         }
+      };
+   }
 });
 
 /* unused harmony default export */ var _unused_webpack_default_export = (Header);

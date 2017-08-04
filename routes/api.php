@@ -19,7 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // end point for registering new users
-Route::post('/signup', 'SignUpController@signup');
+Route::post('/signup', 'AuthController@signup');
+
+Route::post('/logout', 'AuthController@logout');
 
 // endpoint that will return the sdn list of names
 Route::resource('/entries', 'EntriesController');
@@ -27,7 +29,9 @@ Route::resource('/entries', 'EntriesController');
 // endpoint that will contain recipient lists relavent to logged in user
 Route::get('/recipients/{id}', 'RecipientsController@index')->middleware('auth:api');
 
+// enpoint for storing recipients names
 Route::post('/recipients', 'RecipientsController@store');
+
 
 
 

@@ -6,7 +6,7 @@ use App\User;
 use Validator;
 use Illuminate\Http\Request;
 
-class SignUpController extends Controller
+class AuthController extends Controller
 {
    public function signup (Request $request){
       // validate request 
@@ -35,6 +35,10 @@ class SignUpController extends Controller
 
       $user->save();
       return "success";
+   }
+
+   public function logout (Request $request){
+    return "logging out";
    }
 
 }

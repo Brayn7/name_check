@@ -48,6 +48,7 @@ class RecipientsController extends Controller
                 'Authorization' => 'Bearer '.$request->_token,
             ]
         ]);
+        
         if ($result->getStatusCode() === 200){
             $recipient = new Recipient;
             $recipient->user_id = $request->id;
