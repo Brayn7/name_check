@@ -45644,8 +45644,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
-          client_id: '1',
-          client_secret: 'xauH0lamDhBinwhe0tKbRZRqPa2aT6m48Ctv7Hut',
+          client_id: '3',
+          client_secret: 'T3RT4TJpX7OV87O687hEZJUtkLPlI3zaarCcrCDO',
           username: "",
           password: '',
           scope: ''
