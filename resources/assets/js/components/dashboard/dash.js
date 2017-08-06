@@ -54,7 +54,7 @@ let Dashboard = Vue.component('dash', {
                'Authorization': 'Bearer ' + user.access_token,
             };
 
-            axios.get('http://name_check.dev/api/recipients/' + user.id, {
+            axios.get('api/recipients/' + user.id, {
                headers: header,
             })
             .then(function (response) {

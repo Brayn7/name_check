@@ -45642,7 +45642,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         var that = this;
         // get access token from backend
         // stretch is to hide the client id and secret in backend and just send off username and pass
-        axios.post('http://name_check.dev/oauth/token', {
+        axios.post('oauth/token', {
           grant_type: 'password',
           client_id: '1',
           client_secret: '31d9MZBigaoDhOUDwecpCoDxU5L36fihKhhArsgG',
@@ -45666,7 +45666,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
           window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
 
           // get user data
-          axios.get('http://name_check.dev/api/user', {
+          axios.get('api/user', {
             headers: header
           }).then(function (response) {
             console.log(response);
@@ -45811,7 +45811,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                'Authorization': 'Bearer ' + user.access_token
             };
 
-            axios.get('http://name_check.dev/api/recipients/' + user.id, {
+            axios.get('api/recipients/' + user.id, {
                headers: header
             }).then(function (response) {
                console.log(response);
@@ -45857,7 +45857,7 @@ var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipien
          'Authorization': 'Bearer ' + user.access_token
       };
 
-      axios.get('http://name_check.dev/api/recipients/' + user.id, {
+      axios.get('api/recipients/' + user.id, {
          headers: header
       }).then(function (response) {
          console.log(response);
@@ -45889,7 +45889,7 @@ var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipien
 
             var aliases = JSON.stringify(this.recipient.aliases.split(","));
 
-            axios.post('http://name_check.dev/api/recipients', {
+            axios.post('api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,

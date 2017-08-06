@@ -14,7 +14,7 @@ let Recipients = Vue.component('recipients', {
          'Authorization': 'Bearer ' + user.access_token,
       };
 
-      axios.get('http://name_check.dev/api/recipients/' + user.id, {
+      axios.get('api/recipients/' + user.id, {
          headers: header,
       })
       .then(function (response) {
@@ -48,7 +48,7 @@ let Recipients = Vue.component('recipients', {
 
             let aliases = JSON.stringify(this.recipient.aliases.split(",")); 
 
-            axios.post('http://name_check.dev/api/recipients', {
+            axios.post('api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
