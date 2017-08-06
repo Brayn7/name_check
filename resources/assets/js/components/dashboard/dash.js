@@ -11,15 +11,12 @@ let Dashboard = Vue.component('dash', {
    data: function(){
       return {
          user: JSON.parse(window.localStorage.getItem('authUser')),
-         openAddForm: function () {
-            console.log('test');
-         },
 
          recipientData: [],
 
          recipient: {
-            first_name: "bob",
-            last_name: "smith",
+            first_name: "",
+            last_name: "",
          },
 
          handleRecipientAddFormSubmit: function(){

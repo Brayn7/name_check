@@ -20,9 +20,9 @@ let Login = Vue.component('login', {
          axios.post('oauth/token', {
            grant_type: 'password',
            client_id: '1',
-           client_secret:'31d9MZBigaoDhOUDwecpCoDxU5L36fihKhhArsgG',
-           username: "bryarobert@gmail.com",
-           password: 'adminroot',
+           client_secret:'xauH0lamDhBinwhe0tKbRZRqPa2aT6m48Ctv7Hut',
+           username: "",
+           password: '',
            scope: ''
          })
          // on success get the user that logged in
