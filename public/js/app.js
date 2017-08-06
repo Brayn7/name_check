@@ -45646,8 +45646,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
           grant_type: 'password',
           client_id: '7',
           client_secret: 'lb2d2BjkMH4Q72HiQlCdiFTpHSVUvHMXeJqSW2JO',
-          username: "",
-          password: '',
+          username: this.login.username,
+          password: this.login.password,
           scope: ''
         })
         // on success get the user that logged in
