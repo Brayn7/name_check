@@ -42,7 +42,7 @@ class RecipientsController extends Controller
     {
 
         $client = new Client(); //GuzzleHttp\Client
-        $result = $client->get('/api/user', [
+        $result = $client->get(env('APP_URL') . '/api/user', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$request->_token,
