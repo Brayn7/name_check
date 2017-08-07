@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,100i,300i,400);/*!
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400|Roboto:300,300i,400);/*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
@@ -10209,6 +10209,12 @@ textarea,
 form a {
   font-family: "Roboto", sans-serif;
   font-weight: 300 !important;
+}
+
+p {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 300;
+  font-size: 1.5em;
 }
 
 #login,
