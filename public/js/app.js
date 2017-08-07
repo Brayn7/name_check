@@ -45573,7 +45573,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=\"header\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <button v-if=\"loggedin\" id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n      </div>\n  </nav>\n</div>";
+module.exports = "<div v-if=\"loggedin || $route.path === '/signup' || $route.path === '/signin'\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" >\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
