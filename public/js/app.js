@@ -45725,11 +45725,11 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
         style: ""
       },
       register: {
-        name: "Robbie",
-        organization_name: "Cornerstone",
-        email: "bryarobert@gmail.com",
-        password: "adminroot",
-        password_confirmation: "adminroot"
+        name: "",
+        organization_name: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
       },
       handleRegisterFormSubmit: function handleRegisterFormSubmit() {
         var that = this;
