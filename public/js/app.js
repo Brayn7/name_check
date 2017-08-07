@@ -45811,7 +45811,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
             axios.get('api/recipients/' + user.id, {
                headers: header
             }).then(function (response) {
-               console.log(response);
+               that.recipientData = [];
                response.data.forEach(function (person) {
                   that.recipientData.push(person);
                });

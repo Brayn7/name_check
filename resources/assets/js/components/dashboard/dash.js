@@ -55,7 +55,7 @@ let Dashboard = Vue.component('dash', {
                headers: header,
             })
             .then(function (response) {
-              console.log(response);
+              that.recipientData = [];
               response.data.forEach( function(person) {
                  that.recipientData.push(person);
               });

@@ -17,6 +17,8 @@ class RecipientsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request ,$id){
+        \Artisan::call('compare:lists');
+        \Artisan::call('email:warning');
         $test = Recipient::where('user_id', '=', $id)->get();
         return response()->json($test);
 
