@@ -45807,8 +45807,8 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "bob",
-            last_name: "smith"
+            first_name: "",
+            last_name: ""
          },
 
          handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {

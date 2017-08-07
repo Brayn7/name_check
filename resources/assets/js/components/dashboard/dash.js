@@ -24,8 +24,8 @@ let Dashboard = Vue.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "bob",
-            last_name: "smith",
+            first_name: "",
+            last_name: "",
          },
 
          handleRecipientAddFormSubmit: function(){
