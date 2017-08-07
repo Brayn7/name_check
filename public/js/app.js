@@ -45942,7 +45942,7 @@ var About = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('about', {
 /* 53 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-8 mx-auto\">\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">Purpose:</h1>\n        <p>NameSpy Provides a quick way for non-profit organizations\nto check and store a list of individuals or organizations that receive international monetary transactions.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">How:</h1>\n        <p>We provide a place to store recipient names in your user profile. Once the recipient is in the database we keep an eye on the SDN (Specially Designated Nationals) list and send you an email if there is someone you should be aware of. <router-link to=\"/signup\">Signup</router-link> here.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">What is the SDN list:</h1>\n        <p>The SDN is a list of individuals and companies that are called \"Specially Designated Nationals\" or \"SDNs.\" The U.S has marked these individuals and companies as blocked/ prohibited for a U.S person to deal with. For more info click <a href=\"https://www.treasury.gov/resource-center/sanctions/SDN-List/Pages/sdn_data.aspx\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 54 */
