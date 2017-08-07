@@ -10222,13 +10222,14 @@ p {
 #splash {
   position: absolute;
   top: 0;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   z-index: -1000;
 }
 
 #splash {
   position: fixed;
+  height: 100vh;
 }
 
 #logged-in {
