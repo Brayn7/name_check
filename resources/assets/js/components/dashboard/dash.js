@@ -10,13 +10,22 @@ let Dashboard = Vue.component('dash', {
 
    data: function(){
       return {
+        response: {
+          status: "",
+          msg: "",
+          style: "",
+        },
+
          user: JSON.parse(window.localStorage.getItem('authUser')),
+         openAddForm: function () {
+            console.log('test');
+         },
 
          recipientData: [],
 
          recipient: {
-            first_name: "",
-            last_name: "",
+            first_name: "bob",
+            last_name: "smith",
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -27,7 +36,7 @@ let Dashboard = Vue.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token,
             };
-            axios.post('api/recipients', {
+            axios.post('http://name_check.dev/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
@@ -35,12 +44,24 @@ let Dashboard = Vue.component('dash', {
                last_name: this.recipient.last_name,
             })
             .then(function (response) {
-              console.log(response);
+              that.response.status = response.status;
+              that.response.msg = response.data.msg;
+              that.response.style = response.data.style;
               that.getRecipients();
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
+
             })
             .catch(function (error) {
-                console.log(error);
+              that.response.status = 403;
+              that.response.msg = 'Oops something went wrong. Try again please.';
+              that.response.style = 'alert-warning';
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
             });
+
          }, // end handleformsubmit
 
          getRecipients: function () {
@@ -55,6 +76,7 @@ let Dashboard = Vue.component('dash', {
                headers: header,
             })
             .then(function (response) {
+              console.log(response);
               that.recipientData = [];
               response.data.forEach( function(person) {
                  that.recipientData.push(person);

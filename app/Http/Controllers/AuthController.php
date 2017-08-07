@@ -34,7 +34,11 @@ class AuthController extends Controller
       $user->password = bcrypt($request->password);
 
       $user->save();
-      return "success";
+      return response()->json(array(
+          'status' => 200,
+          'msg' => "Successful Registration!",
+          'style' => 'alert-success',
+        ));
    }
 
    public function logout (Request $request){

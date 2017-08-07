@@ -45714,34 +45714,54 @@ module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-8
 
 var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register', {
 
-   template: __webpack_require__(47),
+  template: __webpack_require__(47),
 
-   data: function data() {
-      return {
-         register: {
-            name: "",
-            organization_name: "",
-            email: "",
-            password: "",
-            password_confirmation: ""
-         },
-         handleRegisterFormSubmit: function handleRegisterFormSubmit() {
-            var that = this;
-            axios.post('api/signup', {
-               name: this.register.name,
-               organization_name: this.register.organization_name,
-               email: this.register.email,
-               password: this.register.password,
-               password_confirmation: this.register.password_confirmation
-            }).then(function (response) {
-               console.log(response);
-               that.$router.push({ name: 'signin' });
-            }).catch(function (error) {
-               console.log(error);
-            });
-         }
-      };
-   }
+  data: function data() {
+    return {
+
+      response: {
+        status: "",
+        msg: "",
+        style: ""
+      },
+      register: {
+        name: "Robbie",
+        organization_name: "Cornerstone",
+        email: "bryarobert@gmail.com",
+        password: "adminroot",
+        password_confirmation: "adminroot"
+      },
+      handleRegisterFormSubmit: function handleRegisterFormSubmit() {
+        var that = this;
+        axios.post('api/signup', {
+          name: this.register.name,
+          organization_name: this.register.organization_name,
+          email: this.register.email,
+          password: this.register.password,
+          password_confirmation: this.register.password_confirmation
+        }).then(function (response) {
+          console.log(response.data.errors.length > 0);
+          if (response.data.errors.length > 0) {
+            that.response.status = response.status;
+            that.response.msg = response.data.errors[0];
+            that.response.style = 'alert-warning';
+            setTimeout(function () {
+              that.response.style = "";
+            }, 2000);
+          } else {
+            that.$router.push({ name: 'signin' });
+          }
+        }).catch(function (error) {
+          that.response.status = response.status;
+          that.response.msg = response.data.msg;
+          that.response.style = response.data.style;
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        });
+      }
+    };
+  }
 
 });
 
@@ -45751,7 +45771,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n  <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n</div>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 48 */
@@ -45773,13 +45793,22 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
    data: function data() {
       return {
+         response: {
+            status: "",
+            msg: "",
+            style: ""
+         },
+
          user: JSON.parse(window.localStorage.getItem('authUser')),
+         openAddForm: function openAddForm() {
+            console.log('test');
+         },
 
          recipientData: [],
 
          recipient: {
-            first_name: "",
-            last_name: ""
+            first_name: "bob",
+            last_name: "smith"
          },
 
          handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
@@ -45790,17 +45819,27 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token
             };
-            axios.post('api/recipients', {
+            axios.post('http://name_check.dev/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
                first_name: this.recipient.first_name,
                last_name: this.recipient.last_name
             }).then(function (response) {
-               console.log(response);
+               that.response.status = response.status;
+               that.response.msg = response.data.msg;
+               that.response.style = response.data.style;
                that.getRecipients();
+               setTimeout(function () {
+                  that.response.style = "";
+               }, 2000);
             }).catch(function (error) {
-               console.log(error);
+               that.response.status = 403;
+               that.response.msg = 'Oops something went wrong. Try again please.';
+               that.response.style = 'alert-warning';
+               setTimeout(function () {
+                  that.response.style = "";
+               }, 2000);
             });
          }, // end handleformsubmit
 
@@ -45815,6 +45854,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
             axios.get('api/recipients/' + user.id, {
                headers: header
             }).then(function (response) {
+               console.log(response);
                that.recipientData = [];
                response.data.forEach(function (person) {
                   that.recipientData.push(person);
@@ -45833,7 +45873,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col\" >\n      <div class=\"recipient my-3 col-4 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col\" >\n      <div class=\"recipient my-3 col-4 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 50 */

@@ -1,4 +1,7 @@
 <div>
+  <div class="msg alert" v-bind:class="[response.style !== '' ? response.style : 'd-none']">
+    <p>{{response.msg}}</p>
+  </div>
   <div id="user-card" class="row">
     <div class="col">
       <h1 class="display-4">{{user.name}}</h1>
