@@ -32,10 +32,24 @@ form a {
    z-index: -1000;
 }
 
-#header {
+#logged-in {
+    position: fixed;
+    right: 0px;
+    font-weight: 300;
+    appearance: none;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+#logged-in a:after {
+  content: '|';
+  padding-left: 25px;
+}
+
+.home-header, .other-header {
    width: 100%;
    height: 50px;
-   background: rgba(255, 255, 255, 0.8);
+   background: none;
    position: fixed;
    z-index: 9999;
    .small-spy-glass {
@@ -48,19 +62,15 @@ form a {
    .small-spy-glass:hover {
       opacity: .5;
    }
-   #logout {
-      position: fixed;
-      top: 17px;
-      right: 15px;
-      appearance: none;
-      z-index: 9999;
-      cursor: pointer;
-   }
+
+}
+
+.other-header {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 #header-fill {
    padding: 50px;
-   z-index: -9999;
 }
 
 
@@ -129,7 +139,6 @@ form a {
 
 #footer-fill {
    padding: 40px 0px;
-   z-index: -9999;
 }
 
 
