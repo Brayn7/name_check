@@ -10221,29 +10221,10 @@ form a {
   z-index: -1000;
 }
 
-#header {
-  width: 100%;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.8);
+#logged-in {
   position: fixed;
-  z-index: 9999;
-}
-
-#header .small-spy-glass {
-  width: 25px;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-}
-
-#header .small-spy-glass:hover {
-  opacity: .5;
-}
-
-#header #logout {
-  position: fixed;
-  top: 17px;
-  right: 15px;
+  right: 0px;
+  font-weight: 300;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -10251,9 +10232,39 @@ form a {
   cursor: pointer;
 }
 
+#logged-in a:after {
+  content: '|';
+  padding-left: 25px;
+}
+
+.home-header,
+.other-header {
+  width: 100%;
+  height: 50px;
+  background: none;
+  position: fixed;
+  z-index: 9999;
+}
+
+.home-header .small-spy-glass,
+.other-header .small-spy-glass {
+  width: 25px;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.home-header .small-spy-glass:hover,
+.other-header .small-spy-glass:hover {
+  opacity: .5;
+}
+
+.other-header {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 #header-fill {
   padding: 50px;
-  z-index: -9999;
 }
 
 #home-splash-img {
@@ -10323,7 +10334,6 @@ form a {
 
 #footer-fill {
   padding: 40px 0px;
-  z-index: -9999;
 }
 
 .fade-enter-active,
