@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('compare:lists')->dailyAt('1:00');;
+        $schedule->command('compare:lists')->everyMinute();;
     }
 
     /**
