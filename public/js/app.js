@@ -45819,7 +45819,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token
             };
-            axios.post('http://name_check.dev/api/recipients', {
+            axios.post('https://name_check.dev/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
