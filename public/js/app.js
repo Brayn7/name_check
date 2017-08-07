@@ -45550,6 +45550,10 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 
    template: __webpack_require__(39),
 
+   updated: function updated() {
+      this.loggedin = window.localStorage.getItem('authUser') ? true : false;
+   },
+
    data: function data() {
       return {
          loggedin: window.localStorage.getItem('authUser') ? true : false,
@@ -45614,7 +45618,7 @@ var Home = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('home', {
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-6 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit orginizations to make automatic sdn checks</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-6 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit orginizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
 
 /***/ }),
 /* 44 */
