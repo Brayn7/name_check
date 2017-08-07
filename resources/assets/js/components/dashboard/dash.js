@@ -36,7 +36,7 @@ let Dashboard = Vue.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token,
             };
-            axios.post('https://name_check.dev/api/recipients', {
+            axios.post('/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
