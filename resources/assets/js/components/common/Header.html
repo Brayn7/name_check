@@ -1,11 +1,12 @@
-<div v-bind:class="$route.path == '/' ? 'home-header' : 'other-header'">
+<div v-if="loggedin || $route.path === '/signup' || $route.path === '/signin'" v-bind:class="$route.path == '/' ? 'home-header' : 'other-header'">
   <nav class="navbar">
       <div class="navbar-nav">
         <router-link class="small-spy-glass" to="/">
           <img class="img-fluid" src="../../../img/spyglass.svg" alt="">
         </router-link>
-        <div id="logged-in">
-        <button v-if="loggedin" id="logout" class="btn btn-outline-primary border-0" v-on:click="handleLogout()">logout</button>
+        <div v-if="loggedin" id="logged-in" >
+        <router-link to="dashboard">dashboard</router-link>
+        <button  id="logout" class="btn btn-outline-primary border-0" v-on:click="handleLogout()">logout</button>
         </div>
         
       </div>
