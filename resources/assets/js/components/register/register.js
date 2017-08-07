@@ -6,6 +6,12 @@ let Register = Vue.component('register', {
 
    data: function(){
       return {
+
+          response: {
+            status: "",
+            msg: "",
+            style: "",
+          },
          register: {
             name:"Robbie",
             organization_name: "Cornerstone",
@@ -23,11 +29,27 @@ let Register = Vue.component('register', {
                password_confirmation: this.register.password_confirmation,
             })
             .then(function (response) {
-              console.log(response);
-              that.$router.push({name: 'signin'})
+              console.log(response.data.errors.length > 0);
+              if (response.data.errors.length > 0){
+                  that.response.status = response.status;
+                  that.response.msg = response.data.errors[0];
+                  that.response.style = 'alert-warning';
+                  setTimeout(function(){
+                    that.response.style ="";
+                  }, 2000);
+                } else {
+                  that.$router.push({name: 'signin'});
+                }
+
+              
             })
             .catch(function (error) {
-                console.log(error);
+                that.response.status = response.status;
+                that.response.msg = response.data.msg;
+                that.response.style = response.data.style;
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
             });
          },
       };

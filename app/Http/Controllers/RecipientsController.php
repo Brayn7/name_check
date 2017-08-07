@@ -58,9 +58,17 @@ class RecipientsController extends Controller
             $recipient->first_name = $request->first_name;
             $recipient->last_name =$request->last_name;
             $recipient->save();
-            return "success";
+            return response()->json(array(
+                'status' => 200,
+                'msg' => 'Recipient Added!',
+                'style' => 'alert-success',
+                ));
         } else {
-            return "unauthenticated";
+            return response()->json(array(
+                'status' => 403,
+                'msg' => 'Something went wrong.',
+                'style' => 'alert-warning',
+                ));
         }
     }
 

@@ -10,6 +10,12 @@ let Dashboard = Vue.component('dash', {
 
    data: function(){
       return {
+        response: {
+          status: "",
+          msg: "",
+          style: "",
+        },
+
          user: JSON.parse(window.localStorage.getItem('authUser')),
          openAddForm: function () {
             console.log('test');
@@ -38,12 +44,24 @@ let Dashboard = Vue.component('dash', {
                last_name: this.recipient.last_name,
             })
             .then(function (response) {
-              console.log(response);
+              that.response.status = response.status;
+              that.response.msg = response.data.msg;
+              that.response.style = response.data.style;
               that.getRecipients();
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
+
             })
             .catch(function (error) {
-                console.log(error);
+              that.response.status = 403;
+              that.response.msg = 'Oops something went wrong. Try again please.';
+              that.response.style = 'alert-warning';
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
             });
+
          }, // end handleformsubmit
 
          getRecipients: function () {

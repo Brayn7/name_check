@@ -1,5 +1,9 @@
+
 <div id='register' class="row">
   <div id='form' class="col-8 m-auto">
+  <div class="msg alert col" v-bind:class="[response.style !== '' ? response.style : 'd-none']">
+    <p>{{response.msg}}</p>
+</div>
     <form v-on:submit.prevent="handleRegisterFormSubmit()" class="p-5" action="">
       <div class="form-group col mx-auto">
         <input v-model="register.name" class="form-control p-3" type="text" placeholder="name">

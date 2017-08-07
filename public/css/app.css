@@ -10217,6 +10217,12 @@ p {
   font-size: 1.5em;
 }
 
+.msg p {
+  font-size: 1em;
+  text-align: center;
+  margin: 0;
+}
+
 #login,
 #register,
 #splash {
