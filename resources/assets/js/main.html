@@ -1,9 +1,11 @@
 <div id="main-content" class="container-fluid">
 <header-vue v-if="['dashboard', 'signup', 'signin', 'about', 'contact'].indexOf($route.name) > -1"></header-vue>
 <div id="header-fill"></div>
-  <transition name="fade">
-    <router-view></router-view>
-  </transition>
+  <div id="main-body">
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
+  </div>
 <div id="footer-fill"></div>  
 <footer-vue></footer-vue>
 </div>
