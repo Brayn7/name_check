@@ -1,5 +1,5 @@
 import Vue from 'vue';
-
+import HeaderVue from '../common/header.js';
 let Login = Vue.component('login', {
 
    template: require('./Login.html'),
@@ -53,6 +53,7 @@ let Login = Vue.component('login', {
              that.authUser.email = response.data.email;
 
              window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
+             Vue.set(window, 'loggedin', true);
              that.$router.push({name: 'dashboard'});
            });
           // end get user data 

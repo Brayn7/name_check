@@ -25,6 +25,8 @@ import Recipients from './components/recipients/recipients.js';
 import About from './components/about/about.js'
 import Contact from './components/contact/contact.js'
 
+
+
 // initiate a main component
 let MainVue = Vue.component('main-vue', {
    template: require('./Main.html'),

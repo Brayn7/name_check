@@ -45549,10 +45549,14 @@ var Popover = function ($) {
 var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue', {
 
    template: __webpack_require__(39),
+   updated: function updated() {
+      this.loggedin = window.localStorage.getItem('authUser') ? true : false;
+   },
 
    data: function data() {
       return {
          loggedin: window.localStorage.getItem('authUser') ? true : false,
+
          handleLogout: function handleLogout() {
             // removes authUser (token and user info) from local storage
             window.localStorage.removeItem('authUser');
@@ -45569,7 +45573,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=\"header\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <button v-if=\"loggedin\" id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n      </div>\n  </nav>\n</div>";
+module.exports = "<div v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div id=\"logged-in\">\n        <button v-if=\"loggedin\" id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
@@ -45614,7 +45618,7 @@ var Home = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('home', {
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-6 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit orginizations to make automatic sdn checks</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-6 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit orginizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
 
 /***/ }),
 /* 44 */
@@ -45623,6 +45627,7 @@ module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" c
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_header_js__ = __webpack_require__(38);
 
 
 var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
@@ -45678,6 +45683,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
             that.authUser.email = response.data.email;
 
             window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
+            __WEBPACK_IMPORTED_MODULE_0_vue___default.a.set(window, 'loggedin', true);
             that.$router.push({ name: 'dashboard' });
           });
           // end get user data 
@@ -45833,7 +45839,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col\" >\n      <div class=\"recipient my-3 col-4 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col\" >\n      <div class=\"recipient my-3 col-4 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 50 */
