@@ -1,4 +1,4 @@
-<div v-if="loggedin || $route.path === '/signup' || $route.path === '/signin'" v-bind:class="$route.path == '/' ? 'home-header' : 'other-header'">
+<div v-if="loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')" v-bind:class="$route.path == '/' ? 'home-header' : 'other-header'">
   <nav class="navbar">
       <div class="navbar-nav">
         <router-link class="small-spy-glass" to="/">

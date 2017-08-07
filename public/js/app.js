@@ -45573,7 +45573,7 @@ var Popover = function ($) {
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div v-if=\"loggedin || $route.path === '/signup' || $route.path === '/signin'\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(12) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" >\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
+module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(12) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" >\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
@@ -45753,7 +45753,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"orgnization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 48 */
@@ -45971,7 +45971,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</
 /* 56 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
 
 /***/ }),
 /* 57 */
