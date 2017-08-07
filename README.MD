@@ -1,9 +1,9 @@
-# Name Check
+# NameSpy
 
 ## Purpose
 
-The purpose of this application is to provide a quick way for non-profit orginizations
-to check and store a list of individuals or organizations that receive international monitary transactions.
+The purpose of this application is to provide a quick way for non-profit organizations
+to check and store a list of individuals or organizations that receive international monetary transactions.
 
 ## How
 - Provide a place to add and store recipients of the organization
@@ -14,7 +14,7 @@ to check and store a list of individuals or organizations that receive internati
 
 ## User Stories
 
-### User can:
+### User can (Includes stretch goals for version 2):
 
 - register
 - login
@@ -32,37 +32,7 @@ to check and store a list of individuals or organizations that receive internati
 - recieve email of findings after check
 - search recipient repository for a particular name
 
-# Topics to look up/ think about
-- search php xml
-- donate hosting
-- one table with all the people data 
-
 # Services I am Using
 - Algoilia
 - Mail Trap
-
-
-# Getting Contents
-   - info on sdn searching https://www.treasury.gov/resource-center/sanctions/SDN-List/Pages/fuzzy_logic.aspx
-   - [SDN.XML Schema](https://www.treasury.gov/resource-center/sanctions/SDN-List/Documents/sdn.xsd)
-   - `file_get_contents(filename);`
-   - making an instance of SimpleXmlElement and can get individual elements as an array.
-      - `$xml = new SimpleXMLElement($xmlString);`
-      - `var_dump($xml->sdnEntry)`
-
-# Simple Table Structure for Entries
-- id
-- first_name
-- last_name
-- aka_first
-- aka_last
-
-
-
-
-
-
-
-
-
-
+- Heroku

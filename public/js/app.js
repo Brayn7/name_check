@@ -13393,7 +13393,7 @@ module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(57);
 
 
 /***/ }),
@@ -13412,8 +13412,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_recipients_recipients_js__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(54);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -13442,7 +13442,7 @@ __webpack_require__(33);
 
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
-  template: __webpack_require__(52)
+  template: __webpack_require__(56)
 });
 
 var routes = [{
@@ -45815,6 +45815,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                headers: header
             }).then(function (response) {
                console.log(response);
+               that.recipientData = [];
                response.data.forEach(function (person) {
                   that.recipientData.push(person);
                });
@@ -45916,23 +45917,6 @@ module.exports = "<div>\n  <div id=\"recipients\" class=\"row\">\n    <div class
 
 /***/ }),
 /* 52 */
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue v-if=\"['dashboard', 'signup', 'signin', 'about', 'contact'].indexOf($route.name) > -1\"></header-vue>\n<div id=\"header-fill\"></div>\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45942,20 +45926,20 @@ module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-v
 
 var About = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('about', {
 
-   template: __webpack_require__(60)
+   template: __webpack_require__(53)
 
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (About);
 
 /***/ }),
-/* 60 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
 
 /***/ }),
-/* 61 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45965,17 +45949,29 @@ module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</
 
 var Contact = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('contact', {
 
-   template: __webpack_require__(62)
+   template: __webpack_require__(55)
 
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Contact);
 
 /***/ }),
-/* 62 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue v-if=\"['dashboard', 'signup', 'signin', 'about', 'contact'].indexOf($route.name) > -1\"></header-vue>\n<div id=\"header-fill\"></div>\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

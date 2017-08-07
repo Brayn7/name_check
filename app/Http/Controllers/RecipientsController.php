@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Recipient;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\GuzzleException;
@@ -17,7 +18,9 @@ class RecipientsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request ,$id){
+        \Artisan::call('compare:lists');
         $test = Recipient::where('user_id', '=', $id)->get();
+
         return response()->json($test);
 
     }
