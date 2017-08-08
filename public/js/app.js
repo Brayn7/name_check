@@ -46008,7 +46008,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</
 /* 56 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<<<<<<< HEAD\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n=======\n  <div id=\"main-body\">\n    <transition name=\"fade\">\n      <router-view></router-view>\n    </transition>\n  </div>\n>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
 
 /***/ }),
 /* 57 */
