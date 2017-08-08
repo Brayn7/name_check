@@ -26,9 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('database:refresh')->daily();
-        $schedule->command('compare:lists')->daily();
-        $schedule->command('email:warning')->daily();
+        $schedule->command('database:refresh')->sundays()->dailyAt(1)->withoutOverlapping();
+        $schedule->command('compare:lists')->sundays()->dailyAt(1)->withoutOverlapping();
+        $schedule->command('email:warning')->sundays()->dailyAt(1)->withoutOverlapping();
     }
 
     /**
