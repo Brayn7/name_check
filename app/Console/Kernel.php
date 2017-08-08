@@ -26,13 +26,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-<<<<<<< HEAD
+
         $schedule->command('database:refresh')->sundays()->dailyAt(1)->withoutOverlapping();
         $schedule->command('compare:lists')->sundays()->dailyAt(1)->withoutOverlapping();
         $schedule->command('email:warning')->sundays()->dailyAt(1)->withoutOverlapping();
-=======
-        $schedule->command('compare:lists')->twiceDaily(1, 13);
->>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
     }
 
     /**

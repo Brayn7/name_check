@@ -2,10 +2,7 @@ import Vue from 'vue';
 let Header = Vue.component('header-vue', {
 
    template: require('./Header.html'),
-<<<<<<< HEAD
-=======
-   
->>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
+
    updated(){
       this.loggedin = (window.localStorage.getItem('authUser')) ? true : false;
    },
