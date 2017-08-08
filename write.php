@@ -2,10 +2,9 @@
 
 
 
-   $xmlString = file_get_contents('./docs/sdn.xml');
-   $xml = new SimpleXMLElement($xmlString);
-   $entries = count($xml->sdnEntry);
+   echo 'start';
 
-   var_dump(isset($xml->sdnEntry[3]->akaList->aka->lastName) ? "not null": "null");
+   file_put_contents('./docs/sdn.xml', fopen('https://www.treasury.gov/ofac/downloads/sdn.xml', 'r'));
 
+   echo 'done';
 ?>

@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\EntriesRecipientsCompare::class,
-        Commands\SendWarningEmail::class
+        Commands\SendWarningEmail::class,
+        Commands\DatabaseRefresh::class,
     ];
 
     /**
@@ -25,7 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('compare:lists')->twiceDaily(1, 13);
+        $schedule->command('database:refresh')->daily();
+        $schedule->command('compare:lists')->daily();
+        $schedule->command('email:warning')->daily();
     }
 
     /**

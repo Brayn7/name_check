@@ -27,7 +27,7 @@ Route::post('/logout', 'AuthController@logout');
 Route::resource('/entries', 'EntriesController');
 
 // endpoint that will contain recipient lists relavent to logged in user
-Route::get('/recipients/{id}', 'RecipientsController@index')->middleware('auth:api');
+Route::get('/recipients/{id}', 'RecipientsController@index');
 
 // enpoint for storing recipients names
 Route::post('/recipients', 'RecipientsController@store');

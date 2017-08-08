@@ -45,7 +45,7 @@ class RecipientsController extends Controller
     {
 
         $client = new Client(); //GuzzleHttp\Client
-        $result = $client->get('http://name_check.dev/api/user', [
+        $result = $client->get(url('/') . '/api/user', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$request->_token,

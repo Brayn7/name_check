@@ -10249,9 +10249,22 @@ p {
   cursor: pointer;
 }
 
+#logged-in a:hover,
+.footer a:hover,
+#logged-in a:active,
+.footer a:active {
+  text-decoration: none;
+}
+
 #logged-in a:after {
   content: '|';
   padding-left: 25px;
+}
+
+#logged-in a:hover:after,
+.footer a:hover:after {
+  text-decoration: none;
+  color: #0275d8;
 }
 
 .home-header,
@@ -10373,6 +10386,18 @@ p {
 @media (max-width: 575px) {
   html {
     font-size: 12px;
+  }
+
+  #splash-heading-main {
+    font-size: 4.25em;
+  }
+
+  #splash-sub-heading {
+    font-size: 2em;
+  }
+
+  #splash-heading-main img {
+    max-width: 60px;
   }
 }
 

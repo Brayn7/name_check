@@ -3,9 +3,9 @@
     <p>{{response.msg}}</p>
   </div>
   <div id="user-card" class="row">
-    <div class="col">
+    <div class="col-lg-10 mx-auto">
       <h1 class="display-4">{{user.name}}</h1>
-      <h4 class="d-md-inline-block">
+      <h4 class="d-md-inline-block mr-3">
       {{user.organization_name}} | {{user.email}}
       </h4>
       <div class="add-button d-inline-block mt-md-2 mb-md-1">
@@ -23,8 +23,8 @@
     </div>
   </div>
   <div id="recipientList" class="row">
-    <div  class="mx-auto col" >
-      <div class="recipient my-3 col-4 d-inline-block" v-for="rec in recipientData">
+    <div  class="mx-auto col-lg-10" >
+      <div class="recipient my-3 col-lg-4 col-sm-6 d-inline-block" v-for="rec in recipientData">
         <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']">
           <h6 class="d-inline-block col-10" >{{rec.first_name}} {{rec.last_name}}</h6>
         </div>
