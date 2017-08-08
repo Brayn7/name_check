@@ -43,7 +43,7 @@ let Register = Vue.component('register', {
 
               
             })
-            .catch(function (response) {
+            .catch(function(response) {
                 that.response.status = response.status;
                 that.response.msg = response.data.msg;
                 that.response.style = response.data.style;

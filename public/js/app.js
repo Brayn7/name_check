@@ -45650,8 +45650,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
-          client_id: '9',
-          client_secret: 'W8iI4z1xaJBm7C4yUI5UPZv3I8lhGRfVkTdjMvw3',
+          client_id: '11',
+          client_secret: 'rcfqFtXRF8OtsT4p4LljSg2262nEKgliyPlDJTUn',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -45754,7 +45754,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
           } else {
             that.$router.push({ name: 'signin' });
           }
-        }).catch(function (error) {
+        }).catch(function (response) {
           that.response.status = response.status;
           that.response.msg = response.data.msg;
           that.response.style = response.data.style;
