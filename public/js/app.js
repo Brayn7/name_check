@@ -45649,10 +45649,10 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
-          client_id: '1',
-          client_secret: 'WAUiZlGGivPnNnNV1XJC1rF6Xb04Lg8wjgryb3nk',
-          username: "bryarobert@gmail.com",
-          password: 'adminroot',
+          client_id: '11',
+          client_secret: 'rcfqFtXRF8OtsT4p4LljSg2262nEKgliyPlDJTUn',
+          username: this.login.username,
+          password: this.login.password,
           scope: ''
         })
         // on success get the user that logged in
@@ -45727,11 +45727,11 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
         style: ""
       },
       register: {
-        name: "Robbie",
-        organization_name: "Cornerstone",
-        email: "bryarobert@gmail.com",
-        password: "adminroot",
-        password_confirmation: "adminroot"
+        name: "",
+        organization_name: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
       },
       handleRegisterFormSubmit: function handleRegisterFormSubmit() {
         var that = this;
@@ -45754,9 +45754,9 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
             that.$router.push({ name: 'signin' });
           }
         }).catch(function (error) {
-          that.response.status = response.status;
-          that.response.msg = response.data.msg;
-          that.response.style = response.data.style;
+          that.response.status = 500;
+          that.response.msg = "oops something went wrong";
+          that.response.style = 'alert-danger';
           setTimeout(function () {
             that.response.style = "";
           }, 2000);
