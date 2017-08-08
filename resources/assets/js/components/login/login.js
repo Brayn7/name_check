@@ -7,8 +7,8 @@ let Login = Vue.component('login', {
    data: function(){
       return {
       login:{
-         username:'bryarobert@gmail.com',
-         password:'adminroot',
+         username:'',
+         password:'',
       },
 
       authUser: {},

@@ -45638,8 +45638,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
   data: function data() {
     return {
       login: {
-        username: 'bryarobert@gmail.com',
-        password: 'adminroot'
+        username: '',
+        password: ''
       },
 
       authUser: {},
