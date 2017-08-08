@@ -38,7 +38,7 @@ let Login = Vue.component('login', {
           that.authUser.refresh_token = response.data.refresh_token;
             
            // save tokens in local storage 
-           window.localStorage.setItem('authUser', JSON.stringify(that.authUser))
+           window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
 
           // get user data
            axios.get('api/user', {

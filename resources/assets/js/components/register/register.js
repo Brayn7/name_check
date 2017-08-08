@@ -43,10 +43,11 @@ let Register = Vue.component('register', {
 
               
             })
-            .catch(function (error) {
-                that.response.status = 500;
-                that.response.msg = "oops something went wrong";
-                that.response.style = 'alert-danger';
+            .catch(function(response) {
+              console.log(response);
+                that.response.status = 403;
+                that.response.msg = 'Oops something went wrong.';
+                that.response.style = 'alert-warning';
               setTimeout(function(){
                 that.response.style = "";
               }, 2000);

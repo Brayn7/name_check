@@ -24,8 +24,8 @@ let Dashboard = Vue.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "bob",
-            last_name: "smith",
+            first_name: "",
+            last_name: "",
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -36,7 +36,7 @@ let Dashboard = Vue.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token,
             };
-            axios.post('http://name_check.dev/api/recipients', {
+            axios.post('/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,

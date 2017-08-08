@@ -13393,6 +13393,7 @@ if (inBrowser && window.Vue) {
 var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue', {
 
    template: __webpack_require__(39),
+
    updated: function updated() {
       this.loggedin = window.localStorage.getItem('authUser') ? true : false;
    },
@@ -45753,10 +45754,11 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
           } else {
             that.$router.push({ name: 'signin' });
           }
-        }).catch(function (error) {
-          that.response.status = 500;
-          that.response.msg = "oops something went wrong";
-          that.response.style = 'alert-danger';
+        }).catch(function (response) {
+          console.log(response);
+          that.response.status = 403;
+          that.response.msg = 'Oops something went wrong.';
+          that.response.style = 'alert-warning';
           setTimeout(function () {
             that.response.style = "";
           }, 2000);
@@ -45809,8 +45811,8 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "bob",
-            last_name: "smith"
+            first_name: "",
+            last_name: ""
          },
 
          handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
@@ -45821,7 +45823,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token
             };
-            axios.post('http://name_check.dev/api/recipients', {
+            axios.post('/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
