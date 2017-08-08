@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import HeaderVue from '../common/header.js';
+
 let Login = Vue.component('login', {
 
    template: require('./Login.html'),
@@ -7,8 +7,8 @@ let Login = Vue.component('login', {
    data: function(){
       return {
       login:{
-         username:'',
-         password:'',
+         username:'bryarobert@gmail.com',
+         password:'adminroot',
       },
 
       authUser: {},
@@ -19,8 +19,8 @@ let Login = Vue.component('login', {
          // stretch is to hide the client id and secret in backend and just send off username and pass
          axios.post('oauth/token', {
            grant_type: 'password',
-           client_id: '11',
-           client_secret:'rcfqFtXRF8OtsT4p4LljSg2262nEKgliyPlDJTUn',
+           client_id: '3',
+           client_secret:'fvr3iuKrG2UQEx9oszT9PwbBN1FugrbwNwZAiCay',
            username: this.login.username,
            password: this.login.password,
            scope: ''
@@ -38,7 +38,7 @@ let Login = Vue.component('login', {
           that.authUser.refresh_token = response.data.refresh_token;
             
            // save tokens in local storage 
-           window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
+           window.localStorage.setItem('authUser', JSON.stringify(that.authUser))
 
           // get user data
            axios.get('api/user', {
@@ -53,7 +53,6 @@ let Login = Vue.component('login', {
              that.authUser.email = response.data.email;
 
              window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
-             Vue.set(window, 'loggedin', true);
              that.$router.push({name: 'dashboard'});
            });
           // end get user data 

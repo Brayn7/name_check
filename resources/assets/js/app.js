@@ -10,6 +10,8 @@ import Axios from 'axios';
 
 // import router
 import VueRouter from 'vue-router';
+
+
 Vue.use(VueRouter);
 // requires bootstraps js
 require('./bootstrap');

@@ -29,8 +29,7 @@ let Register = Vue.component('register', {
                password_confirmation: this.register.password_confirmation,
             })
             .then(function (response) {
-              console.log(response.data.errors.length > 0);
-              if (response.data.errors.length > 0){
+              if (response.data.errors){
                   that.response.status = response.status;
                   that.response.msg = response.data.errors[0];
                   that.response.style = 'alert-warning';
