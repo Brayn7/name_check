@@ -19,6 +19,10 @@ class RecipientsController extends Controller
      */
     public function index(Request $request ,$id){
         \Artisan::call('compare:lists');
+<<<<<<< HEAD
+=======
+        \Artisan::call('email:warning');
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
         $test = Recipient::where('user_id', '=', $id)->get();
 
         return response()->json($test);
@@ -45,7 +49,11 @@ class RecipientsController extends Controller
     {
 
         $client = new Client(); //GuzzleHttp\Client
+<<<<<<< HEAD
         $result = $client->get(url('/') . '/api/user', [
+=======
+        $result = $client->get('https://secret-taiga-87353.herokuapp.com/api/user', [
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer '.$request->_token,

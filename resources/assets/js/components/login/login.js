@@ -19,10 +19,17 @@ let Login = Vue.component('login', {
          // stretch is to hide the client id and secret in backend and just send off username and pass
          axios.post('oauth/token', {
            grant_type: 'password',
+<<<<<<< HEAD
            client_id: '1',
            client_secret:'WAUiZlGGivPnNnNV1XJC1rF6Xb04Lg8wjgryb3nk',
            username: "bryarobert@gmail.com",
            password: 'adminroot',
+=======
+           client_id: '7',
+           client_secret:'lb2d2BjkMH4Q72HiQlCdiFTpHSVUvHMXeJqSW2JO',
+           username: this.login.username,
+           password: this.login.password,
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
            scope: ''
          })
          // on success get the user that logged in

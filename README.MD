@@ -2,8 +2,8 @@
 
 ## Purpose
 
-The purpose of this application is to provide a quick way for non-profit organizations
-to check and store a list of individuals or organizations that receive international monetary transactions.
+The purpose of this application is to provide a quick way for non-profit orginizations
+to check and store a list of individuals or organizations that receive international monetary  transactions.
 
 ## How
 - Provide a place to add and store recipients of the organization
@@ -36,3 +36,4 @@ to check and store a list of individuals or organizations that receive internati
 - Algoilia
 - Mail Trap
 - Heroku
+

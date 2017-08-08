@@ -13423,7 +13423,11 @@ module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(14);
+=======
+__webpack_require__(13);
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 module.exports = __webpack_require__(57);
 
 
@@ -45570,10 +45574,48 @@ var Popover = function ($) {
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(12) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" >\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
+=======
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue', {
+
+   template: __webpack_require__(39),
+
+   updated: function updated() {
+      this.loggedin = window.localStorage.getItem('authUser') ? true : false;
+   },
+
+   data: function data() {
+      return {
+         loggedin: window.localStorage.getItem('authUser') ? true : false,
+         handleLogout: function handleLogout() {
+            // removes authUser (token and user info) from local storage
+            window.localStorage.removeItem('authUser');
+            // redirect to home page
+            this.$router.push({ name: '/' });
+         }
+      };
+   }
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Header);
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" >\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 
 /***/ }),
 /* 40 */
@@ -45618,7 +45660,11 @@ var Home = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('home', {
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(12) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit organizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+=======
+module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-6 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit organizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 
 /***/ }),
 /* 44 */
@@ -45649,10 +45695,17 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
+<<<<<<< HEAD
           client_id: '1',
           client_secret: 'WAUiZlGGivPnNnNV1XJC1rF6Xb04Lg8wjgryb3nk',
           username: "bryarobert@gmail.com",
           password: 'adminroot',
+=======
+          client_id: '7',
+          client_secret: 'lb2d2BjkMH4Q72HiQlCdiFTpHSVUvHMXeJqSW2JO',
+          username: this.login.username,
+          password: this.login.password,
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
           scope: ''
         })
         // on success get the user that logged in
@@ -45727,11 +45780,19 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
         style: ""
       },
       register: {
+<<<<<<< HEAD
         name: "Robbie",
         organization_name: "Cornerstone",
         email: "bryarobert@gmail.com",
         password: "adminroot",
         password_confirmation: "adminroot"
+=======
+        name: "",
+        organization_name: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
       },
       handleRegisterFormSubmit: function handleRegisterFormSubmit() {
         var that = this;
@@ -45773,7 +45834,11 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
 /* 47 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n  <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n</div>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+=======
+module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-8 m-auto\">\n  <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n</div>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 
 /***/ }),
 /* 48 */
@@ -45809,8 +45874,8 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "bob",
-            last_name: "smith"
+            first_name: "",
+            last_name: ""
          },
 
          handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
@@ -45821,7 +45886,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token
             };
-            axios.post('http://name_check.dev/api/recipients', {
+            axios.post('/api/recipients', {
                headers: header,
                _token: user.access_token,
                id: user.id,
@@ -45875,7 +45940,11 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block mr-3\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-3 col-lg-4 col-sm-6 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+=======
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col\" >\n      <div class=\"recipient my-3 col-4 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 
 /***/ }),
 /* 50 */
@@ -46007,7 +46076,11 @@ module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</
 /* 56 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+=======
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue v-if=\"['dashboard', 'signup', 'signin', 'about', 'contact'].indexOf($route.name) > -1\"></header-vue>\n<div id=\"header-fill\"></div>\n  <div id=\"main-body\">\n    <transition name=\"fade\">\n      <router-view></router-view>\n    </transition>\n  </div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 
 /***/ }),
 /* 57 */

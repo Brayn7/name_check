@@ -1,10 +1,18 @@
 
 <div id='register' class="row">
+<<<<<<< HEAD
   <div id='form' class="col-md-8 m-auto">
   <div class="msg alert col" v-bind:class="[response.style !== '' ? response.style : 'd-none']">
     <p>{{response.msg}}</p>
 </div>
     <form v-on:submit.prevent="handleRegisterFormSubmit()" class="p-md-5" action="">
+=======
+  <div id='form' class="col-8 m-auto">
+  <div class="msg alert col" v-bind:class="[response.style !== '' ? response.style : 'd-none']">
+    <p>{{response.msg}}</p>
+</div>
+    <form v-on:submit.prevent="handleRegisterFormSubmit()" class="p-5" action="">
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
       <div class="form-group col mx-auto">
         <input v-model="register.name" class="form-control p-3" type="text" placeholder="name">
       </div>

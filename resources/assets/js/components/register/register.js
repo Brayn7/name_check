@@ -13,11 +13,11 @@ let Register = Vue.component('register', {
             style: "",
           },
          register: {
-            name:"Robbie",
-            organization_name: "Cornerstone",
-            email: "bryarobert@gmail.com",
-            password: "adminroot",
-            password_confirmation: "adminroot",
+            name:"",
+            organization_name: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
          },
          handleRegisterFormSubmit: function () {
             const that = this;

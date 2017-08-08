@@ -59,20 +59,26 @@ p {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 #logged-in a:hover, .footer a:hover, #logged-in a:active, .footer a:active {
   text-decoration: none;
 }
 
+=======
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 #logged-in a:after {
   content: '|';
   padding-left: 25px;
 }
 
+<<<<<<< HEAD
 #logged-in a:hover:after, .footer a:hover:after {
   text-decoration: none;
   color: #0275d8;
 }
 
+=======
+>>>>>>> ebc6c6e86793c326c3e7aefa42eefa88632f3367
 .home-header, .other-header {
    width: 100%;
    height: 60px;
