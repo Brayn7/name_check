@@ -27,9 +27,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
 
-        $schedule->command('database:refresh')->everyMinute()->withoutOverlapping();
-        $schedule->command('compare:lists')->everyMinute()->withoutOverlapping();
-        $schedule->command('email:warning')->everyMinute()->withoutOverlapping();
+        $schedule->command('database:refresh')->sundays()->dailyAt(1)->withoutOverlapping();
+        $schedule->command('compare:lists')->sundays()->dailyAt(1)->withoutOverlapping();
+        $schedule->command('email:warning')->sundays()->dailyAt(1)->withoutOverlapping();
     }
 
     /**
