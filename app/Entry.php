@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Entry extends Model
 {
    use Searchable;
+   
    protected $table = 'entries';
 
    public function toSearchableArray (){
