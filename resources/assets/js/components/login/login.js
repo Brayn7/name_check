@@ -6,6 +6,11 @@ let Login = Vue.component('login', {
 
    data: function(){
       return {
+      response: {
+            status: "",
+            msg: "",
+            style: "",
+      },  
       login:{
          username:'',
          password:'',
@@ -19,8 +24,8 @@ let Login = Vue.component('login', {
          // stretch is to hide the client id and secret in backend and just send off username and pass
          axios.post('oauth/token', {
            grant_type: 'password',
-           client_id: '11',
-           client_secret:'rcfqFtXRF8OtsT4p4LljSg2262nEKgliyPlDJTUn',
+           client_id: '7',
+           client_secret:'Bxl1skiCsGNN0fHkl2MOgUs4VDH8IuTpZ2j2hp13',
            username: this.login.username,
            password: this.login.password,
            scope: ''
@@ -54,13 +59,26 @@ let Login = Vue.component('login', {
 
              window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
              that.$router.push({name: 'dashboard'});
+           })
+           .catch(function(error) {
+             that.response.msg = 'Please enter valid credentials.';
+             that.response.style = 'alert-warning';
+
+             setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
            });
           // end get user data 
 
          })
          // on auth/token fail
          .catch(function (error) {
-             console.log(error);
+             that.response.msg = 'Please enter valid credentials.';
+             that.response.style = 'alert-warning';
+
+             setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
          }); 
       }
     }

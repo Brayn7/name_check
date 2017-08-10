@@ -45637,6 +45637,11 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 
   data: function data() {
     return {
+      response: {
+        status: "",
+        msg: "",
+        style: ""
+      },
       login: {
         username: '',
         password: ''
@@ -45650,8 +45655,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
-          client_id: '11',
-          client_secret: 'rcfqFtXRF8OtsT4p4LljSg2262nEKgliyPlDJTUn',
+          client_id: '7',
+          client_secret: 'Bxl1skiCsGNN0fHkl2MOgUs4VDH8IuTpZ2j2hp13',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -45685,12 +45690,24 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 
             window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
             that.$router.push({ name: 'dashboard' });
+          }).catch(function (error) {
+            that.response.msg = 'Please enter valid credentials.';
+            that.response.style = 'alert-warning';
+
+            setTimeout(function () {
+              that.response.style = "";
+            }, 2000);
           });
           // end get user data 
         })
         // on auth/token fail
         .catch(function (error) {
-          console.log(error);
+          that.response.msg = 'Please enter valid credentials.';
+          that.response.style = 'alert-warning';
+
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
         });
       }
     };
@@ -45703,7 +45720,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 /* 45 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
+module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n      <p>{{response.msg}}</p>\n    </div>\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
 
 /***/ }),
 /* 46 */
@@ -46007,7 +46024,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</
 /* 56 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
 
 /***/ }),
 /* 57 */
