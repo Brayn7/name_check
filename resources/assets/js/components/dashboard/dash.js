@@ -24,8 +24,7 @@ let Dashboard = Vue.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "",
-            last_name: "",
+            name: "",
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -40,8 +39,7 @@ let Dashboard = Vue.component('dash', {
                headers: header,
                _token: user.access_token,
                id: user.id,
-               first_name: this.recipient.first_name,
-               last_name: this.recipient.last_name,
+               name: this.recipient.name,
             })
             .then(function (response) {
               that.response.status = response.status;

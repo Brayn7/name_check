@@ -19,9 +19,9 @@ class RecipientsController extends Controller
      */
     public function index(Request $request ,$id){
         \Artisan::call('compare:lists');
-        $test = Recipient::where('user_id', '=', $id)->get();
+        $recipients = Recipient::where('user_id', '=', $id)->get();
 
-        return response()->json($test);
+        return response()->json($recipients);
 
     }
 
@@ -55,8 +55,7 @@ class RecipientsController extends Controller
         if ($result->getStatusCode() === 200){
             $recipient = new Recipient;
             $recipient->user_id = $request->id;
-            $recipient->first_name = $request->first_name;
-            $recipient->last_name =$request->last_name;
+            $recipient->name = $request->name;
             $recipient->save();
             return response()->json(array(
                 'status' => 200,

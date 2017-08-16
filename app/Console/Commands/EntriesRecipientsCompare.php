@@ -45,7 +45,7 @@ class EntriesRecipientsCompare extends Command
         // loop thru each person take first and last name
         // mash them together and send it off to algolia
         foreach($recipients as $recipient){
-            $name = $recipient->first_name . " " . $recipient->last_name;
+            $name = $recipient->name;
             // get algolia matches
             $check = \App\Entry::search($name)->get();
             // if there are any matches in the check

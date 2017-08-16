@@ -5,14 +5,13 @@
   <div id="user-card" class="row">
     <div class="col-lg-10 mx-auto">
       <h1 class="display-4">{{user.name}}</h1>
-      <h4 class="d-md-inline-block mr-3">
+      <h4>
       {{user.organization_name}} | {{user.email}}
       </h4>
-      <div class="add-button d-inline-block mt-md-2 mb-md-1">
-        <form class="form-inline" v-on:submit.prevent="handleRecipientAddFormSubmit()">
+      <div class="add-button col-lg-8 p-0 my-3">
+        <form v-on:submit.prevent="handleRecipientAddFormSubmit()">
           <div class="input-group">
-            <input v-model="recipient.first_name" class="form-control" type="text" placeholder="first name">
-            <input v-model="recipient.last_name" class="form-control" type="text" placeholder="last name">
+            <input v-model="recipient.name" class="form-control" type="text" placeholder="add a recipient">
             <span class="input-group-btn">
               <button class="btn btn-outline-primary mr-3" type="submit" >add</button>
             </span>
@@ -26,7 +25,7 @@
     <div  class="mx-auto col-lg-10" >
       <div class="recipient my-3 col-lg-4 col-sm-6 d-inline-block" v-for="rec in recipientData">
         <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']">
-          <h6 class="d-inline-block col-10" >{{rec.first_name}} {{rec.last_name}}</h6>
+          <h6 class="d-inline-block col-10" >{{rec.name}}</h6>
         </div>
       </div>
     </div>

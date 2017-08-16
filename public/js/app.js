@@ -45655,8 +45655,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
-          client_id: '7',
-          client_secret: 'Bxl1skiCsGNN0fHkl2MOgUs4VDH8IuTpZ2j2hp13',
+          client_id: '1',
+          client_secret: 'UAJdkXSRq5Fbe3voaEGPrZzIiG0e5hSJAhx21xRk',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -45826,8 +45826,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
          recipientData: [],
 
          recipient: {
-            first_name: "",
-            last_name: ""
+            name: ""
          },
 
          handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
@@ -45842,8 +45841,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                headers: header,
                _token: user.access_token,
                id: user.id,
-               first_name: this.recipient.first_name,
-               last_name: this.recipient.last_name
+               name: this.recipient.name
             }).then(function (response) {
                that.response.status = response.status;
                that.response.msg = response.data.msg;
@@ -45892,7 +45890,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4 class=\"d-md-inline-block mr-3\">\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button d-inline-block mt-md-2 mb-md-1\">\n        <form class=\"form-inline\" v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.first_name\" class=\"form-control\" type=\"text\" placeholder=\"first name\">\n            <input v-model=\"recipient.last_name\" class=\"form-control\" type=\"text\" placeholder=\"last name\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-3 col-lg-4 col-sm-6 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-3 col-lg-4 col-sm-6 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 50 */
