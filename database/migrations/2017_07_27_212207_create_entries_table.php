@@ -13,9 +13,6 @@ class CreateEntriesTable extends Migration
      */
     public function up()
     {
-        Schema::drop('entries');
-
-
         Schema::create('entries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name')->nullable();

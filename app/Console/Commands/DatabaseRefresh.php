@@ -48,5 +48,6 @@ class DatabaseRefresh extends Command
         \Artisan::call('scout:flush', ['model' => "App\Entry"]);
 
         \Artisan::call('scout:import', ['model'=> 'App\Entry']);
+        
     }
 }
