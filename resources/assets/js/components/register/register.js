@@ -13,11 +13,11 @@ let Register = Vue.component('register', {
             style: "",
           },
          register: {
-            name:"Robbie",
-            organization_name: "Cornerstone",
-            email: "bryarobert@gmail.com",
-            password: "adminroot",
-            password_confirmation: "adminroot",
+            name:"",
+            organization_name: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
          },
          handleRegisterFormSubmit: function () {
             const that = this;
@@ -29,8 +29,7 @@ let Register = Vue.component('register', {
                password_confirmation: this.register.password_confirmation,
             })
             .then(function (response) {
-              console.log(response.data.errors.length > 0);
-              if (response.data.errors.length > 0){
+              if (response.data.errors){
                   that.response.status = response.status;
                   that.response.msg = response.data.errors[0];
                   that.response.style = 'alert-warning';
@@ -43,10 +42,11 @@ let Register = Vue.component('register', {
 
               
             })
-            .catch(function (error) {
-                that.response.status = response.status;
-                that.response.msg = response.data.msg;
-                that.response.style = response.data.style;
+            .catch(function(response) {
+              console.log(response);
+                that.response.status = 403;
+                that.response.msg = 'Oops something went wrong.';
+                that.response.style = 'alert-warning';
               setTimeout(function(){
                 that.response.style = "";
               }, 2000);

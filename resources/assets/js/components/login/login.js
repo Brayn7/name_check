@@ -1,11 +1,16 @@
 import Vue from 'vue';
-import HeaderVue from '../common/header.js';
+
 let Login = Vue.component('login', {
 
    template: require('./Login.html'),
 
    data: function(){
       return {
+      response: {
+            status: "",
+            msg: "",
+            style: "",
+      },  
       login:{
          username:'',
          password:'',
@@ -20,9 +25,9 @@ let Login = Vue.component('login', {
          axios.post('oauth/token', {
            grant_type: 'password',
            client_id: '1',
-           client_secret:'WAUiZlGGivPnNnNV1XJC1rF6Xb04Lg8wjgryb3nk',
-           username: "bryarobert@gmail.com",
-           password: 'adminroot',
+           client_secret:'UAJdkXSRq5Fbe3voaEGPrZzIiG0e5hSJAhx21xRk',
+           username: this.login.username,
+           password: this.login.password,
            scope: ''
          })
          // on success get the user that logged in
@@ -53,15 +58,27 @@ let Login = Vue.component('login', {
              that.authUser.email = response.data.email;
 
              window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
-             Vue.set(window, 'loggedin', true);
              that.$router.push({name: 'dashboard'});
+           })
+           .catch(function(error) {
+             that.response.msg = 'Please enter valid credentials.';
+             that.response.style = 'alert-warning';
+
+             setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
            });
           // end get user data 
 
          })
          // on auth/token fail
          .catch(function (error) {
-             console.log(error);
+             that.response.msg = 'Please enter valid credentials.';
+             that.response.style = 'alert-warning';
+
+             setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
          }); 
       }
     }

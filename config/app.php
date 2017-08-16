@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Name Check'),
+    'name' => env('APP_NAME', 'namespy'),
 
     /*
     |--------------------------------------------------------------------------
@@ -182,11 +182,6 @@ return [
 
         // exception handling
         Optimus\Heimdal\Provider\LaravelServiceProvider::class,
-
-
-        // algolia scout settings
-
-        Algolia\Settings\ServiceProvider::class, 
            
         // laravel full text searching with algolia
 
