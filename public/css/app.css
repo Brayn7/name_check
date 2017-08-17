@@ -10239,7 +10239,7 @@ p {
 }
 
 #logged-in {
-  position: fixed;
+  position: absolute;
   right: 0px;
   font-weight: 300;
   -webkit-appearance: none;
@@ -10291,10 +10291,7 @@ p {
 
 .other-header {
   background-color: rgba(255, 255, 255, 0.8);
-}
-
-#header-fill {
-  padding: 50px;
+  position: initial;
 }
 
 #home-splash-img {
@@ -10349,9 +10346,6 @@ p {
   width: 100%;
   background: rgba(255, 255, 255, 0.8);
   padding: 20px 0px;
-  position: fixed;
-  z-index: 9999;
-  bottom: 0;
   font-weight: 100;
 }
 
@@ -10364,12 +10358,15 @@ p {
   content: none;
 }
 
-.home-footer {
-  background: none;
+.recipient h6 {
+  cursor: pointer;
 }
 
-#footer-fill {
-  padding: 40px 0px;
+.home-footer {
+  background: none;
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
 }
 
 .fade-enter-active,

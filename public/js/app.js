@@ -13393,7 +13393,7 @@ module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(57);
+module.exports = __webpack_require__(55);
 
 
 /***/ }),
@@ -13411,9 +13411,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_login_login_js__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_recipients_recipients_js__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_about_about_js__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_contact_contact_js__ = __webpack_require__(52);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -13425,8 +13424,8 @@ window.Vue = __webpack_require__(1);
 
 // import router
 
-
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
+
 // requires bootstraps js
 __webpack_require__(33);
 
@@ -13440,11 +13439,12 @@ __webpack_require__(33);
 
 
 
-
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
-  template: __webpack_require__(56)
+  template: __webpack_require__(54)
 });
+
+// ROUTES
 
 var routes = [{
   path: '/',
@@ -13464,19 +13464,12 @@ var routes = [{
   name: 'dashboard',
   meta: { requiresAuth: true }
 }, {
-  path: '/recipients',
-  component: __WEBPACK_IMPORTED_MODULE_8__components_recipients_recipients_js__["a" /* default */],
-  name: 'recipients',
-  meta: {
-    requiresAuth: true,
-    requiresRecipientList: true }
-}, {
   path: '/about',
-  component: __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_8__components_about_about_js__["a" /* default */],
   name: 'about'
 }, {
   path: '/contact',
-  component: __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_9__components_contact_contact_js__["a" /* default */],
   name: 'contact'
 }];
 
@@ -45597,7 +45590,7 @@ var Footer = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('footer-vue',
 /* 41 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer row\" v-bind:class=\"$route.path == '/' ? 'home-footer' : 'other-footer'\">\n      <div class=\"col\">\n        <router-link to=\"about\" class=\"text-primary\">about</router-link>\n        <router-link to=\"contact\" class=\"text-primary\">contact</router-link>\n      </div>\n</div>";
+module.exports = "<div class=\"footer row\" v-bind:class=\"($route.path === '/' || $route.path === '/signin' || $route.path === '/signup') ? 'home-footer' : 'other-footer'\">\n      <div class=\"col\">\n        <router-link to=\"about\" class=\"text-primary\">about</router-link>\n        <router-link to=\"contact\" class=\"text-primary\">contact</router-link>\n      </div>\n</div>";
 
 /***/ }),
 /* 42 */
@@ -45890,7 +45883,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-3 col-lg-4 col-sm-6 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block py-3\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Button trigger modal -->\n<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">\n  Launch demo modal\n</button>\n\n<!-- Modal -->\n<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">\n        ...\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n</div>";
 
 /***/ }),
 /* 50 */
@@ -45901,76 +45894,19 @@ module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.sty
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
-var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipients', {
+var About = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('about', {
 
-   template: __webpack_require__(51),
+   template: __webpack_require__(51)
 
-   created: function created() {
-      console.log(this.recipient);
-      var that = this,
-          user = JSON.parse(window.localStorage.getItem('authUser'));
-      console.log(user.id);
-      var header = {
-         'Accept': 'application/json',
-         'Authorization': 'Bearer ' + user.access_token
-      };
-
-      axios.get('api/recipients/' + user.id, {
-         headers: header
-      }).then(function (response) {
-         console.log(response);
-         response.data.forEach(function (person) {
-            that.recipientData.push(person);
-         });
-      }).catch(function (error) {
-         console.log(error);
-      });
-   },
-
-
-   data: function data() {
-      return {
-         recipientData: [],
-         recipient: {
-            first_name: "bob",
-            last_name: "smith",
-            aliases: "tray smith, bill smith"
-         },
-         handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
-            var that = this,
-                user = JSON.parse(window.localStorage.getItem('authUser'));
-            console.log(user.id);
-            var header = {
-               'Accept': 'application/json',
-               'Authorization': 'Bearer ' + user.access_token
-            };
-
-            var aliases = JSON.stringify(this.recipient.aliases.split(","));
-
-            axios.post('api/recipients', {
-               headers: header,
-               _token: user.access_token,
-               id: user.id,
-               first_name: this.recipient.first_name,
-               last_name: this.recipient.last_name,
-               aliases: aliases
-            }).then(function (response) {
-               console.log(response);
-            }).catch(function (error) {
-               console.log(error);
-            });
-         }
-      };
-   }
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (Recipients);
+/* harmony default export */ __webpack_exports__["a"] = (About);
 
 /***/ }),
 /* 51 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div id=\"recipients\" class=\"row\">\n    <div class=\"col\">\n      <div id='form' class=\"col-8 m-auto\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\" class=\"form p-5\" action=\"\">\n          <div class=\"form-group col mx-auto\">\n            <input v-model=\"recipient.first_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"first name\">\n          </div>\n          <div class=\"form-group col mx-auto\">\n            <input v-model=\"recipient.last_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"last name\">\n          </div>\n          <div class=\"form-group col mx-auto\">\n            <input v-model=\"recipient.aliases\"  class=\"form-control p-3\" type=\"text\" placeholder=\"comma seperated aliases\">\n          </div>\n          <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n            <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"col-10 mx-auto\" >\n      <div class=\"recipient my-3\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <i v-bind:class=\"[!rec.flagged ? 'fa-check' : 'fa-times']\" class=\"fa fa-2x align-text-bottom col-1\" aria-hidden=\"true\"></i>\n          <h3 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h3>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-8 mx-auto\">\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">Purpose:</h1>\n        <p>NameSpy Provides a quick way for non-profit organizations\nto check and store a list of individuals or organizations that receive international monetary transactions.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">How:</h1>\n        <p>We provide a place to store recipient names in your user profile. Once the recipient is in the database we keep an eye on the SDN (Specially Designated Nationals) list and send you an email if there is someone you should be aware of. <router-link to=\"/signup\">Signup</router-link> here.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">What is the SDN list:</h1>\n        <p>The SDN is a list of individuals and companies that are called \"Specially Designated Nationals\" or \"SDNs.\" The U.S has marked these individuals and companies as blocked/ prohibited for a U.S person to deal with. For more info click <a href=\"https://www.treasury.gov/resource-center/sanctions/SDN-List/Pages/sdn_data.aspx\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 52 */
@@ -45981,51 +45917,28 @@ module.exports = "<div>\n  <div id=\"recipients\" class=\"row\">\n    <div class
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
-var About = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('about', {
-
-   template: __webpack_require__(53)
-
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (About);
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-8 mx-auto\">\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">Purpose:</h1>\n        <p>NameSpy Provides a quick way for non-profit organizations\nto check and store a list of individuals or organizations that receive international monetary transactions.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">How:</h1>\n        <p>We provide a place to store recipient names in your user profile. Once the recipient is in the database we keep an eye on the SDN (Specially Designated Nationals) list and send you an email if there is someone you should be aware of. <router-link to=\"/signup\">Signup</router-link> here.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">What is the SDN list:</h1>\n        <p>The SDN is a list of individuals and companies that are called \"Specially Designated Nationals\" or \"SDNs.\" The U.S has marked these individuals and companies as blocked/ prohibited for a U.S person to deal with. For more info click <a href=\"https://www.treasury.gov/resource-center/sanctions/SDN-List/Pages/sdn_data.aspx\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>";
-
-/***/ }),
-/* 54 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-
 var Contact = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('contact', {
 
-   template: __webpack_require__(55)
+   template: __webpack_require__(53)
 
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Contact);
 
 /***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div> \n<footer-vue></footer-vue>\n</div>";
 
 /***/ }),
-/* 57 */
+/* 55 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
