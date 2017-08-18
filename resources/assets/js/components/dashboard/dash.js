@@ -6,6 +6,10 @@ let Dashboard = Vue.component('dash', {
 
     created(){
       this.getRecipients();
+          $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus();
+            console.log('test');
+          });
    },
 
    data: function(){
