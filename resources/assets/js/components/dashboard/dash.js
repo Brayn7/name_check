@@ -27,8 +27,18 @@ let Dashboard = Vue.component('dash', {
 
          recipientData: [],
 
-         recipient: {
+         addRecipient: {
             name: "",
+         },
+
+         infoRecipient: {
+            name: '',
+            type: '',
+            id_number: '',
+            address: '',
+            city: '',
+            state_province: '',
+            country: '',
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -43,7 +53,7 @@ let Dashboard = Vue.component('dash', {
                headers: header,
                _token: user.access_token,
                id: user.id,
-               name: this.recipient.name,
+               name: this.addRecipient.name,
             })
             .then(function (response) {
               that.response.status = response.status;
@@ -65,6 +75,16 @@ let Dashboard = Vue.component('dash', {
             });
 
          }, // end handleformsubmit
+
+         handleRecipientInfoFormSubmit: function(){
+
+         },
+
+         populateInfoModal: function(e){
+          console.log(e.target.id);
+         },
+
+
 
          getRecipients: function () {
             const that = this,

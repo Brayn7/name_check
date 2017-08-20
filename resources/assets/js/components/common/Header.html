@@ -4,7 +4,7 @@
         <router-link class="small-spy-glass" to="/">
           <img class="img-fluid" src="../../../img/spyglass.svg" alt="">
         </router-link>
-        <div v-if="loggedin" id="logged-in" >
+        <div v-if="loggedin" id="logged-in" class="mr-4">
         <router-link to="dashboard">dashboard</router-link>
         <button  id="logout" class="btn btn-outline-primary border-0" v-on:click="handleLogout()">logout</button>
         </div>

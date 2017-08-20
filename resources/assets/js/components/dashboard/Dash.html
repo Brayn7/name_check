@@ -11,7 +11,7 @@
       <div class="add-button col-lg-8 p-0 my-3">
         <form v-on:submit.prevent="handleRecipientAddFormSubmit()">
           <div class="input-group">
-            <input v-model="recipient.name" class="form-control" type="text" placeholder="add a recipient">
+            <input v-model="addRecipient.name" class="form-control" type="text" placeholder="add a recipient">
             <span class="input-group-btn">
               <button class="btn btn-outline-primary mr-3" type="submit" >add</button>
             </span>
@@ -24,9 +24,9 @@
   <!-- recipient list start -->
   <div id="recipientList" class="row">
     <div  class="mx-auto col-lg-10" >
-      <div :id="rec.id" class="recipient my-1" v-for="rec in recipientData" data-toggle="modal" data-target="#myModal" v-on:click="populateInfoModal()">
+      <div class="recipient my-1" v-for="rec in recipientData"  >
         <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']">
-          <h6 class="d-inline-block py-3" >{{rec.name}}</h6>
+          <h6 :id="rec.id" class="d-inline-block py-3" v-on:click="populateInfoModal($event)" data-toggle="modal" data-target="#myModal" >{{rec.name}}</h6>
         </div>
       </div>
     </div>
@@ -45,7 +45,6 @@
         <div class="modal-body">
           <form class="form-text" v-on:submit.prevent="handleRecipientInfoFormSubmit()">
             <div class="form-group">
-              
               <input class="form-control" type="text" placeholder="id number">
             </div>
             <div class="form-group">
