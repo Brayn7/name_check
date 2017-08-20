@@ -101,7 +101,19 @@ class RecipientsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Recipient $recipient, $id){
-        return $request->all();
+        $recipient = Recipient::find($id);
+        $recipient->type = $request->payload['type'];
+        $recipient->id_number = $request->payload['id_number'];
+        $recipient->address = $request->payload['address'];
+        $recipient->city = $request->payload['city'];
+        $recipient->state_province = $request->payload['state_province'];
+        $recipient->country = $request->payload['country'];
+        $recipient->save();
+        return response()->json(array(
+                'status' => 200,
+                'msg' => 'Recipient info updated!',
+                'style' => 'alert-success',
+                ));
     }
 
     /**

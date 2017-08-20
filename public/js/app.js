@@ -45827,6 +45827,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
       },
 
       infoRecipient: {
+        id: '',
         name: '',
         type: '',
         id_number: '',
@@ -45874,7 +45875,6 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
       }, // end handleformsubmit
 
       handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {
-        console.log('test');
         var that = this,
             user = JSON.parse(window.localStorage.getItem('authUser'));
         var header = {
@@ -45901,7 +45901,16 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
             that.response.style = "";
           }, 2000);
         });
-        this.infoRecipient = {};
+        this.infoRecipient = {
+          id: '',
+          name: '',
+          type: '',
+          id_number: '',
+          address: '',
+          city: '',
+          "state_province": '',
+          country: ''
+        };
       },
 
       handleDelete: function handleDelete() {
@@ -45937,7 +45946,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
           return recip.id === parseInt(e.target.id);
         });
         selected = selected[0];
-
+        this.infoRecipient.id = e.target.id;
         this.infoRecipient.name = selected.name;
         this.infoRecipient.type = selected.type;
         this.infoRecipient.id_number = selected.id_number;

@@ -32,6 +32,7 @@ let Dashboard = Vue.component('dash', {
          },
 
          infoRecipient: {
+          id: '',
           name: '',
           type: '',
           id_number: '',
@@ -82,7 +83,6 @@ let Dashboard = Vue.component('dash', {
          }, // end handleformsubmit
 
          handleRecipientInfoFormSubmit: function(){
-          console.log('test');
             const that = this,
                   user = JSON.parse(window.localStorage.getItem('authUser'));
             const header = {
@@ -112,7 +112,16 @@ let Dashboard = Vue.component('dash', {
                 that.response.style = "";
               }, 2000);
             });
-            this.infoRecipient = {};
+            this.infoRecipient = {
+              id: '',
+              name: '',
+              type: '',
+              id_number: '',
+              address: '',
+              city: '',
+              "state_province": '',
+              country: '',
+            };
          },
 
          handleDelete: function(){
@@ -151,7 +160,7 @@ let Dashboard = Vue.component('dash', {
             return recip.id === parseInt(e.target.id);
           }); 
           selected = selected[0];
-
+          this.infoRecipient.id = e.target.id;
           this.infoRecipient.name = selected.name;
           this.infoRecipient.type = selected.type;
           this.infoRecipient.id_number = selected.id_number;
