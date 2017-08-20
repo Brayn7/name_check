@@ -111,8 +111,13 @@ class RecipientsController extends Controller
      * @param  \App\Recipient  $recipient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipient $recipient)
+    public function destroy(Recipient $recipient, $id)
     {
-        //
+        Recipient::find($id)->delete();
+        return response()->json(array(
+                'status' => 200,
+                'msg' => 'They have been deleted.',
+                'style' => 'alert-info',
+                ));
     }
 }

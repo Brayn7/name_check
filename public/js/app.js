@@ -45869,8 +45869,35 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
          handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {},
 
+         handleDelete: function handleDelete() {
+            var that = this,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
+            axios.delete('/api/recipients/' + that.infoRecipient.id, {
+               headers: header
+            }).then(function (response) {
+               that.response.status = response.status;
+               that.response.msg = response.data.msg;
+               that.response.style = response.data.style;
+               that.getRecipients();
+               setTimeout(function () {
+                  that.response.style = "";
+               }, 2000);
+            }).catch(function (error) {
+               that.response.status = 403;
+               that.response.msg = 'Oops something went wrong. Try again please.';
+               that.response.style = 'alert-warning';
+               setTimeout(function () {
+                  that.response.style = "";
+               }, 2000);
+            });
+         },
+
          populateInfoModal: function populateInfoModal(e) {
-            console.log(e.target.id);
+            this.infoRecipient.id = e.target.id;
          },
 
          getRecipients: function getRecipients() {
@@ -45903,7 +45930,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" data-dismiss=\"modal\">Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 50 */
