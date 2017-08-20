@@ -45649,7 +45649,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         axios.post('oauth/token', {
           grant_type: 'password',
           client_id: '1',
-          client_secret: 'UAJdkXSRq5Fbe3voaEGPrZzIiG0e5hSJAhx21xRk',
+          client_secret: 'zy1fUZQcNMRM409DXZ8RvFUK9GjZCuFqkWttQHBm',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -45796,132 +45796,179 @@ module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"
 
 var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
-   template: __webpack_require__(49),
+  template: __webpack_require__(49),
 
-   created: function created() {
-      this.getRecipients();
-      $('#myModal').on('shown.bs.modal', function () {
-         $('#myInput').focus();
-         console.log('test');
-      });
-   },
+  created: function created() {
+    this.getRecipients();
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus();
+      console.log('test');
+    });
+  },
 
 
-   data: function data() {
-      return {
-         response: {
-            status: "",
-            msg: "",
-            style: ""
-         },
+  data: function data() {
+    return {
+      response: {
+        status: "",
+        msg: "",
+        style: ""
+      },
 
-         user: JSON.parse(window.localStorage.getItem('authUser')),
-         openAddForm: function openAddForm() {
-            console.log('test');
-         },
+      user: JSON.parse(window.localStorage.getItem('authUser')),
+      openAddForm: function openAddForm() {
+        console.log('test');
+      },
 
-         recipientData: [],
+      recipientData: [],
 
-         addRecipient: {
-            name: ""
-         },
+      addRecipient: {
+        name: ""
+      },
 
-         infoRecipient: {
-            name: '',
-            type: '',
-            id_number: '',
-            address: '',
-            city: '',
-            state_province: '',
-            country: ''
-         },
+      infoRecipient: {
+        name: '',
+        type: '',
+        id_number: '',
+        address: '',
+        city: '',
+        "state_province": '',
+        country: ''
+      },
 
-         handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
-            var that = this,
-                user = JSON.parse(window.localStorage.getItem('authUser'));
-            console.log(user.id);
-            var header = {
-               'Accept': 'application/json',
-               'Authorization': 'Bearer ' + user.access_token
-            };
-            axios.post('/api/recipients', {
-               headers: header,
-               _token: user.access_token,
-               id: user.id,
-               name: this.addRecipient.name
-            }).then(function (response) {
-               that.response.status = response.status;
-               that.response.msg = response.data.msg;
-               that.response.style = response.data.style;
-               that.getRecipients();
-               setTimeout(function () {
-                  that.response.style = "";
-               }, 2000);
-            }).catch(function (error) {
-               that.response.status = 403;
-               that.response.msg = 'Oops something went wrong. Try again please.';
-               that.response.style = 'alert-warning';
-               setTimeout(function () {
-                  that.response.style = "";
-               }, 2000);
-            });
-         }, // end handleformsubmit
+      updated: function updated() {
+        console.log('test');
+      },
 
-         handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {},
 
-         handleDelete: function handleDelete() {
-            var that = this,
-                user = JSON.parse(window.localStorage.getItem('authUser'));
-            var header = {
-               'Accept': 'application/json',
-               'Authorization': 'Bearer ' + user.access_token
-            };
-            axios.delete('/api/recipients/' + that.infoRecipient.id, {
-               headers: header
-            }).then(function (response) {
-               that.response.status = response.status;
-               that.response.msg = response.data.msg;
-               that.response.style = response.data.style;
-               that.getRecipients();
-               setTimeout(function () {
-                  that.response.style = "";
-               }, 2000);
-            }).catch(function (error) {
-               that.response.status = 403;
-               that.response.msg = 'Oops something went wrong. Try again please.';
-               that.response.style = 'alert-warning';
-               setTimeout(function () {
-                  that.response.style = "";
-               }, 2000);
-            });
-         },
+      handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
+        var that = this,
+            user = JSON.parse(window.localStorage.getItem('authUser'));
+        console.log(user.id);
+        var header = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + user.access_token
+        };
+        axios.post('/api/recipients', {
+          headers: header,
+          _token: user.access_token,
+          id: user.id,
+          name: this.addRecipient.name
+        }).then(function (response) {
+          that.response.status = response.status;
+          that.response.msg = response.data.msg;
+          that.response.style = response.data.style;
+          that.getRecipients();
+          that.addRecipient.name = "";
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        }).catch(function (error) {
+          that.response.status = 403;
+          that.response.msg = 'Oops something went wrong. Try again please.';
+          that.response.style = 'alert-warning';
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        });
+      }, // end handleformsubmit
 
-         populateInfoModal: function populateInfoModal(e) {
-            this.infoRecipient.id = e.target.id;
-         },
+      handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {
+        console.log('test');
+        var that = this,
+            user = JSON.parse(window.localStorage.getItem('authUser'));
+        var header = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + user.access_token
+        };
+        axios.patch('/api/recipients/' + that.infoRecipient.id, {
+          headers: header,
+          payload: that.infoRecipient
+        }).then(function (response) {
+          console.log(response);
+          that.response.status = response.status;
+          that.response.msg = response.data.msg;
+          that.response.style = response.data.style;
+          that.getRecipients();
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        }).catch(function (error) {
+          that.response.status = 403;
+          that.response.msg = 'Oops something went wrong. Try again please.';
+          that.response.style = 'alert-warning';
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        });
+        this.infoRecipient = {};
+      },
 
-         getRecipients: function getRecipients() {
-            var that = this,
-                user = JSON.parse(window.localStorage.getItem('authUser'));
-            var header = {
-               'Accept': 'application/json',
-               'Authorization': 'Bearer ' + user.access_token
-            };
+      handleDelete: function handleDelete() {
+        var that = this,
+            user = JSON.parse(window.localStorage.getItem('authUser'));
+        var header = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + user.access_token
+        };
+        axios.delete('/api/recipients/' + that.infoRecipient.id, {
+          headers: header
+        }).then(function (response) {
+          that.response.status = response.status;
+          that.response.msg = response.data.msg;
+          that.response.style = response.data.style;
+          that.getRecipients();
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        }).catch(function (error) {
+          that.response.status = 403;
+          that.response.msg = 'Oops something went wrong. Try again please.';
+          that.response.style = 'alert-warning';
+          setTimeout(function () {
+            that.response.style = "";
+          }, 2000);
+        });
+        this.infoRecipient = {};
+      },
 
-            axios.get('api/recipients/' + user.id, {
-               headers: header
-            }).then(function (response) {
-               console.log(response);
-               that.recipientData = [];
-               response.data.forEach(function (person) {
-                  that.recipientData.push(person);
-               });
-            }).catch(function (error) {
-               console.log(error);
-            });
-         }
-      };
-   }
+      populateInfoModal: function populateInfoModal(e) {
+        var selected = this.recipientData.filter(function (recip) {
+          return recip.id === parseInt(e.target.id);
+        });
+        selected = selected[0];
+
+        this.infoRecipient.name = selected.name;
+        this.infoRecipient.type = selected.type;
+        this.infoRecipient.id_number = selected.id_number;
+        this.infoRecipient.address = selected.address;
+        this.infoRecipient.city = selected.city;
+        this.infoRecipient["state_province"] = selected.state_province;
+        this.infoRecipient.country = selected.country;
+      },
+
+      getRecipients: function getRecipients() {
+        var that = this,
+            user = JSON.parse(window.localStorage.getItem('authUser'));
+        var header = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + user.access_token
+        };
+
+        axios.get('api/recipients/' + user.id, {
+          headers: header
+        }).then(function (response) {
+          console.log(response);
+          that.recipientData = [];
+          response.data.forEach(function (person) {
+            that.recipientData.push(person);
+          });
+        }).catch(function (error) {
+          console.log(error);
+        });
+      }
+    };
+  }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Dashboard);
@@ -45930,7 +45977,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" data-dismiss=\"modal\">Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{infoRecipient.name}}</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <select v-model=\"infoRecipient.type\" name=\"type\">\n                <option value=\"entity\">entity</option>\n                <option selected value=\"individual\">individual</option>\n              </select>\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.id_number\" class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.address\" class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.city\" class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.state_province\" class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.country\" class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" >Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 50 */

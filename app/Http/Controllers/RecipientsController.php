@@ -100,9 +100,8 @@ class RecipientsController extends Controller
      * @param  \App\Recipient  $recipient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipient $recipient)
-    {
-        //
+    public function update(Request $request, Recipient $recipient, $id){
+        return $request->all();
     }
 
     /**

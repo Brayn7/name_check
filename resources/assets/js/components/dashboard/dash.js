@@ -32,13 +32,17 @@ let Dashboard = Vue.component('dash', {
          },
 
          infoRecipient: {
-            name: '',
-            type: '',
-            id_number: '',
-            address: '',
-            city: '',
-            state_province: '',
-            country: '',
+          name: '',
+          type: '',
+          id_number: '',
+          address: '',
+          city: '',
+          "state_province": '',
+          country: '',
+         },
+
+         updated(){
+          console.log('test');
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -60,6 +64,7 @@ let Dashboard = Vue.component('dash', {
               that.response.msg = response.data.msg;
               that.response.style = response.data.style;
               that.getRecipients();
+              that.addRecipient.name = "";
               setTimeout(function(){
                 that.response.style = "";
               }, 2000);
@@ -77,7 +82,37 @@ let Dashboard = Vue.component('dash', {
          }, // end handleformsubmit
 
          handleRecipientInfoFormSubmit: function(){
+          console.log('test');
+            const that = this,
+                  user = JSON.parse(window.localStorage.getItem('authUser'));
+            const header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token,
+            };
+            axios.patch('/api/recipients/' + that.infoRecipient.id, {
+               headers: header,
+               payload: that.infoRecipient
+            })
+            .then(function (response) {
+              console.log(response);
+              that.response.status = response.status;
+              that.response.msg = response.data.msg;
+              that.response.style = response.data.style;
+              that.getRecipients();
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
 
+            })
+            .catch(function (error) {
+              that.response.status = 403;
+              that.response.msg = 'Oops something went wrong. Try again please.';
+              that.response.style = 'alert-warning';
+              setTimeout(function(){
+                that.response.style = "";
+              }, 2000);
+            });
+            this.infoRecipient = {};
          },
 
          handleDelete: function(){
@@ -108,10 +143,22 @@ let Dashboard = Vue.component('dash', {
                 that.response.style = "";
               }, 2000);
             });
+            this.infoRecipient = {};
          },
 
          populateInfoModal: function(e){
-          this.infoRecipient.id = e.target.id;
+          let selected = this.recipientData.filter((recip)=>{
+            return recip.id === parseInt(e.target.id);
+          }); 
+          selected = selected[0];
+
+          this.infoRecipient.name = selected.name;
+          this.infoRecipient.type = selected.type;
+          this.infoRecipient.id_number = selected.id_number;
+          this.infoRecipient.address = selected.address;
+          this.infoRecipient.city = selected.city;
+          this.infoRecipient["state_province"] = selected.state_province;
+          this.infoRecipient.country = selected.country;
          },
 
 
