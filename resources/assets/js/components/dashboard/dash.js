@@ -6,10 +6,6 @@ let Dashboard = Vue.component('dash', {
 
     created(){
       this.getRecipients();
-          $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').focus();
-            console.log('test');
-          });
    },
 
    data: function(){
@@ -38,8 +34,12 @@ let Dashboard = Vue.component('dash', {
           id_number: '',
           address: '',
           city: '',
-          "state_province": '',
+          state_province: '',
           country: '',
+         },
+
+         updated(){
+          console.log('updated');
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -66,70 +66,51 @@ let Dashboard = Vue.component('dash', {
          }, // end handleformsubmit
 
          handleRecipientInfoFormSubmit: function(){
-            const that = this;
-            
-            axios.patch('/api/recipients/' + that.infoRecipient.id, {
-               headers: header.info,
-               payload: that.infoRecipient
-            })
-            .then(function (response) {
+            const that = this,
+                id = that.infoRecipient.id,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
 
-              that.response.status = response.status;
-              that.response.msg = response.data.msg;
-              that.response.style = response.data.style;
-              that.getRecipients();
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
-
-            })
-            .catch(function (error) {
-              that.response.status = 403;
-              that.response.msg = 'Oops something went wrong. Try again please.';
-              that.response.style = 'alert-warning';
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
-            });
-            this.infoRecipient = {
-              id: '',
-              name: '',
-              type: '',
-              id_number: '',
-              address: '',
-              city: '',
-              "state_province": '',
-              country: '',
-            };
-         },
-
-         handleDelete: function(){
-          const that = this,
-                  user = JSON.parse(window.localStorage.getItem('authUser'));
             const header = {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token,
             };
-            axios.delete('/api/recipients/' + that.infoRecipient.id, {
+            
+            axios.patch('/api/recipients/' + id, {
+               headers: header,
+               payload: that.infoRecipient
+            })
+            .then(function(response){
+              successMessage(response, that);
+            })
+            .catch(function (response) {
+              errorMessage(response,that);
+            });
+         },
+
+         handleDelete: function(){
+          const that = this,
+                id = that.infoRecipient.id,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
+
+            const header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token,
+            };
+
+            axios.delete('/api/recipients/' + id, {
                headers: header,
             })
-            .then(function (response) {
-              that.response.status = response.status;
-              that.response.msg = response.data.msg;
-              that.response.style = response.data.style;
-              that.getRecipients();
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
+            .then(function(response){
+              let index = that.recipientData.findIndex((a) => {
+               return a.id === id; 
+              });
 
+              Vue.delete(that.recipientData, index);
+
+              successMessage(response, that);
             })
-            .catch(function (reponse) {
-              that.response.status = 403;
-              that.response.msg = 'Oops something went wrong. Try again please.';
-              that.response.style = 'alert-warning';
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
+            .catch(function (response) {
+              errorMessage(response,that);
             });
             this.infoRecipient = {};
          },
@@ -139,7 +120,7 @@ let Dashboard = Vue.component('dash', {
             return recip.id === parseInt(e.target.id);
           }); 
           selected = selected[0];
-          this.infoRecipient.id = e.target.id;
+          this.infoRecipient.id = parseInt(e.target.id);
           this.infoRecipient.name = selected.name;
           this.infoRecipient.type = selected.type;
           this.infoRecipient.id_number = selected.id_number;
@@ -147,6 +128,7 @@ let Dashboard = Vue.component('dash', {
           this.infoRecipient.city = selected.city;
           this.infoRecipient["state_province"] = selected.state_province;
           this.infoRecipient.country = selected.country;
+          console.log(this.infoRecipient.id);
          },
 
 

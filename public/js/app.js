@@ -45830,167 +45830,152 @@ module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"
 
 var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
-  template: __webpack_require__(49),
+   template: __webpack_require__(49),
 
-  created: function created() {
-    this.getRecipients();
-    $('#myModal').on('shown.bs.modal', function () {
-      $('#myInput').focus();
-      console.log('test');
-    });
-  },
+   created: function created() {
+      this.getRecipients();
+   },
 
 
-  data: function data() {
-    return {
-      response: {
-        status: "",
-        msg: "",
-        style: ""
-      },
+   data: function data() {
+      return {
+         response: {
+            status: "",
+            msg: "",
+            style: ""
+         },
 
-      user: JSON.parse(window.localStorage.getItem('authUser')),
-      openAddForm: function openAddForm() {
-        console.log('test');
-      },
+         user: JSON.parse(window.localStorage.getItem('authUser')),
+         openAddForm: function openAddForm() {
+            console.log('test');
+         },
 
-      recipientData: [],
+         recipientData: [],
 
-      addRecipient: {
-        name: ""
-      },
+         addRecipient: {
+            name: ""
+         },
 
-      infoRecipient: {
-        id: '',
-        name: '',
-        type: '',
-        id_number: '',
-        address: '',
-        city: '',
-        "state_province": '',
-        country: ''
-      },
+         infoRecipient: {
+            id: '',
+            name: '',
+            type: '',
+            id_number: '',
+            address: '',
+            city: '',
+            state_province: '',
+            country: ''
+         },
 
-      handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
-        var that = this,
-            user = JSON.parse(window.localStorage.getItem('authUser'));
-        var header = {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + user.access_token
-        };
-        axios.post('/api/recipients', {
-          headers: header,
-          _token: user.access_token,
-          id: user.id,
-          name: this.addRecipient.name
-        }).then(function (response) {
-          that.getRecipients();
-          that.addRecipient.name = "";
-          successMessage(response, that);
-        }).catch(function (response) {
-          errorMessage(response, that);
-        });
-      }, // end handleformsubmit
+         updated: function updated() {
+            console.log('updated');
+         },
 
-      handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {
-        var that = this;
 
-        axios.patch('/api/recipients/' + that.infoRecipient.id, {
-          headers: header.info,
-          payload: that.infoRecipient
-        }).then(function (response) {
+         handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
+            var that = this,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
+            axios.post('/api/recipients', {
+               headers: header,
+               _token: user.access_token,
+               id: user.id,
+               name: this.addRecipient.name
+            }).then(function (response) {
+               that.getRecipients();
+               that.addRecipient.name = "";
+               successMessage(response, that);
+            }).catch(function (response) {
+               errorMessage(response, that);
+            });
+         }, // end handleformsubmit
 
-          that.response.status = response.status;
-          that.response.msg = response.data.msg;
-          that.response.style = response.data.style;
-          that.getRecipients();
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
-        }).catch(function (error) {
-          that.response.status = 403;
-          that.response.msg = 'Oops something went wrong. Try again please.';
-          that.response.style = 'alert-warning';
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
-        });
-        this.infoRecipient = {
-          id: '',
-          name: '',
-          type: '',
-          id_number: '',
-          address: '',
-          city: '',
-          "state_province": '',
-          country: ''
-        };
-      },
+         handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {
+            var that = this,
+                id = that.infoRecipient.id,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
 
-      handleDelete: function handleDelete() {
-        var that = this,
-            user = JSON.parse(window.localStorage.getItem('authUser'));
-        var header = {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + user.access_token
-        };
-        axios.delete('/api/recipients/' + that.infoRecipient.id, {
-          headers: header
-        }).then(function (response) {
-          that.response.status = response.status;
-          that.response.msg = response.data.msg;
-          that.response.style = response.data.style;
-          that.getRecipients();
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
-        }).catch(function (reponse) {
-          that.response.status = 403;
-          that.response.msg = 'Oops something went wrong. Try again please.';
-          that.response.style = 'alert-warning';
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
-        });
-        this.infoRecipient = {};
-      },
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
 
-      populateInfoModal: function populateInfoModal(e) {
-        var selected = this.recipientData.filter(function (recip) {
-          return recip.id === parseInt(e.target.id);
-        });
-        selected = selected[0];
-        this.infoRecipient.id = e.target.id;
-        this.infoRecipient.name = selected.name;
-        this.infoRecipient.type = selected.type;
-        this.infoRecipient.id_number = selected.id_number;
-        this.infoRecipient.address = selected.address;
-        this.infoRecipient.city = selected.city;
-        this.infoRecipient["state_province"] = selected.state_province;
-        this.infoRecipient.country = selected.country;
-      },
+            axios.patch('/api/recipients/' + id, {
+               headers: header,
+               payload: that.infoRecipient
+            }).then(function (response) {
+               successMessage(response, that);
+            }).catch(function (response) {
+               errorMessage(response, that);
+            });
+         },
 
-      getRecipients: function getRecipients() {
-        var that = this,
-            user = JSON.parse(window.localStorage.getItem('authUser'));
-        var header = {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + user.access_token
-        };
+         handleDelete: function handleDelete() {
+            var that = this,
+                id = that.infoRecipient.id,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
 
-        axios.get('api/recipients/' + user.id, {
-          headers: header
-        }).then(function (response) {
-          that.recipientData = [];
-          response.data.forEach(function (person) {
-            that.recipientData.push(person);
-          });
-        }).catch(function (error) {
-          console.log('error from get recipients');
-        });
-      }
-    };
-  }
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
+
+            axios.delete('/api/recipients/' + id, {
+               headers: header
+            }).then(function (response) {
+               var index = that.recipientData.findIndex(function (a) {
+                  return a.id === id;
+               });
+
+               __WEBPACK_IMPORTED_MODULE_0_vue___default.a.delete(that.recipientData, index);
+
+               successMessage(response, that);
+            }).catch(function (response) {
+               errorMessage(response, that);
+            });
+            this.infoRecipient = {};
+         },
+
+         populateInfoModal: function populateInfoModal(e) {
+            var selected = this.recipientData.filter(function (recip) {
+               return recip.id === parseInt(e.target.id);
+            });
+            selected = selected[0];
+            this.infoRecipient.id = parseInt(e.target.id);
+            this.infoRecipient.name = selected.name;
+            this.infoRecipient.type = selected.type;
+            this.infoRecipient.id_number = selected.id_number;
+            this.infoRecipient.address = selected.address;
+            this.infoRecipient.city = selected.city;
+            this.infoRecipient["state_province"] = selected.state_province;
+            this.infoRecipient.country = selected.country;
+            console.log(this.infoRecipient.id);
+         },
+
+         getRecipients: function getRecipients() {
+            var that = this,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
+
+            axios.get('api/recipients/' + user.id, {
+               headers: header
+            }).then(function (response) {
+               that.recipientData = [];
+               response.data.forEach(function (person) {
+                  that.recipientData.push(person);
+               });
+            }).catch(function (error) {
+               console.log('error from get recipients');
+            });
+         }
+      };
+   }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Dashboard);

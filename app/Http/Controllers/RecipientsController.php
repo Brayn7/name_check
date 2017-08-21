@@ -11,7 +11,6 @@ use GuzzleHttp\Client;
 class RecipientsController extends Controller
 {
 
-
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +42,6 @@ class RecipientsController extends Controller
      */
     public function store(Request $request)
     {
-
         $client = new Client(); //GuzzleHttp\Client
         $result = $client->get(url('/') . '/api/user', [
             'headers' => [
@@ -101,6 +99,8 @@ class RecipientsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Recipient $recipient, $id){
+
+        dd($request);
         $recipient = Recipient::find($id);
         $recipient->type = $request->payload['type'];
         $recipient->id_number = $request->payload['id_number'];

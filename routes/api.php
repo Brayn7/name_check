@@ -31,8 +31,10 @@ Route::get('/recipients/{id}', 'RecipientsController@index')->middleware('auth:a
 
 // endpoint for storing recipients names
 Route::post('/recipients', 'RecipientsController@store');
+
 Route::patch('/recipients/{id}', 'RecipientsController@update');
-Route::delete('/recipients/{id}', 'RecipientsController@destroy');
+
+Route::delete('/recipients/{id}', 'RecipientsController@destroy')->middleware('auth:api');
 
 
 
