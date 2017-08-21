@@ -37,6 +37,14 @@ p {
     margin: 0;
 }
 
+.no-height {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  transition: 1s;
+}
+
 #login, #register, #splash {
    position: absolute;
    top: 0;

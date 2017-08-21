@@ -59,6 +59,8 @@ if (token) {
 
 function resetStyle(response, that){
    setTimeout(function(){
+    that.response.status = "";
+    that.response.msg = "";  
     that.response.style = "";
    }, 2000);
 } 
