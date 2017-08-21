@@ -10240,7 +10240,7 @@ p {
 
 #logged-in {
   position: absolute;
-  right: 0px;
+  right: 30px;
   font-weight: 300;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -10258,7 +10258,7 @@ p {
 
 #logged-in a:after {
   content: '|';
-  padding-left: 25px;
+  padding-left: 23px;
 }
 
 #logged-in a:hover:after,
@@ -10292,6 +10292,10 @@ p {
 .other-header {
   background-color: rgba(255, 255, 255, 0.8);
   position: initial;
+}
+
+.other-header #logged-in {
+  margin-right: -30px;
 }
 
 #home-splash-img {

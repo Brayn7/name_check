@@ -52,7 +52,7 @@ p {
 
 #logged-in {
     position: absolute;
-    right: 0px;
+    right: 30px;
     font-weight: 300;
     appearance: none;
     z-index: 5000;
@@ -65,7 +65,7 @@ p {
 
 #logged-in a:after {
   content: '|';
-  padding-left: 25px;
+  padding-left: 23px;
 }
 
 #logged-in a:hover:after, .footer a:hover:after {
@@ -95,8 +95,12 @@ p {
 .other-header {
     background-color: rgba(255, 255, 255, 0.8);
     position: initial;
-
+    #logged-in {
+      margin-right: -30px;
+    }
 }
+
+
 
 #home-splash-img {
    background: url('../img/spyglass_globes-min.png');

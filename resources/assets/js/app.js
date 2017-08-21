@@ -13,7 +13,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 // requires bootstraps js
-require('./bootstrap');
+import bootstrap from './bootstrap';
 
 // load components
 import HeaderVue from './components/common/header.js';
@@ -24,7 +24,6 @@ import Register from './components/register/register.js';
 import Dashboard from './components/dashboard/dash.js';
 import About from './components/about/about.js'
 import Contact from './components/contact/contact.js'
-
 
 
 // initiate a main component

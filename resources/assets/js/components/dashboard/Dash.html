@@ -45,7 +45,7 @@
         <div class="modal-body">
           <form class="form-text" v-on:submit.prevent="handleRecipientInfoFormSubmit()">
             <div class="form-group">
-              <select v-model="infoRecipient.type" name="type">
+              <select class="custom-select" v-model="infoRecipient.type" name="type">
                 <option value="entity">entity</option>
                 <option selected value="individual">individual</option>
               </select>

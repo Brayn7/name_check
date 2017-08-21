@@ -42,14 +42,9 @@ let Dashboard = Vue.component('dash', {
           country: '',
          },
 
-         updated(){
-          console.log('test');
-         },
-
          handleRecipientAddFormSubmit: function(){
             const that = this,
                   user = JSON.parse(window.localStorage.getItem('authUser'));
-                  console.log(user.id);
             const header = {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token,
@@ -60,41 +55,25 @@ let Dashboard = Vue.component('dash', {
                id: user.id,
                name: this.addRecipient.name,
             })
-            .then(function (response) {
-              that.response.status = response.status;
-              that.response.msg = response.data.msg;
-              that.response.style = response.data.style;
+            .then(function(response){
               that.getRecipients();
               that.addRecipient.name = "";
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
-
+              successMessage(response, that);
             })
-            .catch(function (error) {
-              that.response.status = 403;
-              that.response.msg = 'Oops something went wrong. Try again please.';
-              that.response.style = 'alert-warning';
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
+            .catch(function(response){
+              errorMessage(response,that);
             });
-
          }, // end handleformsubmit
 
          handleRecipientInfoFormSubmit: function(){
-            const that = this,
-                  user = JSON.parse(window.localStorage.getItem('authUser'));
-            const header = {
-               'Accept': 'application/json',
-               'Authorization': 'Bearer ' + user.access_token,
-            };
+            const that = this;
+            
             axios.patch('/api/recipients/' + that.infoRecipient.id, {
-               headers: header,
+               headers: header.info,
                payload: that.infoRecipient
             })
             .then(function (response) {
-              console.log(response);
+
               that.response.status = response.status;
               that.response.msg = response.data.msg;
               that.response.style = response.data.style;
@@ -144,7 +123,7 @@ let Dashboard = Vue.component('dash', {
               }, 2000);
 
             })
-            .catch(function (error) {
+            .catch(function (reponse) {
               that.response.status = 403;
               that.response.msg = 'Oops something went wrong. Try again please.';
               that.response.style = 'alert-warning';
@@ -184,7 +163,6 @@ let Dashboard = Vue.component('dash', {
                headers: header,
             })
             .then(function (response) {
-              console.log(response);
               that.recipientData = [];
               response.data.forEach( function(person) {
                  that.recipientData.push(person);
@@ -192,7 +170,7 @@ let Dashboard = Vue.component('dash', {
               
             })
             .catch(function (error) {
-                console.log(error);
+              console.log('error from get recipients');
             });
          }           
       }

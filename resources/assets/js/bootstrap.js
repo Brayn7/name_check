@@ -53,3 +53,39 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+
+// bootstrap axios calls
+
+function resetStyle(response, that){
+   setTimeout(function(){
+    that.response.style = "";
+   }, 2000);
+} 
+
+window.header = {
+   info: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(window.localStorage.getItem('authUser')).access_token,
+         }
+};
+
+
+window.successMessage = function (response, that) {
+   that.response.status = response.status;
+   that.response.msg = response.data.msg;
+   that.response.style = response.data.style;
+   
+   resetStyle(response,that);
+};
+
+window.errorMessage = function (response, that) {
+   that.response.status = 403;
+   that.response.msg = 'Oops something went wrong. Try again please.';
+   that.response.style = 'alert-warning';
+  
+   resetStyle(response,that);
+}
+
+
+

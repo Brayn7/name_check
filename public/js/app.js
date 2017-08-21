@@ -13405,14 +13405,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_common_header_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_footer_js__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_home_js__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_login_login_js__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_about_about_js__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_contact_contact_js__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bootstrap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_header_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_common_footer_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_home_js__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_login_login_js__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_register_register_js__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_dashboard_dash_js__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(52);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -13427,7 +13429,7 @@ window.Vue = __webpack_require__(1);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 
 // requires bootstraps js
-__webpack_require__(33);
+
 
 // load components
 
@@ -13448,28 +13450,28 @@ var MainVue = Vue.component('main-vue', {
 
 var routes = [{
   path: '/',
-  component: __WEBPACK_IMPORTED_MODULE_4__components_home_home_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_5__components_home_home_js__["a" /* default */],
   name: 'home'
 }, {
   path: '/signup',
-  component: __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_7__components_register_register_js__["a" /* default */],
   name: 'signup'
 }, {
   path: '/signin',
-  component: __WEBPACK_IMPORTED_MODULE_5__components_login_login_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_6__components_login_login_js__["a" /* default */],
   name: 'signin'
 }, {
   path: '/dashboard',
-  component: __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_8__components_dashboard_dash_js__["a" /* default */],
   name: 'dashboard',
   meta: { requiresAuth: true }
 }, {
   path: '/about',
-  component: __WEBPACK_IMPORTED_MODULE_8__components_about_about_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__["a" /* default */],
   name: 'about'
 }, {
   path: '/contact',
-  component: __WEBPACK_IMPORTED_MODULE_9__components_contact_contact_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__["a" /* default */],
   name: 'contact'
 }];
 
@@ -14610,6 +14612,38 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+
+// bootstrap axios calls
+
+function resetStyle(response, that) {
+  setTimeout(function () {
+    that.response.style = "";
+  }, 2000);
+}
+
+window.header = {
+  info: {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ' + JSON.parse(window.localStorage.getItem('authUser')).access_token
+  }
+};
+
+window.successMessage = function (response, that) {
+  that.response.status = response.status;
+  that.response.msg = response.data.msg;
+  that.response.style = response.data.style;
+
+  resetStyle(response, that);
+};
+
+window.errorMessage = function (response, that) {
+  that.response.status = 403;
+  that.response.msg = 'Oops something went wrong. Try again please.';
+  that.response.style = 'alert-warning';
+
+  resetStyle(response, that);
+};
 
 /***/ }),
 /* 34 */
@@ -45568,7 +45602,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" class=\"mr-4\">\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
+module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\" class=\"mb-5\">\n  <nav class=\"navbar pt-3\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\">\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
@@ -45837,15 +45871,9 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
         country: ''
       },
 
-      updated: function updated() {
-        console.log('test');
-      },
-
-
       handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
         var that = this,
             user = JSON.parse(window.localStorage.getItem('authUser'));
-        console.log(user.id);
         var header = {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + user.access_token
@@ -45856,36 +45884,22 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
           id: user.id,
           name: this.addRecipient.name
         }).then(function (response) {
-          that.response.status = response.status;
-          that.response.msg = response.data.msg;
-          that.response.style = response.data.style;
           that.getRecipients();
           that.addRecipient.name = "";
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
-        }).catch(function (error) {
-          that.response.status = 403;
-          that.response.msg = 'Oops something went wrong. Try again please.';
-          that.response.style = 'alert-warning';
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
+          successMessage(response, that);
+        }).catch(function (response) {
+          errorMessage(response, that);
         });
       }, // end handleformsubmit
 
       handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {
-        var that = this,
-            user = JSON.parse(window.localStorage.getItem('authUser'));
-        var header = {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + user.access_token
-        };
+        var that = this;
+
         axios.patch('/api/recipients/' + that.infoRecipient.id, {
-          headers: header,
+          headers: header.info,
           payload: that.infoRecipient
         }).then(function (response) {
-          console.log(response);
+
           that.response.status = response.status;
           that.response.msg = response.data.msg;
           that.response.style = response.data.style;
@@ -45930,7 +45944,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
           setTimeout(function () {
             that.response.style = "";
           }, 2000);
-        }).catch(function (error) {
+        }).catch(function (reponse) {
           that.response.status = 403;
           that.response.msg = 'Oops something went wrong. Try again please.';
           that.response.style = 'alert-warning';
@@ -45967,13 +45981,12 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
         axios.get('api/recipients/' + user.id, {
           headers: header
         }).then(function (response) {
-          console.log(response);
           that.recipientData = [];
           response.data.forEach(function (person) {
             that.recipientData.push(person);
           });
         }).catch(function (error) {
-          console.log(error);
+          console.log('error from get recipients');
         });
       }
     };
@@ -45986,7 +45999,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{infoRecipient.name}}</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <select v-model=\"infoRecipient.type\" name=\"type\">\n                <option value=\"entity\">entity</option>\n                <option selected value=\"individual\">individual</option>\n              </select>\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.id_number\" class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.address\" class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.city\" class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.state_province\" class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.country\" class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" >Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{infoRecipient.name}}</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <select class=\"custom-select\" v-model=\"infoRecipient.type\" name=\"type\">\n                <option value=\"entity\">entity</option>\n                <option selected value=\"individual\">individual</option>\n              </select>\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.id_number\" class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.address\" class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.city\" class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.state_province\" class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.country\" class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" >Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 50 */
