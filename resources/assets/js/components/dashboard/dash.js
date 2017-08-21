@@ -17,9 +17,6 @@ let Dashboard = Vue.component('dash', {
         },
 
          user: JSON.parse(window.localStorage.getItem('authUser')),
-         openAddForm: function () {
-            console.log('test');
-         },
 
          recipientData: [],
 
@@ -36,10 +33,6 @@ let Dashboard = Vue.component('dash', {
           city: '',
           state_province: '',
           country: '',
-         },
-
-         updated(){
-          console.log('updated');
          },
 
          handleRecipientAddFormSubmit: function(){
@@ -128,7 +121,6 @@ let Dashboard = Vue.component('dash', {
           this.infoRecipient.city = selected.city;
           this.infoRecipient["state_province"] = selected.state_province;
           this.infoRecipient.country = selected.country;
-          console.log(this.infoRecipient.id);
          },
 
 

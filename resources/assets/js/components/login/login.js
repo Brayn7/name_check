@@ -61,12 +61,7 @@ let Login = Vue.component('login', {
              that.$router.push({name: 'dashboard'});
            })
            .catch(function(error) {
-             that.response.msg = 'Please enter valid credentials.';
-             that.response.style = 'alert-warning';
-
-             setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
+             errorMessage(response, that);
            });
           // end get user data 
 
