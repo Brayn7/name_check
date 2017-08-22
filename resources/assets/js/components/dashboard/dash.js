@@ -10,7 +10,7 @@ let Dashboard = Vue.component('dash', {
 
    data: function(){
       return {
-        response: {
+        messaging: {
           status: "",
           msg: "",
           style: "",
@@ -54,7 +54,7 @@ let Dashboard = Vue.component('dash', {
               successMessage(response, that);
             })
             .catch(function(response){
-              errorMessage(response,that);
+              errorMessage(that);
             });
          }, // end handleformsubmit
 
@@ -76,7 +76,7 @@ let Dashboard = Vue.component('dash', {
               successMessage(response, that);
             })
             .catch(function (response) {
-              errorMessage(response,that);
+              errorMessage(that);
             });
          },
 
@@ -103,7 +103,7 @@ let Dashboard = Vue.component('dash', {
               successMessage(response, that);
             })
             .catch(function (response) {
-              errorMessage(response,that);
+              errorMessage(that);
             });
             this.infoRecipient = {};
          },

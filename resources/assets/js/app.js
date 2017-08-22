@@ -24,7 +24,7 @@ import Register from './components/register/register.js';
 import Dashboard from './components/dashboard/dash.js';
 import About from './components/about/about.js'
 import Contact from './components/contact/contact.js'
-
+import message from './components/message/message.js'
 
 // initiate a main component
 let MainVue = Vue.component('main-vue', {

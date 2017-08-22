@@ -13393,7 +13393,7 @@ module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(54);
+module.exports = __webpack_require__(57);
 
 
 /***/ }),
@@ -13413,8 +13413,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_login_login_js__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_register_register_js__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_dashboard_dash_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_message_message_js__ = __webpack_require__(63);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -13441,9 +13442,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 
 
 
+
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
-  template: __webpack_require__(53)
+  template: __webpack_require__(56)
 });
 
 // ROUTES
@@ -14616,35 +14618,28 @@ if (token) {
 
 // bootstrap axios calls
 
-function resetStyle(response, that) {
+function resetStyle(that) {
   setTimeout(function () {
-    that.response.status = "";
-    that.response.msg = "";
-    that.response.style = "";
+    that.messaging.status = "";
+    that.messaging.msg = "";
+    that.messaging.style = "";
   }, 2000);
 }
 
-window.header = {
-  info: {
-    'Accept': 'application/json',
-    'Authorization': 'Bearer ' + JSON.parse(window.localStorage.getItem('authUser')).access_token
-  }
-};
-
 window.successMessage = function (response, that) {
-  that.response.status = response.status;
-  that.response.msg = response.data.msg;
-  that.response.style = response.data.style;
+  that.messaging.status = response.status;
+  that.messaging.msg = response.data.msg;
+  that.messaging.style = response.data.style;
 
-  resetStyle(response, that);
+  resetStyle(that);
 };
 
-window.errorMessage = function (response, that) {
-  that.response.status = 403;
-  that.response.msg = 'Oops something went wrong. Try again please.';
-  that.response.style = 'alert-warning';
+window.errorMessage = function (that) {
+  that.messaging.status = 403;
+  that.messaging.msg = 'Oops something went wrong. Try again please.';
+  that.messaging.style = 'alert-warning';
 
-  resetStyle(response, that);
+  resetStyle(that);
 };
 
 /***/ }),
@@ -45666,7 +45661,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 
   data: function data() {
     return {
-      response: {
+      messaging: {
         status: "",
         msg: "",
         style: ""
@@ -45709,7 +45704,6 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
           axios.get('api/user', {
             headers: header
           }).then(function (response) {
-            console.log(response);
 
             // grab user info and save in session storage ;)
             that.authUser.id = response.data.id;
@@ -45720,17 +45714,17 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
             window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
             that.$router.push({ name: 'dashboard' });
           }).catch(function (error) {
-            errorMessage(response, that);
+            errorMessage(that);
           });
           // end get user data 
         })
         // on auth/token fail
         .catch(function (error) {
-          that.response.msg = 'Please enter valid credentials.';
-          that.response.style = 'alert-warning';
+          that.messaging.msg = 'Please enter valid credentials.';
+          that.messaging.style = 'alert-warning';
 
           setTimeout(function () {
-            that.response.style = "";
+            that.messaging.style = "";
           }, 2000);
         });
       }
@@ -45744,7 +45738,7 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 /* 45 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n      <p>{{response.msg}}</p>\n    </div>\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
+module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <message :message=\"messaging\"></message>\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
 
 /***/ }),
 /* 46 */
@@ -45762,7 +45756,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
   data: function data() {
     return {
 
-      response: {
+      messaging: {
         status: "",
         msg: "",
         style: ""
@@ -45784,17 +45778,17 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
           password_confirmation: this.register.password_confirmation
         }).then(function (response) {
           if (response.data.errors) {
-            that.response.status = response.status;
-            that.response.msg = response.data.errors[0];
-            that.response.style = 'alert-warning';
+            that.messaging.status = response.status;
+            that.messaging.msg = response.data.errors[0];
+            that.messaging.style = 'alert-warning';
             setTimeout(function () {
-              that.response.style = "";
+              that.messaging.style = "";
             }, 2000);
           } else {
             that.$router.push({ name: 'signin' });
           }
         }).catch(function (response) {
-          errorMessage(response, that);
+          errorMessage(that);
         });
       }
     };
@@ -45808,7 +45802,7 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n  <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n</div>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <message :message=\"messaging\"></message>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
 /* 48 */
@@ -45821,7 +45815,7 @@ module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"
 
 var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
-   template: __webpack_require__(60),
+   template: __webpack_require__(49),
 
    created: function created() {
       this.getRecipients();
@@ -45830,7 +45824,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
    data: function data() {
       return {
-         response: {
+         messaging: {
             status: "",
             msg: "",
             style: ""
@@ -45872,7 +45866,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                that.addRecipient.name = "";
                successMessage(response, that);
             }).catch(function (response) {
-               errorMessage(response, that);
+               errorMessage(that);
             });
          }, // end handleformsubmit
 
@@ -45892,7 +45886,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
             }).then(function (response) {
                successMessage(response, that);
             }).catch(function (response) {
-               errorMessage(response, that);
+               errorMessage(that);
             });
          },
 
@@ -45917,7 +45911,7 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
                successMessage(response, that);
             }).catch(function (response) {
-               errorMessage(response, that);
+               errorMessage(that);
             });
             this.infoRecipient = {};
          },
@@ -45964,6 +45958,12 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
 /***/ }),
 /* 49 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <message :message=\"messaging\"></message>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{infoRecipient.name}}</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <select class=\"custom-select\" v-model=\"infoRecipient.type\" name=\"type\">\n                <option value=\"entity\">entity</option>\n                <option selected value=\"individual\">individual</option>\n              </select>\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.id_number\" class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.address\" class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.city\" class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.state_province\" class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.country\" class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" >Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+
+/***/ }),
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45973,20 +45973,20 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
 var About = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('about', {
 
-   template: __webpack_require__(50)
+   template: __webpack_require__(51)
 
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (About);
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"col-md-8 mx-auto\">\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">Purpose:</h1>\n        <p>NameSpy Provides a quick way for non-profit organizations\nto check and store a list of individuals or organizations that receive international monetary transactions.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">How:</h1>\n        <p>We provide a place to store recipient names in your user profile. Once the recipient is in the database we keep an eye on the SDN (Specially Designated Nationals) list and send you an email if there is someone you should be aware of. <router-link to=\"/signup\">Signup</router-link> here.</p>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col\">\n        <h1 class=\"display-2\">What is the SDN list:</h1>\n        <p>The SDN is a list of individuals and companies that are called \"Specially Designated Nationals\" or \"SDNs.\" The U.S has marked these individuals and companies as blocked/ prohibited for a U.S person to deal with. For more info click <a href=\"https://www.treasury.gov/resource-center/sanctions/SDN-List/Pages/sdn_data.aspx\">here</a>.</p>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45996,40 +45996,67 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-md-8 mx-auto\">\n    <
 
 var Contact = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('contact', {
 
-   template: __webpack_require__(52)
+   template: __webpack_require__(53)
 
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Contact);
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
 
 /***/ }),
-/* 53 */
+/* 54 */,
+/* 55 */,
+/* 56 */
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div> \n<footer-vue></footer-vue>\n</div>";
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 55 */,
-/* 56 */,
-/* 57 */,
 /* 58 */,
 /* 59 */,
-/* 60 */
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var Message = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', {
+
+   template: __webpack_require__(64),
+
+   props: ['message'],
+
+   data: function data() {
+      return {
+         messaging: this.message
+      };
+   }
+
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Message);
+
+/***/ }),
+/* 64 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'no-height']\">\n    <p v-if=\"response.msg !== ''\">{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{infoRecipient.name}}</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <select class=\"custom-select\" v-model=\"infoRecipient.type\" name=\"type\">\n                <option value=\"entity\">entity</option>\n                <option selected value=\"individual\">individual</option>\n              </select>\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.id_number\" class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.address\" class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.city\" class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.state_province\" class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.country\" class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" >Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div class=\"msg alert\" v-bind:class=\"[messaging.style !== '' ? messaging.style : 'no-height']\">\n    <p v-if=\"messaging.msg !== ''\">{{messaging.msg}}</p>\n</div>";
 
 /***/ })
 /******/ ]);

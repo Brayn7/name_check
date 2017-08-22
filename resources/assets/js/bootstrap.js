@@ -57,36 +57,28 @@ if (token) {
 
 // bootstrap axios calls
 
-function resetStyle(response, that){
+function resetStyle(that){
    setTimeout(function(){
-    that.response.status = "";
-    that.response.msg = "";  
-    that.response.style = "";
+    that.messaging.status = "";
+    that.messaging.msg = "";  
+    that.messaging.style = "";
    }, 2000);
 } 
 
-window.header = {
-   info: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + JSON.parse(window.localStorage.getItem('authUser')).access_token,
-         }
-};
-
-
 window.successMessage = function (response, that) {
-   that.response.status = response.status;
-   that.response.msg = response.data.msg;
-   that.response.style = response.data.style;
+   that.messaging.status = response.status;
+   that.messaging.msg = response.data.msg;
+   that.messaging.style = response.data.style;
    
-   resetStyle(response,that);
+   resetStyle(that);
 };
 
-window.errorMessage = function (response, that) {
-   that.response.status = 403;
-   that.response.msg = 'Oops something went wrong. Try again please.';
-   that.response.style = 'alert-warning';
+window.errorMessage = function (that) {
+   that.messaging.status = 403;
+   that.messaging.msg = 'Oops something went wrong. Try again please.';
+   that.messaging.style = 'alert-warning';
   
-   resetStyle(response,that);
+   resetStyle(that);
 }
 
 
