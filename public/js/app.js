@@ -13415,7 +13415,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_dashboard_dash_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_message_message_js__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_message_message_js__ = __webpack_require__(54);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -45679,13 +45679,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         // stretch is to hide the client id and secret in backend and just send off username and pass
         axios.post('oauth/token', {
           grant_type: 'password',
-<<<<<<< HEAD
-          client_id: '2',
-          client_secret: 'fz2UhSA34BHyGY9fivNjFlEFkFVWwmNIcCB7VsaG',
-=======
           client_id: '1',
-          client_secret: 'zy1fUZQcNMRM409DXZ8RvFUK9GjZCuFqkWttQHBm',
->>>>>>> dev
+          client_secret: 'wVXIdXxngvzEGU470peDRtRx1TOeTH2lGKLTLjZz',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -46014,26 +46009,7 @@ var Contact = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('contact', {
 module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</div>";
 
 /***/ }),
-/* 54 */,
-/* 55 */,
-/* 56 */
-/***/ (function(module, exports) {
-
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div> \n<footer-vue></footer-vue>\n</div>";
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46043,7 +46019,7 @@ module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header
 
 var Message = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', {
 
-   template: __webpack_require__(64),
+   template: __webpack_require__(55),
 
    props: ['message'],
 
@@ -46058,10 +46034,22 @@ var Message = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', {
 /* unused harmony default export */ var _unused_webpack_default_export = (Message);
 
 /***/ }),
-/* 64 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"msg alert\" v-bind:class=\"[messaging.style !== '' ? messaging.style : 'no-height']\">\n    <p v-if=\"messaging.msg !== ''\">{{messaging.msg}}</p>\n</div>";
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div> \n<footer-vue></footer-vue>\n</div>";
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
