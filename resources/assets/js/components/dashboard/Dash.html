@@ -1,18 +1,15 @@
 <div>
-  <div class="msg alert" v-bind:class="[response.style !== '' ? response.style : 'd-none']">
-    <p>{{response.msg}}</p>
-  </div>
+  <message :message="messaging"></message>
   <div id="user-card" class="row">
     <div class="col-lg-10 mx-auto">
       <h1 class="display-4">{{user.name}}</h1>
-      <h4 class="d-md-inline-block mr-3">
+      <h4>
       {{user.organization_name}} | {{user.email}}
       </h4>
-      <div class="add-button d-inline-block mt-md-2 mb-md-1">
-        <form class="form-inline" v-on:submit.prevent="handleRecipientAddFormSubmit()">
+      <div class="add-button col-lg-8 p-0 my-3">
+        <form v-on:submit.prevent="handleRecipientAddFormSubmit()">
           <div class="input-group">
-            <input v-model="recipient.first_name" class="form-control" type="text" placeholder="first name">
-            <input v-model="recipient.last_name" class="form-control" type="text" placeholder="last name">
+            <input v-model="addRecipient.name" class="form-control" type="text" placeholder="add a recipient">
             <span class="input-group-btn">
               <button class="btn btn-outline-primary mr-3" type="submit" >add</button>
             </span>
@@ -22,11 +19,56 @@
       <hr>
     </div>
   </div>
+  <!-- recipient list start -->
   <div id="recipientList" class="row">
     <div  class="mx-auto col-lg-10" >
-      <div class="recipient my-3 col-lg-4 col-sm-6 d-inline-block" v-for="rec in recipientData">
+      <div class="recipient my-1" v-for="rec in recipientData"  >
         <div v-bind:class="[!rec.flagged ? 'text-success' : 'text-danger']">
-          <h6 class="d-inline-block col-10" >{{rec.first_name}} {{rec.last_name}}</h6>
+          <h6 :id="rec.id" class="d-inline-block py-3" v-on:click="populateInfoModal($event)" data-toggle="modal" data-target="#myModal" >{{rec.name}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end list -->
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{infoRecipient.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-text" v-on:submit.prevent="handleRecipientInfoFormSubmit()">
+            <div class="form-group">
+              <select class="custom-select" v-model="infoRecipient.type" name="type">
+                <option value="entity">entity</option>
+                <option selected value="individual">individual</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input v-model="infoRecipient.id_number" class="form-control" type="text" placeholder="id number">
+            </div>
+            <div class="form-group">
+              <input v-model="infoRecipient.address" class="form-control" type="text" placeholder="address">
+            </div>
+            <div class="form-group">
+              <input v-model="infoRecipient.city" class="form-control" type="text" placeholder="city">
+            </div>
+            <div class="form-group">
+              <input v-model="infoRecipient.state_province" class="form-control" type="text" placeholder="state/province">
+            </div>
+            <div class="form-group">
+              <input v-model="infoRecipient.country" class="form-control" type="text" placeholder="country">
+            </div>
+            
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" >Save changes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="handleDelete()">Delete</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

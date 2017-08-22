@@ -15,12 +15,17 @@ class CreateRecipientsTable extends Migration
     {
         Schema::create('recipients', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('flagged')->default(false);
+            $table->boolean('flagged')->default(false);   
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->json('aliases')->nullable();    
+            $table->string('name'); 
+            $table->string('type')->nullable();   
+            $table->string('id_number')->nullable(); 
+            $table->string('address')->nullable();   
+            $table->string('city')->nullable();   
+            $table->string('state_province')->nullable();    
+            $table->string('country')->nullable();   
+
             $table->timestamps();
         });
     }

@@ -6,6 +6,11 @@ let Login = Vue.component('login', {
 
    data: function(){
       return {
+      messaging: {
+            status: "",
+            msg: "",
+            style: "",
+      },  
       login:{
          username:'',
          password:'',
@@ -44,7 +49,6 @@ let Login = Vue.component('login', {
            axios.get('api/user', {
              headers: header,
            }).then(function(response){
-             console.log(response);
 
              // grab user info and save in session storage ;)
              that.authUser.id = response.data.id;
@@ -54,13 +58,21 @@ let Login = Vue.component('login', {
 
              window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
              that.$router.push({name: 'dashboard'});
+           })
+           .catch(function(error) {
+             errorMessage(that);
            });
           // end get user data 
 
          })
          // on auth/token fail
          .catch(function (error) {
-             console.log(error);
+             that.messaging.msg = 'Please enter valid credentials.';
+             that.messaging.style = 'alert-warning';
+
+             setTimeout(function(){
+                that.messaging.style = "";
+              }, 2000);
          }); 
       }
     }

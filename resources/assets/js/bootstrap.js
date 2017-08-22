@@ -53,3 +53,33 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+
+// bootstrap axios calls
+
+function resetStyle(that){
+   setTimeout(function(){
+    that.messaging.status = "";
+    that.messaging.msg = "";  
+    that.messaging.style = "";
+   }, 2000);
+} 
+
+window.successMessage = function (response, that) {
+   that.messaging.status = response.status;
+   that.messaging.msg = response.data.msg;
+   that.messaging.style = response.data.style;
+   
+   resetStyle(that);
+};
+
+window.errorMessage = function (that) {
+   that.messaging.status = 403;
+   that.messaging.msg = 'Oops something went wrong. Try again please.';
+   that.messaging.style = 'alert-warning';
+  
+   resetStyle(that);
+}
+
+
+

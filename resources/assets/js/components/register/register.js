@@ -7,7 +7,7 @@ let Register = Vue.component('register', {
    data: function(){
       return {
 
-          response: {
+          messaging: {
             status: "",
             msg: "",
             style: "",
@@ -30,11 +30,11 @@ let Register = Vue.component('register', {
             })
             .then(function (response) {
               if (response.data.errors){
-                  that.response.status = response.status;
-                  that.response.msg = response.data.errors[0];
-                  that.response.style = 'alert-warning';
+                  that.messaging.status = response.status;
+                  that.messaging.msg = response.data.errors[0];
+                  that.messaging.style = 'alert-warning';
                   setTimeout(function(){
-                    that.response.style ="";
+                    that.messaging.style ="";
                   }, 2000);
                 } else {
                   that.$router.push({name: 'signin'});
@@ -43,13 +43,7 @@ let Register = Vue.component('register', {
               
             })
             .catch(function(response) {
-              console.log(response);
-                that.response.status = 403;
-                that.response.msg = 'Oops something went wrong.';
-                that.response.style = 'alert-warning';
-              setTimeout(function(){
-                that.response.style = "";
-              }, 2000);
+              errorMessage(that);
             });
          },
       };

@@ -11,7 +11,6 @@ use GuzzleHttp\Client;
 class RecipientsController extends Controller
 {
 
-
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +18,9 @@ class RecipientsController extends Controller
      */
     public function index(Request $request ,$id){
         \Artisan::call('compare:lists');
-        $test = Recipient::where('user_id', '=', $id)->get();
+        $recipients = Recipient::where('user_id', '=', $id)->get();
 
-        return response()->json($test);
+        return response()->json($recipients);
 
     }
 
@@ -43,7 +42,6 @@ class RecipientsController extends Controller
      */
     public function store(Request $request)
     {
-
         $client = new Client(); //GuzzleHttp\Client
         $result = $client->get(url('/') . '/api/user', [
             'headers' => [
@@ -55,8 +53,7 @@ class RecipientsController extends Controller
         if ($result->getStatusCode() === 200){
             $recipient = new Recipient;
             $recipient->user_id = $request->id;
-            $recipient->first_name = $request->first_name;
-            $recipient->last_name =$request->last_name;
+            $recipient->name = $request->name;
             $recipient->save();
             return response()->json(array(
                 'status' => 200,
@@ -101,9 +98,22 @@ class RecipientsController extends Controller
      * @param  \App\Recipient  $recipient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipient $recipient)
-    {
-        //
+    public function update(Request $request, Recipient $recipient, $id){
+
+        dd($request);
+        $recipient = Recipient::find($id);
+        $recipient->type = $request->payload['type'];
+        $recipient->id_number = $request->payload['id_number'];
+        $recipient->address = $request->payload['address'];
+        $recipient->city = $request->payload['city'];
+        $recipient->state_province = $request->payload['state_province'];
+        $recipient->country = $request->payload['country'];
+        $recipient->save();
+        return response()->json(array(
+                'status' => 200,
+                'msg' => 'Recipient info updated!',
+                'style' => 'alert-success',
+                ));
     }
 
     /**
@@ -112,8 +122,13 @@ class RecipientsController extends Controller
      * @param  \App\Recipient  $recipient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipient $recipient)
+    public function destroy(Recipient $recipient, $id)
     {
-        //
+        Recipient::find($id)->delete();
+        return response()->json(array(
+                'status' => 200,
+                'msg' => 'They have been deleted.',
+                'style' => 'alert-info',
+                ));
     }
 }
