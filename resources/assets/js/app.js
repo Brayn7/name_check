@@ -30,6 +30,17 @@ import message from './components/message/message.js'
 // initiate a main component
 let MainVue = Vue.component('main-vue', {
    template: require('./Main.html'),
+
+   data: function () {
+     return {
+
+      nav: false,
+
+      toggleNav: function () {
+        this.nav = !this.nav;
+      },
+     }
+   }
 });
 
 // ROUTES

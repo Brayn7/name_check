@@ -10219,6 +10219,11 @@ form a {
   font-weight: 300 !important;
 }
 
+button {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 p {
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
@@ -10365,7 +10370,10 @@ p {
 
 #main-body {
   position: relative;
+  left: 0;
   z-index: 5000;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .footer {
@@ -10397,13 +10405,21 @@ p {
 
 /* testing side nav */
 
+.fa-bars {
+  font-size: 1.5em;
+}
+
 .toggled-nav {
   left: 0px !important;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .pushed-main {
   position: relative;
-  left: 220px;
+  left: 220px !important;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 #side-nav {
@@ -10414,6 +10430,8 @@ p {
   background: white;
   z-index: 9999;
   border-right: 1px solid #d9d9d9;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 #side-nav ul {
@@ -10450,12 +10468,12 @@ p {
 }
 
 #side-nav .small-spy-glass {
-  margin: 5px 15px;
+  margin: 9px 15px;
   display: inline-block;
 }
 
 #side-nav .small-spy-glass img {
-  width: 15px;
+  width: 20px;
   cursor: pointer;
 }
 

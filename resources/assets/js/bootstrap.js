@@ -54,7 +54,6 @@ if (token) {
 //     key: 'your-pusher-key'
 // });
 
-
 // bootstrap axios calls
 
 function resetStyle(that){

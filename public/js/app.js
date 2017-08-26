@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var isBuffer = __webpack_require__(15);
 
 /*global toString:true*/
@@ -10466,7 +10466,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 2 */
@@ -10492,10 +10492,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(6);
+    adapter = __webpack_require__(7);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(6);
+    adapter = __webpack_require__(7);
   }
   return adapter;
 }
@@ -10572,6 +10572,12 @@ module.exports = defaults;
 /* 3 */
 /***/ (function(module, exports) {
 
+module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
 var g;
 
 // This works in non-strict mode
@@ -10596,13 +10602,13 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(14);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10620,7 +10626,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10631,7 +10637,7 @@ var settle = __webpack_require__(19);
 var buildURL = __webpack_require__(21);
 var parseHeaders = __webpack_require__(22);
 var isURLSameOrigin = __webpack_require__(23);
-var createError = __webpack_require__(7);
+var createError = __webpack_require__(8);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(24);
 
 module.exports = function xhrAdapter(config) {
@@ -10807,7 +10813,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10832,7 +10838,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10844,7 +10850,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10870,7 +10876,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13383,12 +13389,6 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
-
-/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13402,9 +13402,9 @@ module.exports = __webpack_require__(59);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bootstrap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_header_js__ = __webpack_require__(38);
@@ -13447,7 +13447,18 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
-  template: __webpack_require__(58)
+  template: __webpack_require__(58),
+
+  data: function data() {
+    return {
+
+      nav: false,
+
+      toggleNav: function toggleNav() {
+        this.nav = !this.nav;
+      }
+    };
+  }
 });
 
 // ROUTES
@@ -13507,7 +13518,7 @@ new Vue({
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var Axios = __webpack_require__(16);
 var defaults = __webpack_require__(2);
 
@@ -13542,9 +13553,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(9);
+axios.Cancel = __webpack_require__(10);
 axios.CancelToken = __webpack_require__(31);
-axios.isCancel = __webpack_require__(8);
+axios.isCancel = __webpack_require__(9);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -13894,7 +13905,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(7);
+var createError = __webpack_require__(8);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -14313,7 +14324,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(28);
-var isCancel = __webpack_require__(8);
+var isCancel = __webpack_require__(9);
 var defaults = __webpack_require__(2);
 
 /**
@@ -14466,7 +14477,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(9);
+var Cancel = __webpack_require__(10);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -14574,7 +14585,7 @@ try {
   window.$ = window.jQuery = __webpack_require__(36);
 
   __webpack_require__(37);
-  __webpack_require__(10);
+  __webpack_require__(11);
   Vue.use(VueRouter);
 } catch (e) {}
 
@@ -14584,7 +14595,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(4);
+window.axios = __webpack_require__(5);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14616,7 +14627,6 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
-
 
 // bootstrap axios calls
 
@@ -31734,7 +31744,7 @@ window.errorMessage = function (that) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(35)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35)(module)))
 
 /***/ }),
 /* 35 */
@@ -45601,7 +45611,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\" class=\"mb-5\">\n  <nav class=\"navbar pt-3\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\">\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
+module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\" class=\"mb-5\">\n  <nav class=\"navbar pt-3\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\">\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
@@ -45614,7 +45624,11 @@ module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.p
 
 var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
 
-   template: __webpack_require__(41)
+   template: __webpack_require__(41),
+
+   data: function data() {
+      return {};
+   }
 
 });
 
@@ -45624,7 +45638,7 @@ var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li><a href=\"\">logout</a></li>\n  </ul>\n</div>";
+module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li v-if=\"loggedin\"><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li v-if=\"!loggedin\"><router-link to=\"/signin\">signin</router-link></li>\n    <li v-if=\"!loggedin\"><router-link to=\"/signup\">signup</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li v-if=\"loggedin\"><a href=\"\">logout</a></li>\n  </ul>\n</div>";
 
 /***/ }),
 /* 42 */
@@ -45669,7 +45683,7 @@ var Home = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('home', {
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit organizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit organizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
 
 /***/ }),
 /* 46 */
@@ -45705,7 +45719,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         axios.post('oauth/token', {
           grant_type: 'password',
           client_id: '1',
-          client_secret: 'wVXIdXxngvzEGU470peDRtRx1TOeTH2lGKLTLjZz',
+          client_secret: 'zy1fUZQcNMRM409DXZ8RvFUK9GjZCuFqkWttQHBm',
+          // client_secret:'wVXIdXxngvzEGU470peDRtRx1TOeTH2lGKLTLjZz',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -46068,7 +46083,7 @@ module.exports = "<div class=\"msg alert\" v-bind:class=\"[messaging.style !== '
 /* 58 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<sidenav class=\"toggled-nav\" ></sidenav>\n<div id=\"main-body\" class=\"pushed-main\">\n  <button class=\"mt-2 btn btn-sm btn-outline-primary border-0\"> \n    <i class=\"fa fa-bars fa-fw\" aria-hidden=\"true\"></i>\n  </button>\n  <transition name=\"fade\">\n    <router-view class=\"mt-5\"></router-view>\n  </transition>\n</div> \n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<sidenav v-bind:class=\"[nav ? 'toggled-nav' : 'nav']\" ></sidenav>\n<div id=\"main-body\" v-bind:class=\"[nav ? 'pushed-main' : '']\">\n  <button v-on:click=\"toggleNav()\" class=\"mt-2 btn btn-sm btn-outline-primary border-0\"> \n    <i class=\"fa fa-bars\" aria-hidden=\"true\"></i>\n  </button>\n  <transition name=\"fade\">\n    <router-view v-bind:class=\"$route.path == '/' ? '' : 'mt-5'\"></router-view>\n  </transition>\n</div> \n</div>";
 
 /***/ }),
 /* 59 */

@@ -31,6 +31,10 @@ form a {
    font-weight: 300 !important;
 }
 
+button {
+  box-shadow: none !important;
+}
+
 p {
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
@@ -165,7 +169,9 @@ p {
 
 #main-body {
     position: relative;
+    left: 0;
     z-index: 5000;
+    transition: 1s;
 }
 
 .footer {
@@ -195,13 +201,19 @@ p {
 }
 
  /* testing side nav */
+.fa-bars {
+    font-size: 1.5em;
+}
+
 .toggled-nav {
     left: 0px !important;
+    transition: 1s;
 }
 
 .pushed-main {
     position: relative;
-    left: 220px; 
+    left: 220px !important; 
+    transition: 1s;
 }
 
 #side-nav {
@@ -212,9 +224,7 @@ p {
     background: white;
     z-index: 9999;
     border-right: 1px solid #d9d9d9;
-   
- 
-
+    transition: 1s;
   ul {
     list-style: none;
     padding: 0;
@@ -241,12 +251,12 @@ p {
   }
 
   .small-spy-glass {
-    margin: 5px 15px;
+    margin: 9px 15px;
     display: inline-block;
   }
 
   .small-spy-glass img {
-      width: 15px;
+      width: 20px;
       cursor: pointer;
    }
    .small-spy-glass:hover {

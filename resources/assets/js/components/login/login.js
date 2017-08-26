@@ -25,7 +25,8 @@ let Login = Vue.component('login', {
          axios.post('oauth/token', {
            grant_type: 'password',
            client_id: '1',
-           client_secret:'wVXIdXxngvzEGU470peDRtRx1TOeTH2lGKLTLjZz',
+           client_secret:'zy1fUZQcNMRM409DXZ8RvFUK9GjZCuFqkWttQHBm',
+           // client_secret:'wVXIdXxngvzEGU470peDRtRx1TOeTH2lGKLTLjZz',
            username: this.login.username,
            password: this.login.password,
            scope: ''
