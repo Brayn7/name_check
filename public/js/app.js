@@ -13409,6 +13409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bootstrap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_header_js__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_common_footer_js__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_home_js__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_login_login_js__ = __webpack_require__(46);
@@ -13449,9 +13450,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
 var MainVue = Vue.component('main-vue', {
   template: __webpack_require__(58),
 
+  updated: function updated() {
+    this.loggedin = window.localStorage.getItem('authUser') ? true : false;
+  },
+
+
   data: function data() {
     return {
-
+      loggedin: window.localStorage.getItem('authUser') ? true : false,
       nav: false,
 
       toggleNav: function toggleNav() {
@@ -45626,6 +45632,8 @@ var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
 
    template: __webpack_require__(41),
 
+   props: ['isloggedin'],
+
    data: function data() {
       return {};
    }
@@ -45638,7 +45646,7 @@ var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li v-if=\"loggedin\"><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li v-if=\"!loggedin\"><router-link to=\"/signin\">signin</router-link></li>\n    <li v-if=\"!loggedin\"><router-link to=\"/signup\">signup</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li v-if=\"loggedin\"><a href=\"\">logout</a></li>\n  </ul>\n</div>";
+module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li v-if=\"isloggedin\"><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signin\">signin</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signup\">signup</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li v-if=\"isloggedin\"><a href=\"\">logout</a></li>\n  </ul>\n</div>";
 
 /***/ }),
 /* 42 */
@@ -46083,7 +46091,7 @@ module.exports = "<div class=\"msg alert\" v-bind:class=\"[messaging.style !== '
 /* 58 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<sidenav v-bind:class=\"[nav ? 'toggled-nav' : 'nav']\" ></sidenav>\n<div id=\"main-body\" v-bind:class=\"[nav ? 'pushed-main' : '']\">\n  <button v-on:click=\"toggleNav()\" class=\"mt-2 btn btn-sm btn-outline-primary border-0\"> \n    <i class=\"fa fa-bars\" aria-hidden=\"true\"></i>\n  </button>\n  <transition name=\"fade\">\n    <router-view v-bind:class=\"$route.path == '/' ? '' : 'mt-5'\"></router-view>\n  </transition>\n</div> \n</div>";
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<sidenav :isloggedin=\"loggedin\" v-bind:class=\"[nav ? 'toggled-nav' : 'nav']\" ></sidenav>\n<div id=\"main-body\" v-bind:class=\"[nav ? 'pushed-main' : '']\">\n  <button v-on:click=\"toggleNav()\" class=\"mt-2 btn btn-sm btn-outline-primary border-0\"> \n    <i class=\"fa fa-bars\" aria-hidden=\"true\"></i>\n  </button>\n  <transition name=\"fade\">\n    <router-view v-bind:class=\"$route.path == '/' ? '' : 'mt-5'\"></router-view>\n  </transition>\n</div> \n</div>";
 
 /***/ }),
 /* 59 */

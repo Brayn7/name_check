@@ -4,6 +4,8 @@ let SideNav = Vue.component('sidenav', {
 
    template: require('./SideNav.html'),
    
+   props: ['isloggedin'],
+
    data: function () {
       return {
     

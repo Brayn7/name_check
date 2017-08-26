@@ -31,9 +31,13 @@ import message from './components/message/message.js'
 let MainVue = Vue.component('main-vue', {
    template: require('./Main.html'),
 
+   updated(){
+    this.loggedin = (window.localStorage.getItem('authUser')) ? true : false;
+   },
+
    data: function () {
      return {
-
+      loggedin: (window.localStorage.getItem('authUser')) ? true : false,
       nav: false,
 
       toggleNav: function () {

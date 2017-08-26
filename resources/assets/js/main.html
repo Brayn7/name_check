@@ -1,6 +1,6 @@
 <div id="main-content" class="container-fluid">
 
-<sidenav v-bind:class="[nav ? 'toggled-nav' : 'nav']" ></sidenav>
+<sidenav :isloggedin="loggedin" v-bind:class="[nav ? 'toggled-nav' : 'nav']" ></sidenav>
 <div id="main-body" v-bind:class="[nav ? 'pushed-main' : '']">
   <button v-on:click="toggleNav()" class="mt-2 btn btn-sm btn-outline-primary border-0"> 
     <i class="fa fa-bars" aria-hidden="true"></i>
