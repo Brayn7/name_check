@@ -10201,6 +10201,14 @@ a.text-gray-dark:hover {
   }
 }
 
+html,
+body,
+#app,
+#main-content {
+  height: 100%;
+  overflow: hidden;
+}
+
 button,
 input,
 optgroup,
@@ -10386,6 +10394,76 @@ p {
   z-index: 9999;
   bottom: 0;
 }
+
+/* testing side nav */
+
+.toggled-nav {
+  left: 0px !important;
+}
+
+.pushed-main {
+  position: relative;
+  left: 220px;
+}
+
+#side-nav {
+  width: 220px;
+  height: 100%;
+  position: fixed;
+  left: -220px;
+  background: white;
+  z-index: 9999;
+  border-right: 1px solid #d9d9d9;
+}
+
+#side-nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: -webkit-center;
+  margin-top: 25px;
+}
+
+#side-nav ul li {
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#side-nav ul li a {
+  color: #464a4c;
+  padding: 1em;
+  display: block;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#side-nav ul li a:hover {
+  text-decoration: none;
+  color: white;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#side-nav ul li:hover {
+  background: #0275d8;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#side-nav .small-spy-glass {
+  margin: 5px 15px;
+  display: inline-block;
+}
+
+#side-nav .small-spy-glass img {
+  width: 15px;
+  cursor: pointer;
+}
+
+#side-nav .small-spy-glass:hover {
+  opacity: .5;
+}
+
+/* end testing side nav */
 
 .fade-enter-active,
 .fade-leave-active {

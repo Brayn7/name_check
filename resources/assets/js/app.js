@@ -17,6 +17,7 @@ import bootstrap from './bootstrap';
 
 // load components
 import HeaderVue from './components/common/header.js';
+import SideNav from './components/sidenav/sideNav.js'
 import Footer from './components/common/footer.js';
 import Home from './components/home/home.js'
 import Login from './components/login/login.js';
