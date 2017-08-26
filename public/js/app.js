@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var isBuffer = __webpack_require__(15);
 
 /*global toString:true*/
@@ -10466,7 +10466,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 2 */
@@ -10492,10 +10492,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(6);
+    adapter = __webpack_require__(7);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(6);
+    adapter = __webpack_require__(7);
   }
   return adapter;
 }
@@ -10572,6 +10572,12 @@ module.exports = defaults;
 /* 3 */
 /***/ (function(module, exports) {
 
+module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
 var g;
 
 // This works in non-strict mode
@@ -10596,13 +10602,13 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(14);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10620,7 +10626,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10631,7 +10637,7 @@ var settle = __webpack_require__(19);
 var buildURL = __webpack_require__(21);
 var parseHeaders = __webpack_require__(22);
 var isURLSameOrigin = __webpack_require__(23);
-var createError = __webpack_require__(7);
+var createError = __webpack_require__(8);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(24);
 
 module.exports = function xhrAdapter(config) {
@@ -10807,7 +10813,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10832,7 +10838,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10844,7 +10850,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10870,7 +10876,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13383,17 +13389,11 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = "/fonts/spyglass.svg?0f3a74f8767c60d6707b28116613d838";
-
-/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(57);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
@@ -13402,18 +13402,21 @@ module.exports = __webpack_require__(57);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_common_header_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_footer_js__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_home_js__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_login_login_js__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_recipients_recipients_js__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bootstrap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_header_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_common_footer_js__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_home_js__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_login_login_js__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_register_register_js__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_dashboard_dash_js__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_about_about_js__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_contact_contact_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_message_message_js__ = __webpack_require__(56);
 // https://www.youtube.com/watch?v=rarBXfEXouc&t=461s thanks to this dude.
 
 // import vue
@@ -13425,10 +13428,10 @@ window.Vue = __webpack_require__(1);
 
 // import router
 
-
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]);
+
 // requires bootstraps js
-__webpack_require__(33);
+
 
 // load components
 
@@ -13441,42 +13444,54 @@ __webpack_require__(33);
 
 
 
+
 // initiate a main component
 var MainVue = Vue.component('main-vue', {
-  template: __webpack_require__(56)
+  template: __webpack_require__(58),
+
+  updated: function updated() {
+    this.loggedin = window.localStorage.getItem('authUser') ? true : false;
+  },
+
+
+  data: function data() {
+    return {
+      loggedin: window.localStorage.getItem('authUser') ? true : false,
+      nav: false,
+
+      toggleNav: function toggleNav() {
+        this.nav = !this.nav;
+      }
+    };
+  }
 });
+
+// ROUTES
 
 var routes = [{
   path: '/',
-  component: __WEBPACK_IMPORTED_MODULE_4__components_home_home_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_6__components_home_home_js__["a" /* default */],
   name: 'home'
 }, {
   path: '/signup',
-  component: __WEBPACK_IMPORTED_MODULE_6__components_register_register_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_8__components_register_register_js__["a" /* default */],
   name: 'signup'
 }, {
   path: '/signin',
-  component: __WEBPACK_IMPORTED_MODULE_5__components_login_login_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_7__components_login_login_js__["a" /* default */],
   name: 'signin'
 }, {
   path: '/dashboard',
-  component: __WEBPACK_IMPORTED_MODULE_7__components_dashboard_dash_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_9__components_dashboard_dash_js__["a" /* default */],
   name: 'dashboard',
   meta: { requiresAuth: true }
 }, {
-  path: '/recipients',
-  component: __WEBPACK_IMPORTED_MODULE_8__components_recipients_recipients_js__["a" /* default */],
-  name: 'recipients',
-  meta: {
-    requiresAuth: true,
-    requiresRecipientList: true }
-}, {
   path: '/about',
-  component: __WEBPACK_IMPORTED_MODULE_9__components_about_about_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_10__components_about_about_js__["a" /* default */],
   name: 'about'
 }, {
   path: '/contact',
-  component: __WEBPACK_IMPORTED_MODULE_10__components_contact_contact_js__["a" /* default */],
+  component: __WEBPACK_IMPORTED_MODULE_11__components_contact_contact_js__["a" /* default */],
   name: 'contact'
 }];
 
@@ -13508,7 +13523,7 @@ new Vue({
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var Axios = __webpack_require__(16);
 var defaults = __webpack_require__(2);
 
@@ -13543,9 +13558,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(9);
+axios.Cancel = __webpack_require__(10);
 axios.CancelToken = __webpack_require__(31);
-axios.isCancel = __webpack_require__(8);
+axios.isCancel = __webpack_require__(9);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -13895,7 +13910,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(7);
+var createError = __webpack_require__(8);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -14314,7 +14329,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(28);
-var isCancel = __webpack_require__(8);
+var isCancel = __webpack_require__(9);
 var defaults = __webpack_require__(2);
 
 /**
@@ -14467,7 +14482,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(9);
+var Cancel = __webpack_require__(10);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -14575,7 +14590,7 @@ try {
   window.$ = window.jQuery = __webpack_require__(36);
 
   __webpack_require__(37);
-  __webpack_require__(10);
+  __webpack_require__(11);
   Vue.use(VueRouter);
 } catch (e) {}
 
@@ -14585,7 +14600,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(4);
+window.axios = __webpack_require__(5);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14617,6 +14632,32 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+// bootstrap axios calls
+
+function resetStyle(that) {
+  setTimeout(function () {
+    that.messaging.status = "";
+    that.messaging.msg = "";
+    that.messaging.style = "";
+  }, 2000);
+}
+
+window.successMessage = function (response, that) {
+  that.messaging.status = response.status;
+  that.messaging.msg = response.data.msg;
+  that.messaging.style = response.data.style;
+
+  resetStyle(that);
+};
+
+window.errorMessage = function (that) {
+  that.messaging.status = 403;
+  that.messaging.msg = 'Oops something went wrong. Try again please.';
+  that.messaging.style = 'alert-warning';
+
+  resetStyle(that);
+};
 
 /***/ }),
 /* 34 */
@@ -31708,7 +31749,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(35)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35)(module)))
 
 /***/ }),
 /* 35 */
@@ -45575,7 +45616,7 @@ var Header = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('header-vue',
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\">\n  <nav class=\"navbar\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\" >\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
+module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.path === '/signin' || 'about' || 'contact')\" v-bind:class=\"$route.path == '/' ? 'home-header' : 'other-header'\" class=\"mb-5\">\n  <nav class=\"navbar pt-3\">\n      <div class=\"navbar-nav\">\n        <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n        </router-link>\n        <div v-if=\"loggedin\" id=\"logged-in\">\n        <router-link to=\"dashboard\">dashboard</router-link>\n        <button  id=\"logout\" class=\"btn btn-outline-primary border-0\" v-on:click=\"handleLogout()\">logout</button>\n        </div>\n        \n      </div>\n  </nav>\n</div>";
 
 /***/ }),
 /* 40 */
@@ -45585,19 +45626,33 @@ module.exports = "<div v-if=\"loggedin || ($route.path === '/signup' || $route.p
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
-var Footer = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('footer-vue', {
 
-   template: __webpack_require__(41)
+var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
+
+   template: __webpack_require__(41),
+
+   props: ['isloggedin'],
+
+   data: function data() {
+      return {
+         handleLogout: function handleLogout() {
+            // removes authUser (token and user info) from local storage
+            window.localStorage.removeItem('authUser');
+            // redirect to home page
+            this.$router.push({ name: '/' });
+         }
+      };
+   }
 
 });
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Footer);
+/* unused harmony default export */ var _unused_webpack_default_export = (SideNav);
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"footer row\" v-bind:class=\"$route.path == '/' ? 'home-footer' : 'other-footer'\">\n      <div class=\"col\">\n        <router-link to=\"about\" class=\"text-primary\">about</router-link>\n        <router-link to=\"contact\" class=\"text-primary\">contact</router-link>\n      </div>\n</div>";
+module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li v-if=\"isloggedin\"><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signin\">signin</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signup\">signup</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li v-if=\"isloggedin\" v-on:click=\"handleLogout()\"><a href=\"\">logout</a></li>\n  </ul>\n</div>";
 
 /***/ }),
 /* 42 */
@@ -45607,20 +45662,19 @@ module.exports = "<div class=\"footer row\" v-bind:class=\"$route.path == '/' ? 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
-
-var Home = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('home', {
+var Footer = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('footer-vue', {
 
    template: __webpack_require__(43)
 
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (Home);
+/* unused harmony default export */ var _unused_webpack_default_export = (Footer);
 
 /***/ }),
 /* 43 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(11) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit organizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-lg-6 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+module.exports = "<div class=\"footer row\" v-bind:class=\"($route.path === '/' || $route.path === '/signin' || $route.path === '/signup') ? 'home-footer' : 'other-footer'\">\n      <div class=\"col\">\n        <router-link to=\"about\" class=\"text-primary\">about</router-link>\n        <router-link to=\"contact\" class=\"text-primary\">contact</router-link>\n      </div>\n</div>";
 
 /***/ }),
 /* 44 */
@@ -45631,13 +45685,36 @@ module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
+var Home = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('home', {
+
+   template: __webpack_require__(45)
+
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Home);
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div id=splash class=\"row\">\n  <div id=\"home-splash-img\" class=\"w-100\">\n    <div class=\"overlay\"></div>\n  </div>\n  <div id='splash-heading' class=\"col d-flex flex-column align-self-center\">\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto\">\n        <h1 id='splash-heading-main' class=\"text-primary\">namespy\n        <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n        </h1>\n    <h2 id='splash-sub-heading' class=\"text-white\">a solution for non-profit organizations to make automatic sdn inquiries</h2>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-xl-8 mx-auto mt-3\">\n        <router-link to='/signin'><button class=\"btn btn-lg btn-outline-primary mr-3 px-5\">login</button></router-link>\n        <router-link to='/signup'><button class=\"btn btn-lg btn-outline-primary m-3 px-5\">sign up</button></router-link>\n      </div>\n    </div>\n\n  </div>\n</div>";
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
 var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 
-  template: __webpack_require__(45),
+  template: __webpack_require__(47),
 
   data: function data() {
     return {
-      response: {
+      messaging: {
         status: "",
         msg: "",
         style: ""
@@ -45656,7 +45733,8 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
         axios.post('oauth/token', {
           grant_type: 'password',
           client_id: '1',
-          client_secret: 'UAJdkXSRq5Fbe3voaEGPrZzIiG0e5hSJAhx21xRk',
+          client_secret: 'zy1fUZQcNMRM409DXZ8RvFUK9GjZCuFqkWttQHBm',
+          // client_secret:'wVXIdXxngvzEGU470peDRtRx1TOeTH2lGKLTLjZz',
           username: this.login.username,
           password: this.login.password,
           scope: ''
@@ -45680,7 +45758,6 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
           axios.get('api/user', {
             headers: header
           }).then(function (response) {
-            console.log(response);
 
             // grab user info and save in session storage ;)
             that.authUser.id = response.data.id;
@@ -45691,22 +45768,17 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
             window.localStorage.setItem('authUser', JSON.stringify(that.authUser));
             that.$router.push({ name: 'dashboard' });
           }).catch(function (error) {
-            that.response.msg = 'Please enter valid credentials.';
-            that.response.style = 'alert-warning';
-
-            setTimeout(function () {
-              that.response.style = "";
-            }, 2000);
+            errorMessage(that);
           });
           // end get user data 
         })
         // on auth/token fail
         .catch(function (error) {
-          that.response.msg = 'Please enter valid credentials.';
-          that.response.style = 'alert-warning';
+          that.messaging.msg = 'Please enter valid credentials.';
+          that.messaging.style = 'alert-warning';
 
           setTimeout(function () {
-            that.response.style = "";
+            that.messaging.style = "";
           }, 2000);
         });
       }
@@ -45717,13 +45789,13 @@ var Login = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('login', {
 /* harmony default export */ __webpack_exports__["a"] = (Login);
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n      <p>{{response.msg}}</p>\n    </div>\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
+module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <message :message=\"messaging\"></message>\n    <form v-on:submit.prevent=\"handleLoginFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.username\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"login.password\"  class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >submit</button>\n        <router-link to='/signup'>register</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>\n\n";
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45733,12 +45805,12 @@ module.exports = "<div id='login' class=\"row\">\n  <div id='form' class=\"col-m
 
 var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register', {
 
-  template: __webpack_require__(47),
+  template: __webpack_require__(49),
 
   data: function data() {
     return {
 
-      response: {
+      messaging: {
         status: "",
         msg: "",
         style: ""
@@ -45760,23 +45832,17 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
           password_confirmation: this.register.password_confirmation
         }).then(function (response) {
           if (response.data.errors) {
-            that.response.status = response.status;
-            that.response.msg = response.data.errors[0];
-            that.response.style = 'alert-warning';
+            that.messaging.status = response.status;
+            that.messaging.msg = response.data.errors[0];
+            that.messaging.style = 'alert-warning';
             setTimeout(function () {
-              that.response.style = "";
+              that.messaging.style = "";
             }, 2000);
           } else {
             that.$router.push({ name: 'signin' });
           }
         }).catch(function (response) {
-          console.log(response);
-          that.response.status = 403;
-          that.response.msg = 'Oops something went wrong.';
-          that.response.style = 'alert-warning';
-          setTimeout(function () {
-            that.response.style = "";
-          }, 2000);
+          errorMessage(that);
         });
       }
     };
@@ -45787,13 +45853,13 @@ var Register = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('register',
 /* harmony default export */ __webpack_exports__["a"] = (Register);
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n  <div class=\"msg alert col\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n</div>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
+module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"col-md-8 m-auto\">\n    <message :message=\"messaging\"></message>\n    <form v-on:submit.prevent=\"handleRegisterFormSubmit()\" class=\"p-md-5\" action=\"\">\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.name\" class=\"form-control p-3\" type=\"text\" placeholder=\"name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.organization_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"organization name\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.email\" class=\"form-control p-3\" type=\"email\" placeholder=\"email\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password\" class=\"form-control p-3\" type=\"password\" placeholder=\"password\">\n      </div>\n      <div class=\"form-group col mx-auto\">\n        <input v-model=\"register.password_confirmation\" class=\"form-control p-3\" type=\"password\" placeholder=\"confirm your password\">\n      </div>\n      <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n        <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >register</button>\n        <router-link to='/signin'>login</router-link>\n      </div>\n      \n    </form>\n  </div>\n</div>";
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45803,7 +45869,7 @@ module.exports = "\n<div id='register' class=\"row\">\n  <div id='form' class=\"
 
 var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
-   template: __webpack_require__(49),
+   template: __webpack_require__(51),
 
    created: function created() {
       this.getRecipients();
@@ -45812,27 +45878,34 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 
    data: function data() {
       return {
-         response: {
+         messaging: {
             status: "",
             msg: "",
             style: ""
          },
 
          user: JSON.parse(window.localStorage.getItem('authUser')),
-         openAddForm: function openAddForm() {
-            console.log('test');
-         },
 
          recipientData: [],
 
-         recipient: {
+         addRecipient: {
             name: ""
+         },
+
+         infoRecipient: {
+            id: '',
+            name: '',
+            type: '',
+            id_number: '',
+            address: '',
+            city: '',
+            state_province: '',
+            country: ''
          },
 
          handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
             var that = this,
                 user = JSON.parse(window.localStorage.getItem('authUser'));
-            console.log(user.id);
             var header = {
                'Accept': 'application/json',
                'Authorization': 'Bearer ' + user.access_token
@@ -45841,24 +45914,76 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
                headers: header,
                _token: user.access_token,
                id: user.id,
-               name: this.recipient.name
+               name: this.addRecipient.name
             }).then(function (response) {
-               that.response.status = response.status;
-               that.response.msg = response.data.msg;
-               that.response.style = response.data.style;
                that.getRecipients();
-               setTimeout(function () {
-                  that.response.style = "";
-               }, 2000);
-            }).catch(function (error) {
-               that.response.status = 403;
-               that.response.msg = 'Oops something went wrong. Try again please.';
-               that.response.style = 'alert-warning';
-               setTimeout(function () {
-                  that.response.style = "";
-               }, 2000);
+               that.addRecipient.name = "";
+               successMessage(response, that);
+            }).catch(function (response) {
+               errorMessage(that);
             });
          }, // end handleformsubmit
+
+         handleRecipientInfoFormSubmit: function handleRecipientInfoFormSubmit() {
+            var that = this,
+                id = that.infoRecipient.id,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
+
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
+
+            axios.patch('/api/recipients/' + id, {
+               headers: header,
+               payload: that.infoRecipient
+            }).then(function (response) {
+               successMessage(response, that);
+            }).catch(function (response) {
+               errorMessage(that);
+            });
+         },
+
+         handleDelete: function handleDelete() {
+            var that = this,
+                id = that.infoRecipient.id,
+                user = JSON.parse(window.localStorage.getItem('authUser'));
+
+            var header = {
+               'Accept': 'application/json',
+               'Authorization': 'Bearer ' + user.access_token
+            };
+
+            axios.delete('/api/recipients/' + id, {
+               headers: header
+            }).then(function (response) {
+               var index = that.recipientData.findIndex(function (a) {
+                  return a.id === id;
+               });
+
+               __WEBPACK_IMPORTED_MODULE_0_vue___default.a.delete(that.recipientData, index);
+
+               successMessage(response, that);
+            }).catch(function (response) {
+               errorMessage(that);
+            });
+            this.infoRecipient = {};
+         },
+
+         populateInfoModal: function populateInfoModal(e) {
+            var selected = this.recipientData.filter(function (recip) {
+               return recip.id === parseInt(e.target.id);
+            });
+            selected = selected[0];
+            this.infoRecipient.id = parseInt(e.target.id);
+            this.infoRecipient.name = selected.name;
+            this.infoRecipient.type = selected.type;
+            this.infoRecipient.id_number = selected.id_number;
+            this.infoRecipient.address = selected.address;
+            this.infoRecipient.city = selected.city;
+            this.infoRecipient["state_province"] = selected.state_province;
+            this.infoRecipient.country = selected.country;
+         },
 
          getRecipients: function getRecipients() {
             var that = this,
@@ -45871,13 +45996,12 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
             axios.get('api/recipients/' + user.id, {
                headers: header
             }).then(function (response) {
-               console.log(response);
                that.recipientData = [];
                response.data.forEach(function (person) {
                   that.recipientData.push(person);
                });
             }).catch(function (error) {
-               console.log(error);
+               console.log('error from get recipients');
             });
          }
       };
@@ -45887,90 +46011,10 @@ var Dashboard = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('dash', {
 /* harmony default export */ __webpack_exports__["a"] = (Dashboard);
 
 /***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-module.exports = "<div>\n  <div class=\"msg alert\" v-bind:class=\"[response.style !== '' ? response.style : 'd-none']\">\n    <p>{{response.msg}}</p>\n  </div>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"recipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-3 col-lg-4 col-sm-6 d-inline-block\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 class=\"d-inline-block col-10\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
-
-/***/ }),
-/* 50 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-
-var Recipients = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recipients', {
-
-   template: __webpack_require__(51),
-
-   created: function created() {
-      console.log(this.recipient);
-      var that = this,
-          user = JSON.parse(window.localStorage.getItem('authUser'));
-      console.log(user.id);
-      var header = {
-         'Accept': 'application/json',
-         'Authorization': 'Bearer ' + user.access_token
-      };
-
-      axios.get('api/recipients/' + user.id, {
-         headers: header
-      }).then(function (response) {
-         console.log(response);
-         response.data.forEach(function (person) {
-            that.recipientData.push(person);
-         });
-      }).catch(function (error) {
-         console.log(error);
-      });
-   },
-
-
-   data: function data() {
-      return {
-         recipientData: [],
-         recipient: {
-            first_name: "bob",
-            last_name: "smith",
-            aliases: "tray smith, bill smith"
-         },
-         handleRecipientAddFormSubmit: function handleRecipientAddFormSubmit() {
-            var that = this,
-                user = JSON.parse(window.localStorage.getItem('authUser'));
-            console.log(user.id);
-            var header = {
-               'Accept': 'application/json',
-               'Authorization': 'Bearer ' + user.access_token
-            };
-
-            var aliases = JSON.stringify(this.recipient.aliases.split(","));
-
-            axios.post('api/recipients', {
-               headers: header,
-               _token: user.access_token,
-               id: user.id,
-               first_name: this.recipient.first_name,
-               last_name: this.recipient.last_name,
-               aliases: aliases
-            }).then(function (response) {
-               console.log(response);
-            }).catch(function (error) {
-               console.log(error);
-            });
-         }
-      };
-   }
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (Recipients);
-
-/***/ }),
 /* 51 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div id=\"recipients\" class=\"row\">\n    <div class=\"col\">\n      <div id='form' class=\"col-8 m-auto\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\" class=\"form p-5\" action=\"\">\n          <div class=\"form-group col mx-auto\">\n            <input v-model=\"recipient.first_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"first name\">\n          </div>\n          <div class=\"form-group col mx-auto\">\n            <input v-model=\"recipient.last_name\" class=\"form-control p-3\" type=\"text\" placeholder=\"last name\">\n          </div>\n          <div class=\"form-group col mx-auto\">\n            <input v-model=\"recipient.aliases\"  class=\"form-control p-3\" type=\"text\" placeholder=\"comma seperated aliases\">\n          </div>\n          <div class=\"form-group col mx-auto text-right mt-4 mb-0\">\n            <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"col-10 mx-auto\" >\n      <div class=\"recipient my-3\" v-for=\"rec in recipientData\">\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <i v-bind:class=\"[!rec.flagged ? 'fa-check' : 'fa-times']\" class=\"fa fa-2x align-text-bottom col-1\" aria-hidden=\"true\"></i>\n          <h3 class=\"d-inline-block col-10\" >{{rec.first_name}} {{rec.last_name}}</h3>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div id='dashboard'>\n  <message :message=\"messaging\"></message>\n  <div id=\"user-card\" class=\"row\">\n    <div class=\"col-lg-10 mx-auto\">\n      <h1 class=\"display-4\">{{user.name}}</h1>\n      <h4>\n      {{user.organization_name}} | {{user.email}}\n      </h4>\n      <div class=\"add-button col-lg-8 p-0 my-3\">\n        <form v-on:submit.prevent=\"handleRecipientAddFormSubmit()\">\n          <div class=\"input-group\">\n            <input v-model=\"addRecipient.name\" class=\"form-control\" type=\"text\" placeholder=\"add a recipient\">\n            <span class=\"input-group-btn\">\n              <button class=\"btn btn-outline-primary mr-3\" type=\"submit\" >add</button>\n            </span>\n          </div>\n        </form>\n      </div>\n      <hr>\n    </div>\n  </div>\n  <!-- recipient list start -->\n  <div id=\"recipientList\" class=\"row\">\n    <div  class=\"mx-auto col-lg-10\" >\n      <div class=\"recipient my-1\" v-for=\"rec in recipientData\"  >\n        <div v-bind:class=\"[!rec.flagged ? 'text-success' : 'text-danger']\">\n          <h6 :id=\"rec.id\" class=\"d-inline-block py-3\" v-on:click=\"populateInfoModal($event)\" data-toggle=\"modal\" data-target=\"#myModal\" >{{rec.name}}</h6>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- end list -->\n  <!-- Modal -->\n  <div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">{{infoRecipient.name}}</h5>\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <form class=\"form-text\" v-on:submit.prevent=\"handleRecipientInfoFormSubmit()\">\n            <div class=\"form-group\">\n              <select class=\"custom-select\" v-model=\"infoRecipient.type\" name=\"type\">\n                <option value=\"entity\">entity</option>\n                <option selected value=\"individual\">individual</option>\n              </select>\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.id_number\" class=\"form-control\" type=\"text\" placeholder=\"id number\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.address\" class=\"form-control\" type=\"text\" placeholder=\"address\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.city\" class=\"form-control\" type=\"text\" placeholder=\"city\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.state_province\" class=\"form-control\" type=\"text\" placeholder=\"state/province\">\n            </div>\n            <div class=\"form-group\">\n              <input v-model=\"infoRecipient.country\" class=\"form-control\" type=\"text\" placeholder=\"country\">\n            </div>\n            \n            <div class=\"modal-footer\">\n              <button type=\"submit\" class=\"btn btn-primary\" >Save changes</button>\n              <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\" v-on:click=\"handleDelete()\">Delete</button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 52 */
@@ -46020,12 +46064,43 @@ module.exports = "<div class=\"row\">\n  <div class=\"col\">\n    \n  </div>\n</
 
 /***/ }),
 /* 56 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<header-vue></header-vue>\n<div id=\"header-fill\"></div>\n<div id=\"main-body\">\n  <transition name=\"fade\">\n    <router-view></router-view>\n  </transition>\n</div>\n<div id=\"footer-fill\"></div>  \n<footer-vue></footer-vue>\n</div>";
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var Message = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', {
+
+   template: __webpack_require__(57),
+
+   props: ['message'],
+
+   data: function data() {
+      return {
+         messaging: this.message
+      };
+   }
+
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (Message);
 
 /***/ }),
 /* 57 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"msg alert\" v-bind:class=\"[messaging.style !== '' ? messaging.style : 'no-height']\">\n    <p v-if=\"messaging.msg !== ''\">{{messaging.msg}}</p>\n</div>";
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"main-content\" class=\"container-fluid\">\n\n<sidenav :isloggedin=\"loggedin\" v-bind:class=\"[nav ? 'toggled-nav' : 'nav']\" ></sidenav>\n<div id=\"main-body\" v-bind:class=\"[nav ? 'pushed-main' : '']\">\n  <button v-on:click=\"toggleNav()\" class=\"mt-2 btn btn-sm btn-outline-primary border-0\"> \n    <i class=\"fa fa-bars\" aria-hidden=\"true\"></i>\n  </button>\n  <transition name=\"fade\">\n    <router-view v-bind:class=\"$route.path == '/' ? '' : 'mt-5'\"></router-view>\n  </transition>\n</div> \n</div>";
+
+/***/ }),
+/* 59 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

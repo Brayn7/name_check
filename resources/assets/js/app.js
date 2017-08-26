@@ -10,29 +10,44 @@ import Axios from 'axios';
 
 // import router
 import VueRouter from 'vue-router';
-
-
 Vue.use(VueRouter);
+
 // requires bootstraps js
-require('./bootstrap');
+import bootstrap from './bootstrap';
 
 // load components
 import HeaderVue from './components/common/header.js';
+import SideNav from './components/sidenav/sideNav.js'
 import Footer from './components/common/footer.js';
 import Home from './components/home/home.js'
 import Login from './components/login/login.js';
 import Register from './components/register/register.js';
 import Dashboard from './components/dashboard/dash.js';
-import Recipients from './components/recipients/recipients.js';
 import About from './components/about/about.js'
 import Contact from './components/contact/contact.js'
-
-
+import message from './components/message/message.js'
 
 // initiate a main component
 let MainVue = Vue.component('main-vue', {
    template: require('./Main.html'),
+
+   updated(){
+    this.loggedin = (window.localStorage.getItem('authUser')) ? true : false;
+   },
+
+   data: function () {
+     return {
+      loggedin: (window.localStorage.getItem('authUser')) ? true : false,
+      nav: false,
+
+      toggleNav: function () {
+        this.nav = !this.nav;
+      },
+     }
+   }
 });
+
+// ROUTES
 
 const routes = [
   {
@@ -55,14 +70,6 @@ const routes = [
     component: Dashboard,
     name: 'dashboard',
     meta: { requiresAuth: true }
-  },
-  {
-    path: '/recipients',
-    component: Recipients,
-    name: 'recipients',
-    meta: { 
-      requiresAuth: true, 
-      requiresRecipientList: true }
   },
     {
     path: '/about',
@@ -96,6 +103,8 @@ router.beforeEach((to, from, next) => {
 new Vue({
   router,
 }).$mount('#app');
+
+
   
 
 

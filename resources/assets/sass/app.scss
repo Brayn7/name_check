@@ -15,6 +15,12 @@ $mainFont: 'Roboto', sans-serif;
 // Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
 
+
+html, body, #app, #main-content {
+  height: 100%;
+  overflow: hidden;
+}
+
 button,
 input,
 optgroup,
@@ -23,6 +29,10 @@ textarea,
 form a {
    font-family: $mainFont;
    font-weight: 300 !important;
+}
+
+button {
+  box-shadow: none !important;
 }
 
 p {
@@ -35,6 +45,14 @@ p {
     font-size: 1em;
     text-align: center;
     margin: 0;
+}
+
+.no-height {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  transition: 1s;
 }
 
 #login, #register, #splash {
@@ -51,11 +69,11 @@ p {
 }
 
 #logged-in {
-    position: fixed;
-    right: 0px;
+    position: absolute;
+    right: 30px;
     font-weight: 300;
     appearance: none;
-    z-index: 9999;
+    z-index: 5000;
     cursor: pointer;
 }
 
@@ -65,7 +83,7 @@ p {
 
 #logged-in a:after {
   content: '|';
-  padding-left: 25px;
+  padding-left: 23px;
 }
 
 #logged-in a:hover:after, .footer a:hover:after {
@@ -94,11 +112,12 @@ p {
 
 .other-header {
     background-color: rgba(255, 255, 255, 0.8);
+    position: initial;
+    #logged-in {
+      margin-right: -30px;
+    }
 }
 
-#header-fill {
-   padding: 50px;
-}
 
 
 #home-splash-img {
@@ -118,6 +137,11 @@ p {
    width: 100%;
    height: 100%;
    opacity: 0.7;
+}
+
+.modal {
+  background: rgba(60, 69, 70, 0.5);
+  z-index: 9999;
 }
 
 #splash-heading {
@@ -145,16 +169,15 @@ p {
 
 #main-body {
     position: relative;
+    left: 0;
     z-index: 5000;
+    transition: 1s;
 }
 
 .footer {
     width: 100%;
     background: rgba(255, 255, 255, 0.8);
     padding: 20px 0px;
-    position: fixed;
-    z-index: 9999;
-    bottom: 0;
     font-weight: 100;
    a:after {
       content: '|';
@@ -166,13 +189,84 @@ p {
 
 }
 
-.home-footer {
-   background: none;
+.recipient h6 {
+  cursor: pointer;
 }
 
-#footer-fill {
-   padding: 40px 0px;
+.home-footer {
+   background: none;
+   position: fixed;
+   z-index: 9999;
+   bottom: 0;
 }
+
+ /* testing side nav */
+.fa-bars {
+    font-size: 1.5em;
+}
+
+.toggled-nav {
+    left: 0px !important;
+    transition: 1s;
+}
+
+.pushed-main {
+    position: relative;
+    left: 220px !important; 
+    transition: 1s;
+}
+
+#side-nav {
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    left: -220px;
+    background: white;
+    z-index: 9999;
+    border-right: 1px solid #d9d9d9;
+    transition: 1s;
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: -webkit-center;
+    margin-top: 25px;
+    li {
+      a {
+          color: #464a4c;
+          padding: 1em; 
+          display: block; 
+          &:hover {
+            text-decoration: none;
+            color: white;
+            transition: .5s;
+          };  
+          transition: .5s;  
+        }
+      &:hover {
+        background: $blue;
+        transition: .5s;
+      }  
+      transition: .5s;
+    }
+  }
+
+  .small-spy-glass {
+    margin: 9px 15px;
+    display: inline-block;
+  }
+
+  .small-spy-glass img {
+      width: 20px;
+      cursor: pointer;
+   }
+   .small-spy-glass:hover {
+      opacity: .5;
+   }
+
+  }
+
+/* end testing side nav */
+
 
 
 

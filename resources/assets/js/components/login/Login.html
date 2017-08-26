@@ -1,8 +1,6 @@
 <div id='login' class="row">
   <div id='form' class="col-md-8 m-auto">
-    <div class="msg alert col" v-bind:class="[response.style !== '' ? response.style : 'd-none']">
-      <p>{{response.msg}}</p>
-    </div>
+    <message :message="messaging"></message>
     <form v-on:submit.prevent="handleLoginFormSubmit()" class="p-md-5" action="">
       <div class="form-group col mx-auto">
         <input v-model="login.username" class="form-control p-3" type="email" placeholder="email">

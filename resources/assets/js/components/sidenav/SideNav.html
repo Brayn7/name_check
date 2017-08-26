@@ -1,0 +1,13 @@
+<div id="side-nav">
+  <router-link class="small-spy-glass" to="/">
+          <img class="img-fluid" src="../../../img/spyglass.svg" alt="">
+  </router-link>
+  <ul>
+    <li v-if="isloggedin"><router-link to="/dashboard">dashboard</router-link></li>
+    <li><router-link to="/about">about</router-link></li>
+    <li v-if="!isloggedin"><router-link to="/signin">signin</router-link></li>
+    <li v-if="!isloggedin"><router-link to="/signup">signup</router-link></li>
+    <li><router-link to="/contact">contact</router-link></li>
+    <li v-if="isloggedin" v-on:click="handleLogout()"><a href="">logout</a></li>
+  </ul>
+</div>
