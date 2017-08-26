@@ -8,6 +8,6 @@
     <li v-if="!isloggedin"><router-link to="/signin">signin</router-link></li>
     <li v-if="!isloggedin"><router-link to="/signup">signup</router-link></li>
     <li><router-link to="/contact">contact</router-link></li>
-    <li v-if="isloggedin"><a href="">logout</a></li>
+    <li v-if="isloggedin" v-on:click="handleLogout()"><a href="">logout</a></li>
   </ul>
 </div>

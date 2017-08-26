@@ -13409,7 +13409,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__bootstrap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_common_header_js__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_sidenav_sideNav_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_common_footer_js__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_home_js__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_login_login_js__ = __webpack_require__(46);
@@ -45635,7 +45634,14 @@ var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
    props: ['isloggedin'],
 
    data: function data() {
-      return {};
+      return {
+         handleLogout: function handleLogout() {
+            // removes authUser (token and user info) from local storage
+            window.localStorage.removeItem('authUser');
+            // redirect to home page
+            this.$router.push({ name: '/' });
+         }
+      };
    }
 
 });
@@ -45646,7 +45652,7 @@ var SideNav = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('sidenav', {
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li v-if=\"isloggedin\"><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signin\">signin</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signup\">signup</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li v-if=\"isloggedin\"><a href=\"\">logout</a></li>\n  </ul>\n</div>";
+module.exports = "<div id=\"side-nav\">\n  <router-link class=\"small-spy-glass\" to=\"/\">\n          <img class=\"img-fluid\" src=\"" + __webpack_require__(3) + "\" alt=\"\">\n  </router-link>\n  <ul>\n    <li v-if=\"isloggedin\"><router-link to=\"/dashboard\">dashboard</router-link></li>\n    <li><router-link to=\"/about\">about</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signin\">signin</router-link></li>\n    <li v-if=\"!isloggedin\"><router-link to=\"/signup\">signup</router-link></li>\n    <li><router-link to=\"/contact\">contact</router-link></li>\n    <li v-if=\"isloggedin\" v-on:click=\"handleLogout()\"><a href=\"\">logout</a></li>\n  </ul>\n</div>";
 
 /***/ }),
 /* 42 */
