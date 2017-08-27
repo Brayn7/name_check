@@ -4,7 +4,15 @@
 
    echo 'start';
 
-   file_put_contents('./docs/sdn.xml', fopen('https://www.treasury.gov/ofac/downloads/sdn.xml', 'r'));
+   $file = 'logfile.txt';
+
+   $old = file_get_contents($file);
+
+   $new = "new";
+
+   file_put_contents($file, $new . "\n" . $old);
 
    echo 'done';
+
+
 ?>

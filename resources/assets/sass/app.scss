@@ -35,6 +35,10 @@ button {
   box-shadow: none !important;
 }
 
+a:focus {
+  text-decoration: none;
+}
+
 p {
   font-family: 'Josefin Slab', serif;
   font-weight: 300;
