@@ -38,16 +38,49 @@ class DatabaseRefresh extends Command
      */
     public function handle()
     {
-        // rewrite sdn.xml file
-        file_put_contents('docs/sdn.xml', fopen('https://www.treasury.gov/ofac/downloads/sdn.xml', 'r'));
+       $local = file_get_contents('./docs/sdn.xml');
 
-        DB::table('entries')->truncate();
+       $xmlLocal = new \SimpleXMLElement($local);
 
-        \Artisan::call('db:seed');
+       $localDate = strtotime($xmlLocal->publshInformation->Publish_Date);
 
-        \Artisan::call('scout:flush', ['model' => "App\Entry"]);
+       // drop content stream
+       unset($local);
+       // drop xml instace to free space
+       unset($xmlLocal);
 
-        \Artisan::call('scout:import', ['model'=> 'App\Entry']);
+       $incoming = file_get_contents('https://www.treasury.gov/ofac/downloads/sdn.xml');
+
+       $xmlIncoming = new \SimpleXMLElement($incoming);
+
+       $IncomingDate = strtotime($xmlIncoming->publshInformation->Publish_Date);
+
+       // drop content stream
+       unset($incoming);   
+
+       if ($localDate !== $IncomingDate){
+             // write to logfile the publish date
+             $file = 'logfile.txt';
+             // current content
+             $oldDates = file_get_contents($file);
+             // new content
+             $newDate = date("m.d.Y", $IncomingDate);
+             // prepend new content
+             file_put_contents($file, $newDate . "\n" . $oldDates);
+
+             // rewrite sdn.xml file
+            file_put_contents('docs/sdn.xml', fopen('https://www.treasury.gov/ofac/downloads/sdn.xml', 'r'));
+
+            DB::table('entries')->truncate();
+
+            \Artisan::call('db:seed');
+
+            \Artisan::call('scout:flush', ['model' => "App\Entry"]);
+
+            \Artisan::call('scout:import', ['model'=> 'App\Entry']);
+
+
+       }
         
     }
 }
