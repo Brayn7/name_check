@@ -10206,6 +10206,7 @@ body,
 #app,
 #main-content {
   height: 100%;
+  overflow-x: hidden;
 }
 
 button,
