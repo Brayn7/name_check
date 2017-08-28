@@ -10206,7 +10206,6 @@ body,
 #app,
 #main-content {
   height: 100%;
-  overflow: hidden;
 }
 
 button,
@@ -10222,6 +10221,10 @@ form a {
 button {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+}
+
+a:focus {
+  text-decoration: none;
 }
 
 p {
