@@ -34,5 +34,5 @@ to check and store a list of individuals or organizations that receive internati
 # Services I am Using
 - Algoilia
 - Mail Trap
-- Heroku.
+- Heroku
 
