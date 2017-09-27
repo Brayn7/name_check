@@ -15,6 +15,7 @@ to check and store a list of individuals or organizations that receive internati
 ## User Stories
 
 ### User can (Includes stretch goals for version 2):
+- register
 - login
 - run a check on a name (not logged in)
 - view info about the sdn 
