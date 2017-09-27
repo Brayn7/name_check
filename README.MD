@@ -10,7 +10,7 @@ to check and store a list of individuals or organizations that receive internati
 - Provide Scheduled Checking of the organizations list
 - Clear marking of a potential specially designated national and blocked persons list 
 - Scheduled download and updating of sdn list
-- Send notification of potential blocked persons 
+- Send notification of potential blocked persons. 
 
 ## User Stories
 
