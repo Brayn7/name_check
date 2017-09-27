@@ -3,20 +3,18 @@
 ## Purpose
 
 The purpose of this application is to provide a quick way for non-profit orginizations
-to check and store a list of individuals or organizations that receive international monetary  transactions.
+to check and store a list of individuals or organizations that receive international monetary transactions.
 
 ## How
 - Provide a place to add and store recipients of the organization
 - Provide Scheduled Checking of the organizations list
 - Clear marking of a potential specially designated national and blocked persons list 
 - Scheduled download and updating of sdn list
-- Send notification of potential blocked persons 
+- Send notification of potential blocked persons. 
 
 ## User Stories
 
 ### User can (Includes stretch goals for version 2):
-
-- register
 - login
 - run a check on a name (not logged in)
 - view info about the sdn 
